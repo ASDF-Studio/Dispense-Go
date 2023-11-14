@@ -1,8 +1,27 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Montserrat } from 'next/font/google'
+import localFont from "@next/font/local"
 import './globals.css'
+import { config } from "@fortawesome/fontawesome-svg-core";
+import "@fortawesome/fontawesome-svg-core/styles.css";
 
-const inter = Inter({ subsets: ['latin'] })
+config.autoAddCss = false;
+
+const montserrat = Montserrat({
+  subsets: ['latin'], display: 'swap',
+  variable: '--font-montserrat',
+})
+
+const grtskTera = localFont({
+  src: [{
+    path: '../../public/fonts/GrtskTera-Regular.ttf',
+    weight: '400'
+  }, {
+    path: '../../public/fonts/GrtskTera-Medium.ttf',
+    weight: '500'
+  }],
+  variable: '--font-grtsktera'
+})
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -16,7 +35,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${montserrat.className} ${grtskTera.className}`}>{children}</body>
     </html>
   )
 }
