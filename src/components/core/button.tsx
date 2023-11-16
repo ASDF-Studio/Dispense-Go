@@ -4,6 +4,7 @@ import { Typography } from './typography';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { FlexCenter } from '@/layout';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 const buttonStyles = cva("min-w-[229px] p-l rounded-md  gap-[8px]", {
     variants: {
@@ -31,5 +32,17 @@ export const Button: FC<ButtonProps> = ({ intent, defaultVariants, text, typogra
             </Typography>
             <FontAwesomeIcon icon={faArrowRight} className="fas fa-arrow-right text-[14px] font-normal" />
         </FlexCenter>
+    </button>
+}
+
+type IcontButtonProps = {
+    icon: React.ReactNode
+    classname?: string
+    onClick?: () => void
+}
+
+export const IconButton: FC<IcontButtonProps> = ({ icon, classname, onClick }) => {
+    return <button className={classname} onClick={onClick}>
+        <FlexCenter>{icon}</FlexCenter>
     </button>
 }

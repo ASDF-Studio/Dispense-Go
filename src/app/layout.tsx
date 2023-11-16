@@ -35,7 +35,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${montserrat.className} ${grtskTera.className}`}>{children}</body>
+      <body className={`${montserrat.variable} ${grtskTera.variable}`}>{children}</body>
     </html>
   )
 }

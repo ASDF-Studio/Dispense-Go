@@ -18,6 +18,67 @@
 
 @layer components {
   .text-buttons {
-    @apply text-[15px] font-medium font-grtskTera uppercase tracking-[2.175px];
+    @apply text-[15px] font-medium font-grtskTera uppercase tracking-[2.175px] leading-[15px];
   }
+  .text-product-card {
+    @apply text-[16px] font-sans uppercase font-bold leading-4;
+  }
+  .text-mons-normal-13 {
+    @apply text-[13px] font-sans capitalize font-medium leading-[140%];
+  }
+  .text-mons-normal {
+    @apply text-[13px] font-sans capitalize font-medium;
+  }
+  .text-mons-super {
+    @apply text-[10px] font-sans uppercase font-bold align-super leading-4;
+  }
+  .text-mons-bold {
+    @apply text-[10px] font-sans uppercase font-bold;
+  }
+  .text-mons-bold-12 {
+    @apply text-[12px] font-sans uppercase font-bold tracking-[0.66px] leading-3;
+  }
+  .text-mons-normal-16 {
+    @apply text-[16px] font-sans uppercase font-normal;
+  }
+  .tag-border {
+    @apply border-[0.8px] border-solid border-text-red;
+  }
+  .badge-border {
+    @apply border border-solid border-border-purple;
+  }
+  .card-border {
+    @apply border-2 border-solid border-border-whiteSmoke;
+  }
+}
+
+.cross s,
+strike {
+  text-decoration: none;
+  position: relative;
+}
+.cross::before s::before,
+strike::before {
+  top: 50%; /*tweak this to adjust the vertical position if it's off a bit due to your font family */
+  background: red; /*this is the color of the line*/
+  opacity: 0.7;
+  content: "";
+  width: 110%;
+  position: absolute;
+  height: 0.1em;
+  border-radius: 0.1em;
+  left: -5%;
+  white-space: nowrap;
+  display: block;
+  transform: rotate(-15deg);
+}
+.cross.straight::before s.straight::before,
+strike.straight::before {
+  transform: rotate(0deg);
+  left: -1%;
+  width: 102%;
+}
+
+html {
+  box-sizing: border-box;
 }

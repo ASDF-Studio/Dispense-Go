@@ -31,12 +31,36 @@ const config: Config = {
           brand: "#7AC80E",
           hover: "#8CE510",
         },
+        background: {
+          red: {
+            95: "rgba(248, 236, 238, 0.95)",
+          },
+          green: {
+            20: "rgba(122, 200, 14, 0.20)",
+          },
+          purple: "rgba(102, 17, 211)",
+        },
+        text: {
+          black: {
+            70: "rgba(14, 14, 14, 0.70)",
+            100: "#161515",
+          },
+          green: "#0F6422",
+          red: "#E9495C",
+          lightPink: "#F1E7FD",
+          purple: "#6611D3",
+        },
         border: {
+          whiteSmoke: "#EFF5F3",
+          purple: "#6611D3",
           green: {
             70: "rgba(122, 200, 14, 0.70)",
             10: "rgba(122, 200, 14, 0.10)",
           },
         },
+      },
+      boxShadow: {
+        "product-card": "0px 4px 23px 0px rgba(236, 234, 234, 0.25)",
       },
     },
   },
