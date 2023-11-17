@@ -1,10 +1,12 @@
 import { Typography } from "@/core";
 import { Flex, FlexCenter } from "@/layout";
 import { Padding } from "@/layout/spacing";
-import { faSun } from "@fortawesome/free-solid-svg-icons";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { faCloudMoon, faSun, faYinYang } from "@fortawesome/free-solid-svg-icons";
 import { faTag } from "@fortawesome/free-solid-svg-icons/faTag";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { VariantProps, cva } from "class-variance-authority";
 import { FC } from "react";
 
 type TagProps = {
@@ -52,20 +54,58 @@ export const SaleTag: FC<Percentage> = ({ percentage = 0, classname = "" }) => {
     );
 };
 
-type TypeProps = {
-    type: string;
+const typeVariants = cva("py-0.5 px-[7px] badge-border w-fit rounded-[33px]", {
+    variants: {
+        intent: {
+            sativa: "bg-background-purple/70 border-border-purple",
+            indica: "bg-background-blue/70 border-background-blue",
+            hybrid: "bg-background-brown/70 border-background-brown"
+        },
+        defaultVariants: {
+            intent: "sativa",
+        },
+    },
+});
+
+interface TypeProps extends VariantProps<typeof typeVariants> {
     classname?: string
 };
 
-export const TypeBadge: FC<TypeProps> = ({ type, classname }) => {
+export const TypeBadge: FC<TypeProps> = ({ intent, classname }) => {
+    type Variants = Exclude<typeof intent, null | undefined>
+
+    const Icons = {
+        "sativa": {
+            icon: faSun,
+            classname: "fas fa-tag text-[10px] text-text-lightPink font-black"
+        },
+        "indica": {
+            icon: faCloudMoon,
+            classname: "fas fa-tag text-[10px] text-text-blueShade font-black"
+        },
+        "hybrid": {
+            icon: faYinYang,
+            classname: "fas fa-tag text-[10px] text-[#FDF2E7] font-black"
+        }
+    }
+
+    const Color = {
+        "sativa": "text-text-lightPink",
+        "indica": "text-text-blueShade",
+        "hybrid": "text-[#FDF2E7]"
+    }
+
+
+
     return (
-        <FlexCenter className={["py-0.5 px-[7px] badge-border w-fitb box-border rounded-[33px] bg-background-purple/70", classname].join(" ")}>
+        <FlexCenter className={[typeVariants({ intent }), classname].join(" ")}>
             <Flex className="gap-1 items-center">
                 <FontAwesomeIcon
-                    icon={faSun}
-                    className="fas fa-tag text-[10px] text-text-lightPink font-black"
+                    icon={Icons[intent as Variants].icon}
+                    //@ts-ignore
+                    className={Icons[intent as Variants].classname}
                 />
-                <Typography intent="monsBold12" classname="text-text-lightPink leading-[12px]">{type}</Typography>
+                <Typography intent="monsBold12" classname={["leading-[12px]", Color[intent as Variants]].join(" ")}>{intent}</Typography>
             </Flex>
         </FlexCenter>
     );

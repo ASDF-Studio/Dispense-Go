@@ -14,7 +14,6 @@ export const typographyStyles = cva("", {
             monsBold12: "text-mons-bold-12",
             monsNormal16: "text-mons-normal-16",
             mons13: "text-mons-13"
-
         },
         defaultVariants: {
             intent: "primary",

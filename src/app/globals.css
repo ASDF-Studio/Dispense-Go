@@ -48,7 +48,7 @@
     @apply border-[0.8px] border-solid border-text-red;
   }
   .badge-border {
-    @apply border border-solid border-border-purple;
+    @apply border border-solid;
   }
   .card-border {
     @apply border-2 border-solid border-border-whiteSmoke;

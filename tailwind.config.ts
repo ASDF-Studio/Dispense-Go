@@ -44,13 +44,16 @@ const config: Config = {
             20: "rgba(122, 200, 14, 0.20)",
           },
           purple: "rgba(102, 17, 211)",
+          blue: "#11A4D3",
           grey: "rgba(39, 39, 39, 0.08)",
+          brown: "#D36E11",
         },
         text: {
           black: {
             70: "rgba(14, 14, 14, 0.70)",
             100: "#161515",
           },
+          blueShade: "#E7F8FD",
           green: "#0F6422",
           red: "#E9495C",
           lightPink: "#F1E7FD",
