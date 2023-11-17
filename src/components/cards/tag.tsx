@@ -70,3 +70,25 @@ export const TypeBadge: FC<TypeProps> = ({ type, classname }) => {
         </FlexCenter>
     );
 };
+
+type RadiusProps = {
+    radius: number
+}
+
+export const RadiusTag: FC<RadiusProps> = ({ radius }) => {
+    return <Flex className="p-1 bg-primary-green/10 w-fit">
+        <Typography intent={"monsBold10"} classname="font-semibold  leading-2.5 text-primary-green lowercase">
+            {`${radius} mi`}
+        </Typography>
+
+    </Flex>
+}
+
+type StoreCategoryProps = {
+    category: "Medical & Recreational" | "Recreational"
+}
+export const CategoryTag: FC<StoreCategoryProps> = ({ category = "Medical & Recreational" }) => {
+    return <Flex className="p-1 bg-background-grey w-fit">
+        <Typography intent={"monsBold10"} classname="font-semibold  leading-2.5 text-text-black-70  capitalize">{category}</Typography>
+    </Flex>
+}

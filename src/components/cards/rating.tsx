@@ -8,7 +8,7 @@ import { count } from "console";
 
 type Props = {
     rating: number;
-    count: number
+    count?: number
 };
 
 export const Rating: FC<Props> = ({ rating, count }) => {
@@ -26,7 +26,7 @@ export const Rating: FC<Props> = ({ rating, count }) => {
                         );
                     })}
             </Flex>
-            <Typography intent={"monsNormal"} classname="leading-[14px]">{`${rating} (${count})`}</Typography>
+            <Typography intent={"monsNormal"} classname="leading-[14px]">{`${rating}`} {count ? `(${count})` : ""}</Typography>
         </Flex>
     );
 };

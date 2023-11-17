@@ -12,7 +12,8 @@ export const typographyStyles = cva("", {
             monsSuper: "text-mons-super",
             monsBold10: "text-mons-bold",
             monsBold12: "text-mons-bold-12",
-            monsNormal16: "text-mons-normal-16"
+            monsNormal16: "text-mons-normal-16",
+            mons13: "text-mons-13"
 
         },
         defaultVariants: {

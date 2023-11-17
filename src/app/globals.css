@@ -41,6 +41,9 @@
   .text-mons-normal-16 {
     @apply text-[16px] font-sans uppercase font-normal;
   }
+  .text-mons-13 {
+    @apply text-[13px] font-sans capitalize font-normal leading-normal;
+  }
   .tag-border {
     @apply border-[0.8px] border-solid border-text-red;
   }

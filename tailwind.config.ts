@@ -26,10 +26,15 @@ const config: Config = {
         m: "10px",
         l: "15px",
       },
+      lineHeight: {
+        2.5: "10px",
+        "120%": "15.6px",
+      },
       colors: {
         primary: {
           brand: "#7AC80E",
           hover: "#8CE510",
+          green: "#008254",
         },
         background: {
           red: {
@@ -39,6 +44,7 @@ const config: Config = {
             20: "rgba(122, 200, 14, 0.20)",
           },
           purple: "rgba(102, 17, 211)",
+          grey: "rgba(39, 39, 39, 0.08)",
         },
         text: {
           black: {
