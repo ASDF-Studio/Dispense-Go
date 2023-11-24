@@ -8,10 +8,24 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      screens: {
+        xs: "420px",
+        s: "430px",
+        m: "767px",
+        x: "1024px",
+        xl: "1280px",
+        "2xl": "1440px",
+      },
+      maxWidth: {
+        "screen-2xl": "1440px",
+      },
       fontFamily: {
         sans: ["var(--font-montserrat)"],
         mono: ["var(--font-roboto-mono)"],
         grtskTera: ["var(--font-grtsktera)"],
+      },
+      margin: {
+        desktop: "42px",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
@@ -21,10 +35,14 @@ const config: Config = {
       borderRadius: {
         md: "8px",
       },
+      padding: {
+        desktop: "42px",
+      },
       spacing: {
         s: "5px",
         m: "10px",
         l: "15px",
+        xl: "60px",
       },
       lineHeight: {
         2.5: "10px",
@@ -35,6 +53,8 @@ const config: Config = {
           brand: "#7AC80E",
           hover: "#8CE510",
           green: "#008254",
+          darkGreen: "#033D28",
+          black: "#161515",
         },
         background: {
           red: {
@@ -43,10 +63,20 @@ const config: Config = {
           green: {
             20: "rgba(122, 200, 14, 0.20)",
           },
+          darkGreen: "#0B724E",
+          lightGreen: "#E9FAD2",
           purple: "rgba(102, 17, 211)",
+          green1: "#1AA977",
           blue: "#11A4D3",
           grey: "rgba(39, 39, 39, 0.08)",
           brown: "#D36E11",
+          primary: "#D1F89B",
+          tagGreen: "#006340",
+        },
+        gradient: {
+          linear: {
+            green: "linear-gradient(98deg, #7AC80E 24.29%, #0B724E 122.44%)",
+          },
         },
         text: {
           black: {
@@ -70,6 +100,7 @@ const config: Config = {
       },
       boxShadow: {
         "product-card": "0px 4px 23px 0px rgba(236, 234, 234, 0.25)",
+        navbar: "0px 13px 45px 0px rgba(21, 55, 0, 0.07)",
       },
     },
   },

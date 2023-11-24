@@ -1,0 +1,72 @@
+import Link from "next/link"
+import { Flex, FlexColumn } from "."
+import { SafeAreaSection, SafeScreen } from "./spacing"
+import { Typography } from "@/core"
+import { Logo } from "@/logo"
+import Image from "next/image"
+
+const Links = [
+    "Deals", "Flowers", "Edibles", "Concertrates", "CBD", "Pre-rolls", "Brands", "Stores"
+]
+
+const TOS = ["Refund Policy", "Privacy Policy", "Cookies Policy", "Terms & Conditions"]
+
+const About = ["About us", "FAQs", "Contact Us"]
+
+export const Footer = () => {
+    return <footer>
+        <SafeScreen classname="bg-primary-darkGreen pt-[44px] pb-8">
+            <FlexColumn className="gap-8">
+                <Flex className="justify-between">
+                    <FlexColumn className="gap-[17px]">
+                        <Typography intent={"grskt16"} classname="text-white/70">Quick links</Typography>
+                        {
+                            Links.map((link) => {
+                                return <Link href={"www.example.com"}>
+                                    <Typography intent={"mons16"} classname="font-normal text-white">{link}</Typography>
+                                </Link>
+                            })
+                        }
+                    </FlexColumn>
+                    <FlexColumn className="gap-[17px]">
+                        <Typography intent={"grskt16"} classname="text-white/70">terms & privacy</Typography>
+                        {
+                            TOS.map((link) => {
+                                return <Link href={"www.example.com"}>
+                                    <Typography intent={"mons16"} classname="font-normal text-white">{link}</Typography>
+                                </Link>
+                            })
+                        }
+                    </FlexColumn>
+                    <FlexColumn className="gap-[17px]">
+                        <Typography intent={"grskt16"} classname="text-white/70">About</Typography>
+                        {
+                            About.map((link) => {
+                                return <Link href={"www.example.com"}>
+                                    <Typography intent={"mons16"} classname="font-normal text-white">{link}</Typography>
+                                </Link>
+                            })
+                        }
+                    </FlexColumn>
+                    <FlexColumn className="gap-[17px] w-[151px]">
+                        <Typography intent={"grskt16"} classname="text-white/70">social media</Typography>
+                        <Flex className="justify-between">
+                            <Image alt="logos" src={"assets/social/linkedin.svg"} width={24} height={24} />
+                            <Image alt="logos" src={"assets/social/instagram.svg"} width={24} height={24} />
+                            <Image alt="logos" src={"assets/social/facebook.svg"} width={24} height={24} />
+                            <Image alt="logos" src={"assets/social/x.svg"} width={24} height={24} />
+                        </Flex>
+
+                    </FlexColumn>
+                </Flex>
+                <div className="h-[1px] w-full bg-[#D9D9D933]/20" />
+                <Flex className="items-center justify-between">
+                    <Logo color="white" />
+                    <Typography classname="font-sans font-normal text-[16px] leading-[19.2px] tracking-[-0.64px] text-white/70">
+                        All Rights Reserved 2023 © Dispense Go
+                    </Typography>
+                </Flex>
+            </FlexColumn>
+        </SafeScreen>
+    </footer>
+}

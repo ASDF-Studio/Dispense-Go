@@ -41,8 +41,50 @@
   .text-mons-normal-16 {
     @apply text-[16px] font-sans uppercase font-normal;
   }
+  .text-mons-15 {
+    @apply text-[15px] font-sans font-medium leading-[19.5px];
+  }
+  .text-grstk-10 {
+    @apply text-[10px] font-grtskTera font-medium leading-[10px] uppercase tracking-[1.45px];
+  }
   .text-mons-13 {
     @apply text-[13px] font-sans capitalize font-normal leading-normal;
+  }
+  .text-link {
+    @apply text-[13px] font-grtskTera font-medium leading-[13px] tracking-[1.885px];
+  }
+  .text-header-3 {
+    @apply text-[26px] font-grtskTera font-semibold leading-[13px] tracking-[1.885px];
+  }
+  .text-grtsk-15 {
+    @apply text-[15px] font-grtskTera font-medium leading-[15px] tracking-[2.175px];
+  }
+  .text-grtsk-16 {
+    @apply text-[16px] font-grtskTera font-normal leading-[16px] uppercase text-white;
+  }
+  .text-header-1 {
+    @apply text-[64px] font-grtskTera font-medium leading-[100%];
+  }
+  .text-header-2 {
+    @apply text-[42px] font-grtskTera font-semibold leading-[42px] tracking-[-1.47px];
+  }
+  .text-mons-14 {
+    @apply text-[14px] font-sans font-semibold leading-[14px];
+  }
+  .text-grtsk-14 {
+    @apply text-[14px] font-grtskTera font-normal leading-[14px] tracking-[1.68px] uppercase;
+  }
+  .text-mons-16 {
+    @apply text-[16px] font-sans font-semibold leading-[16px];
+  }
+  .search {
+    @apply text-[15px] leading-[15px] font-normal font-sans placeholder-text-black-100 bg-transparent active:border-none focus:border-none focus-visible:border-none w-[400px];
+  }
+  .search-input {
+    @apply text-grtsk-15  placeholder-text-black-100 bg-transparent active:border-none focus:border-none focus-visible:border-none w-[228px];
+  }
+  .heading-grstk {
+    @apply text-[48px] font-grtskTera font-medium leading-[48px] uppercase;
   }
   .tag-border {
     @apply border-[0.8px] border-solid border-text-red;
@@ -84,4 +126,35 @@ strike.straight::before {
 
 html {
   box-sizing: border-box;
+}
+
+.scroll {
+  white-space: nowrap;
+  margin: 0 2em;
+}
+
+.RightToLeft {
+  animation: RightToLeft 3s infinite linear;
+}
+
+@keyframes RightToLeft {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.LeftToRight {
+  animation: LeftToRight 5s infinite linear;
+}
+
+@keyframes LeftToRight {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0%);
+  }
 }

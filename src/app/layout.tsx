@@ -19,6 +19,12 @@ const grtskTera = localFont({
   }, {
     path: '../../public/fonts/GrtskTera-Medium.ttf',
     weight: '500'
+  }, {
+    path: '../../public/fonts/GrtskTera-Semibold.ttf',
+    weight: '600'
+  }, {
+    path: '../../public/fonts/GrtskTera-Bold.ttf',
+    weight: '700'
   }],
   variable: '--font-grtsktera'
 })

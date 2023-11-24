@@ -11,12 +11,13 @@ import { FC } from "react";
 
 type TagProps = {
     text: string;
+    type?: 0 | 1
 };
 
-export const Tag: FC<TagProps> = ({ text }) => {
+export const Tag: FC<TagProps> = ({ text, type = 0 }) => {
     return (
-        <FlexCenter className="bg-background-green-20 p-1">
-            <Typography intent="monsBold10" classname="text-text-green leading-[10px]">
+        <FlexCenter className={type === 0 ? "bg-background-green-20 p-1" : "bg-background-tagGreen p-1"}>
+            <Typography intent="monsBold10" classname={type === 0 ? "text-text-green leading-[10px]" : "text-primary-brand leading-[10px]"}>
                 {text}
             </Typography>
         </FlexCenter>
@@ -113,6 +114,7 @@ export const TypeBadge: FC<TypeProps> = ({ intent, classname }) => {
 
 type RadiusProps = {
     radius: number
+    size: "s" | "m" | "l"
 }
 
 export const RadiusTag: FC<RadiusProps> = ({ radius }) => {

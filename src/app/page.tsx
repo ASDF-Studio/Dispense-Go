@@ -1,34 +1,24 @@
-import Image from 'next/image'
-import { Button } from '@/core/button'
-import { ProductCard } from '@/cards/deals'
-import { StoreCard } from '@/cards/store-card'
-import { Banner } from '@/sliders/banner'
+import { MainLayout } from '@/layout/main'
+import { HomePoster } from '@/poster/home'
+import { ShopByStores } from '@/sliders/stores'
+import { ProductScroll } from '@/sliders/dispenser'
+import { Button } from '@/core'
+import { IconHandler } from '../utils/icon'
+import { DispenseInfo } from '@/poster/dispenseInfo'
 
 export default function Home() {
   return (
-    <main className="flex flex-col gap-2 mt-4">
-      <Banner />
-      <div className='flex gap-2.5'>
-        <Button text='Learn more' intent="filled" typographyVariant="buttons" />
-        <Button text='Learn more' intent="outline" typographyVariant="buttons" />
+    <MainLayout>
+      <HomePoster />
+      <ShopByStores />
+      <ProductScroll colorSchema={0} />
+      <ProductScroll colorSchema={1} />
+      <ProductScroll colorSchema={2} />
+      <ProductScroll colorSchema={3} />
+      <div className='pt-[48px] pb-[100px] flex justify-center'>
+        <Button classname='w-[435px]' intent={"filled"} typographyVariant="buttons" text='VIEW ALL STORES NEAR ME' icon={<IconHandler name="arrow-right" classname={["font-light tracking-[2.03px]"].join(" ")} />} />
       </div>
-      <div className='flex flex-wrap gap-2.5'>
-        <StoreCard /><StoreCard /><StoreCard /><StoreCard /><StoreCard /><StoreCard /><StoreCard /><StoreCard />
-      </div>
-
-      <div className='flex flex-wrap gap-2.5'>
-        <ProductCard />
-        <ProductCard />
-        <ProductCard /><ProductCard />
-        <ProductCard />
-        <ProductCard /><ProductCard />
-        <ProductCard />
-        <ProductCard /><ProductCard />
-        <ProductCard />
-        <ProductCard />
-      </div>
-
-
-    </main>
+      <DispenseInfo />
+    </MainLayout>
   )
 }

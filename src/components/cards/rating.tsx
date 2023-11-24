@@ -9,9 +9,10 @@ import { count } from "console";
 type Props = {
     rating: number;
     count?: number
+    classname?: string
 };
 
-export const Rating: FC<Props> = ({ rating, count }) => {
+export const Rating: FC<Props> = ({ rating, count, classname }) => {
     return (
         <Flex className="gap-1 items-center">
             <Flex className="gap-0.5">
@@ -26,7 +27,7 @@ export const Rating: FC<Props> = ({ rating, count }) => {
                         );
                     })}
             </Flex>
-            <Typography intent={"monsNormal"} classname="leading-[14px]">{`${rating}`} {count ? `(${count})` : ""}</Typography>
+            <Typography intent={"monsNormal"} classname={["leading-[14px]", classname].join(" ")}>{`${rating}`} {count ? `(${count})` : ""}</Typography>
         </Flex>
     );
 };
