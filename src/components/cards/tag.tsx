@@ -16,8 +16,8 @@ type TagProps = {
 
 export const Tag: FC<TagProps> = ({ text, type = 0 }) => {
     return (
-        <FlexCenter className={type === 0 ? "bg-background-green-20 p-1" : "bg-background-tagGreen p-1"}>
-            <Typography intent="monsBold10" classname={type === 0 ? "text-text-green leading-[10px]" : "text-primary-brand leading-[10px]"}>
+        <FlexCenter className={["p-1", type === 0 ? "bg-background-green-20" : "bg-background-tagGreen"].join(" ")}>
+            <Typography intent="monsBold10" classname={["leading-[10px]", type === 0 ? "text-text-green" : "text-primary-brand"].join(" ")}>
                 {text}
             </Typography>
         </FlexCenter>

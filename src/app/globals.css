@@ -86,6 +86,12 @@
   .heading-grstk {
     @apply text-[48px] font-grtskTera font-medium leading-[48px] uppercase;
   }
+  .heading-2-grstk {
+    @apply text-[42px] font-grtskTera font-medium leading-[42px];
+  }
+  .text-grstk-24 {
+    @apply text-[24px] font-grtskTera font-medium leading-[28.8px];
+  }
   .tag-border {
     @apply border-[0.8px] border-solid border-text-red;
   }

@@ -25,7 +25,9 @@ export const typographyStyles = cva("", {
             mons14: "text-mons-14",
             grstk14: "text-grtsk-14",
             mons16: "text-mons-16",
-            headingGrstk: "heading-grstk"
+            headingGrstk: "heading-grstk",
+            headingGrstk2: "heading-2-grstk",
+            grstk24: "text-grstk-24"
         },
         defaultVariants: {
             intent: "primary",

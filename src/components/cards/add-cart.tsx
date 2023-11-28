@@ -11,7 +11,7 @@ export const AddtoCart = () => {
                     className="fas fa-shopping-basket text-[14px] font-normal text-black"
                 />
             }
-            classname="w-10 h-10 bg-primary-brand rounded-full hover:bg-primary-hover"
+            classname="w-10 h-10 bg-primary-brand rounded-full hover:bg-primary-hover shrink-0"
         />
     );
 };

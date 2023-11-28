@@ -1,5 +1,5 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core"
-import { faArrowRight, faBars, faBox, faCannabis } from "@fortawesome/free-solid-svg-icons"
+import { faArrowRight, faBars, faBox, faCannabis, faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { FC } from "react"
 
@@ -18,6 +18,10 @@ const getIcon = (name: string): IconProp => {
             return faArrowRight
         case "canabis":
             return faCannabis
+        case "chevronup":
+            return faChevronUp
+        case "chevrondown":
+            return faChevronDown
         default:
             return faBox
     }
@@ -26,5 +30,5 @@ const getIcon = (name: string): IconProp => {
 export const IconHandler: FC<Props> = ({ name, classname = "" }) => {
     const icon = getIcon(name)
 
-    return <FontAwesomeIcon icon={icon} className={["text-[14px] font-normal", classname].join(" ")} />
+    return <FontAwesomeIcon icon={icon} className={["text-[14px]", classname].join(" ")} />
 }
