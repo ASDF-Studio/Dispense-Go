@@ -16,7 +16,16 @@ export default function Home() {
       <ProductScroll colorSchema={2} />
       <ProductScroll colorSchema={3} />
       <div className='pt-[48px] pb-[100px] flex justify-center'>
-        <Button classname='w-[435px]' intent={"filled"} typographyVariant="buttons" text='VIEW ALL STORES NEAR ME' icon={<IconHandler name="arrow-right" classname={["font-light tracking-[2.03px]"].join(" ")} />} />
+        <Button 
+          classname='w-[435px]' 
+          intent={"filled"} 
+          typographyVariant="buttons" 
+          text='VIEW ALL STORES NEAR ME' 
+          icon={
+            <IconHandler name="arrow-right" 
+            classname={["font-light tracking-[2.03px]"].join(" ")} 
+          />} 
+        />
       </div>
       <DispenseInfo />
     </MainLayout>

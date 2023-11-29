@@ -21,6 +21,8 @@ export const typographyStyles = cva("", {
             header1: "text-header-1",
             grstk15: "text-grtsk-15",
             grskt16: "text-grtsk-16",
+            grskt32: "text-grtsk-32",
+            grskt48: "text-grtsk-48",
             header2: "text-header-2",
             mons14: "text-mons-14",
             grstk14: "text-grtsk-14",

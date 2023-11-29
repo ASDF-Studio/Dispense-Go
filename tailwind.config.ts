@@ -77,9 +77,12 @@ const config: Config = {
           linear: {
             green: "linear-gradient(98deg, #7AC80E 24.29%, #0B724E 122.44%)",
           },
+          green: "#093911",
+          purple: "#441520"
         },
         text: {
           black: {
+            40: "rgba(14, 14, 14, 0.70)",
             70: "rgba(14, 14, 14, 0.70)",
             100: "#161515",
           },
@@ -96,6 +99,9 @@ const config: Config = {
             70: "rgba(122, 200, 14, 0.70)",
             10: "rgba(122, 200, 14, 0.10)",
           },
+        },
+        hover: {
+          lightGreen: "#C2F486",
         },
       },
       boxShadow: {
