@@ -106,7 +106,7 @@ export const NewsEvents = () => {
       title: "Now exclusive to 24 more locations",
       text: "Learn more about our new partners",
       color: "white",
-      gradient: "bg-gradient-to-b from-gradient-green"
+      gradient: "bg-gradient-to-b from-gradient-maroon"
     }
   ];
 

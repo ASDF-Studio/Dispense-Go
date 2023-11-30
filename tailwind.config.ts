@@ -78,7 +78,8 @@ const config: Config = {
             green: "linear-gradient(98deg, #7AC80E 24.29%, #0B724E 122.44%)",
           },
           green: "#093911",
-          purple: "#441520"
+          purple: "#441520",
+          maroon: '#392009'
         },
         text: {
           black: {
