@@ -4,15 +4,19 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar as RegularStar } from "@fortawesome/free-regular-svg-icons";
 import { FC } from "react";
 import { Typography } from "@/core";
-import { count } from "console";
 
 type Props = {
     rating: number;
     count?: number
-    classname?: string
+    textColor: "black" | "white"
 };
 
-export const Rating: FC<Props> = ({ rating, count, classname }) => {
+export const Rating: FC<Props> = ({ rating, count, textColor }) => {
+    const textColorMapping = {
+        "black": "text-black",
+        white: "text-white"
+    }
+
     return (
         <Flex className="gap-1 items-center">
             <Flex className="gap-0.5">
@@ -27,7 +31,7 @@ export const Rating: FC<Props> = ({ rating, count, classname }) => {
                         );
                     })}
             </Flex>
-            <Typography intent={"monsNormal"} classname={["leading-[14px]", classname].join(" ")}>{`${rating}`} {count ? `(${count})` : ""}</Typography>
+            <Typography intent={"monsNormal"} classname={["leading-[14px]", textColorMapping[textColor]].join(" ")}>{`${rating}`} {count ? `(${count})` : ""}</Typography>
         </Flex>
     );
 };
