@@ -6,6 +6,7 @@ import { StoreBanner } from "./banner"
 import { IconHandler } from "../../utils/icon"
 import { FC } from "react"
 import { DraggingScrollY } from "@/layout/dragging"
+import Link from "next/link"
 
 type ProductListInfoType = {
     destination?: number
@@ -36,24 +37,29 @@ export const ProductListInformation: FC<ProductListInfoType> = ({ variant = "pri
             <Typography intent={"grskt28"} classname="">
                 {title}
             </Typography>
-            <Flex className={["py-2 px-3", tagClassMapping[variant].tagbg].join(" ")}>
-                <Typography intent={"mons14"} classname={tagClassMapping[variant].tagtext}>
-                    {destination} miles
-                </Typography>
-            </Flex>
+            {
+                destination != 0 &&
+                <Flex className={["py-2 px-3", tagClassMapping[variant].tagbg].join(" ")}>
+                    <Typography intent={"mons14"} classname={tagClassMapping[variant].tagtext}>
+                        {destination} miles
+                    </Typography>
+                </Flex>
+            }
         </FlexCenter>
-        <Button
-            intent={"text"} 
-            text="VIEW ALL" 
-            textClassname={tagClassMapping[variant].button} 
-            typographyVariant="grstk14" 
-            icon={
-                <IconHandler 
-                    name="arrow-right" 
-                    classname={["font-light tracking-[2.03px] pr-5", tagClassMapping[variant].button].join(" ")} 
-                />
-            } 
-        />
+        <Link href={'/individualStore'}>
+            <Button
+                intent={"text"} 
+                text="VIEW ALL" 
+                textClassname={tagClassMapping[variant].button} 
+                typographyVariant="grstk14" 
+                icon={
+                    <IconHandler 
+                        name="arrow-right" 
+                        classname={["font-light tracking-[2.03px] pr-5", tagClassMapping[variant].button].join(" ")} 
+                    />
+                } 
+            />
+        </Link>
     </Flex>
 }
 
@@ -61,9 +67,10 @@ type Props = {
     variant: "primary" | "secondary" | "tertiary"
     text: string
     productColor?: "white" | "black"
+    destination?: number
 }
 
-export const ProductList: FC<Props> = ({ variant = "tertiary", text = "", productColor = "black" }) => {
+export const ProductList: FC<Props> = ({ variant = "tertiary", text = "", productColor = "black", destination = 0 }) => {
 
     const colorMapping = {
         primary: {
@@ -81,7 +88,7 @@ export const ProductList: FC<Props> = ({ variant = "tertiary", text = "", produc
     }
 
     return <div><SafeAreaSection classname={["flex gap-6 overflow-hidden pt-[32px] pb-[32px] relative flex-col", colorMapping[variant].background].join(" ")}>
-        <ProductListInformation destination={0.05} variant={colorMapping[variant].infoVariant as "primary" | "secondary"} title={text} />
+        <ProductListInformation destination={destination} variant={colorMapping[variant].infoVariant as "primary" | "secondary"} title={text} />
         <DraggingScrollY>
             <Flex className="gap-16 overflow-hidden">
                 <MemoProductCard color={productColor} />
