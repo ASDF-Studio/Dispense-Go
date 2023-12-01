@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, ReactNode, CSSProperties, useRef, useState, useEffect } from 'react';
 import { Paddings } from "../../constants";
 
 type SpacingType = "s" | "m" | "l" | "x";
@@ -38,4 +38,3 @@ export const SafeAreaSection: FC<SpacingProps> = ({ classname, children, withSpa
         ""
     ].join(" ")}>{children}</section>;
 }
-

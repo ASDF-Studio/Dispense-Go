@@ -87,6 +87,9 @@ const config: Config = {
             70: "rgba(14, 14, 14, 0.70)",
             100: "#161515",
           },
+          white: {
+            70: "rgba(255, 255, 255, 0.70)",
+          },
           blueShade: "#E7F8FD",
           green: "#0F6422",
           red: "#E9495C",

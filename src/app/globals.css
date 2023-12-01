@@ -56,11 +56,14 @@
   .text-header-3 {
     @apply text-[26px] font-grtskTera font-semibold leading-[13px] tracking-[1.885px];
   }
+  .text-grtsk-13 {
+    @apply text-[13px] font-grtskTera font-medium leading-[13px] tracking-[1.885px];
+  }
+  .text-grtsk-14 {
+    @apply text-[14px] font-grtskTera font-normal leading-[14px] uppercase text-white;
+  }
   .text-grtsk-15 {
     @apply text-[15px] font-grtskTera font-medium leading-[15px] tracking-[2.175px];
-  }
-  .text-grtsk-16 {
-    @apply text-[16px] font-grtskTera font-normal leading-[16px] uppercase text-white;
   }
   .text-grtsk-16 {
     @apply text-[16px] font-grtskTera font-normal leading-[16px] uppercase text-white;
@@ -76,6 +79,9 @@
   }
   .text-mons-14 {
     @apply text-[14px] font-sans font-semibold leading-[14px];
+  }
+  .text-grtsk-28 {
+    @apply text-[28px] font-grtskTera font-medium leading-[28px] tracking-[-0.98px];
   }
   .text-grtsk-32 {
     @apply text-[32px] font-grtskTera font-normal leading-[32px] text-white;

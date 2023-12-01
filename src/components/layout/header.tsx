@@ -20,7 +20,7 @@ type LinkType = {
 
 const CustomLink: FC<LinkType> = ({ text, icon }) => {
     return (
-        <Link href={"https://example.com/"}>
+        <Link href="/category">
             <Flex className="gap-2">
                 {icon}
                 <Typography intent="navbar13" classname="uppercase text-text-black-100">

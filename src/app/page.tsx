@@ -29,7 +29,6 @@ export default function Home() {
         />
       </div>
       <DispenseInfo />
-      <FAQ />
     </MainLayout>
   )
 }
