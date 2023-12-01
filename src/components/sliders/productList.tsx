@@ -80,7 +80,7 @@ export const ProductList: FC<Props> = ({ variant = "tertiary", text = "", produc
         },
     }
 
-    return <div><SafeAreaSection classname={["flex gap-6 overflow-hidden pt-[41px] pb-[52px] relative flex-col", colorMapping[variant].background].join(" ")}>
+    return <div><SafeAreaSection classname={["flex gap-6 overflow-hidden pt-[32px] pb-[32px] relative flex-col", colorMapping[variant].background].join(" ")}>
         <ProductListInformation destination={0.05} variant={colorMapping[variant].infoVariant as "primary" | "secondary"} title={text} />
         <DraggingScrollY>
             <Flex className="gap-16 overflow-hidden">

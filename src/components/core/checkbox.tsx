@@ -6,7 +6,7 @@ interface CheckboxProps {
 }
 
 export const Checkbox: React.FC<CheckboxProps> = ({ label }) => (
-    <label className={`block mb-2 py-6`}>
+    <label className={`block mb-2 py-3`}>
     <input type="checkbox" className="mr-2" />
       <Typography intent={"grstk13"} classname="uppercase">
         {label}
