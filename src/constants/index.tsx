@@ -1,38 +1,40 @@
-import { IconHandler } from "../utils/icon";
+import { CustomIconHandler, IconHandler } from "../utils/icon";
 
-export const Paddings = `px-desktop`
+export const PaddingX = ` px-mobile m:px-tablet xl:px-desktop `
+export const PaddingXL = ` pl-mobile m:pl-tablet xl:pl-desktop `
+export const PaddingXR = ` pr-mobile m:pr-tablet xl:pr-desktop `
 
 export const Links = [
   {
     text: "all",
-    icon: <IconHandler name="box" />
+    icon: <CustomIconHandler name="box-icon" />
   },
   {
     text: "deals",
-    icon: <IconHandler name="box" />
+    icon: <CustomIconHandler name="tag-icon" />
   },
   {
     text: "flowers",
-    icon: <IconHandler name="box" />
+    icon: <CustomIconHandler name="canabis-icon" />
   },
   {
     text: "edibles",
-    icon: <IconHandler name="box" />
+    icon: <CustomIconHandler name="candy-icon" />
   },
   {
     text: "concentrates",
-    icon: <IconHandler name="box" />
+    icon: <CustomIconHandler name="wave-icon" />
   },
   {
     text: "accessories",
-    icon: <IconHandler name="box" />
+    icon: <CustomIconHandler name="panel-icon" />
   },
   {
     text: "brands",
-    icon: <IconHandler name="box" />
+    icon: <CustomIconHandler name="crown-icon" />
   },
   {
     text: "stores",
-    icon: <IconHandler name="box" />
+    icon: <CustomIconHandler name="store-icon" />
   },
 ];

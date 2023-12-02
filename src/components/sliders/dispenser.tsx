@@ -5,6 +5,7 @@ import { SafeAreaSection } from "@/layout/spacing"
 import { StoreBanner } from "./banner"
 import { IconHandler } from "../../utils/icon"
 import { FC } from "react"
+import { PaddingX, PaddingXL, PaddingXR } from "../../constants"
 
 type DispenseInfoType = {
     destination?: number
@@ -14,7 +15,6 @@ type DispenseInfoType = {
 }
 
 export const DispenseInformation: FC<DispenseInfoType> = ({ variant = "primary", destination, title }) => {
-
     const tagClassMapping = {
         primary: {
             tagbg: "bg-primary-green/20",
@@ -30,14 +30,14 @@ export const DispenseInformation: FC<DispenseInfoType> = ({ variant = "primary",
         }
     }
 
-    return <Flex className="absolute top-[62px] left-[425px] items-center gap-12">
-        <Flex className={["py-2 px-3", tagClassMapping[variant].tagbg].join(" ")}>
+    return <Flex className={["flex-wrap xl:flex-row xl:flex-nowrap m:w-[43%] xl:w-auto justify-between  m:absolute top-[43px] left-[410px] xl:top-[50px] xl:left-[425px] items-center gap-5 xl:gap-12 m:pr-0", PaddingXR].join(" ")}>
+        <Flex className={["py-2 order-1 px-3 shrink-0", tagClassMapping[variant].tagbg].join(" ")}>
             <Typography intent={"mons14"} classname={tagClassMapping[variant].tagtext}>
                 {destination} miles away
             </Typography>
         </Flex>
-        <StoreBanner text={title} color={tagClassMapping[variant].title} classname="h-auto w-[613px]" />
-        <Button intent={"text"} text="VIEW ALL" textClassname={tagClassMapping[variant].button} typographyVariant="grstk14" icon={<IconHandler name="arrow-right" classname={["font-light tracking-[2.03px]", tagClassMapping[variant].button].join(" ")} />} />
+        <StoreBanner text={title} color={tagClassMapping[variant].title} classname="max-w-[613px] order-3 xl:order-2" />
+        <Button intent={"text"} text="VIEW ALL" classname="order-2 xl:order-3" textClassname={tagClassMapping[variant].button} typographyVariant="grstk14" icon={<IconHandler name="arrow-right" classname={["font-light tracking-[2.03px]", tagClassMapping[variant].button].join(" ")} />} />
     </Flex>
 }
 
@@ -64,13 +64,18 @@ export const ProductScroll: FC<Props> = ({ variant = "primary", text = "", produ
         },
     }
 
-    return <SafeAreaSection classname={["flex gap-6 overflow-hidden pt-[41px] pb-[52px] bg-background-lightGreen items-end relative", colorMapping[variant].background].join(" ")}>
+    return <SafeAreaSection withSpacing={false} classname={["flex gap-9 m:gap-0 flex-col m:flex-row pt-8 m:pt-[44px] xl:pt-[41px] bg-background-lightGreen relative", PaddingXL, colorMapping[variant].background].join(" ")}>
         <DispenseInformation destination={0.05} variant={colorMapping[variant].infoVariant as "primary" | "secondary"} title={text} />
-        <MemoProductCard size="big" color={productColor} />
-        <MemoProductCard color={productColor} />
-        <MemoProductCard color={productColor} />
-        <MemoProductCard color={productColor} />
-        <MemoProductCard color={productColor} />
-        <MemoProductCard color={productColor} />
+        <Flex className="overflow-x-auto overflow-y-hidden gap-6 m:items-end pb-8 xl:pb-[50px] m:pb-[42px]">
+            <MemoProductCard size="big" color={productColor} classname="hidden m:flex" />
+            <MemoProductCard color={productColor} />
+            <MemoProductCard color={productColor} />
+            <MemoProductCard color={productColor} />
+            <MemoProductCard color={productColor} />
+            <MemoProductCard color={productColor} />
+            <MemoProductCard color={productColor} />
+            <MemoProductCard color={productColor} />
+            <MemoProductCard color={productColor} />
+        </Flex>
     </SafeAreaSection>
 }

@@ -5,7 +5,7 @@ import { NewsEvents } from "./news-events"
 import { FAQ } from "@/faq"
 
 type Props = {
-    children: React.ReactNode
+    children?: React.ReactNode
 }
 
 export const MainLayout: FC<Props> = ({ children }) => {

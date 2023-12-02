@@ -5,12 +5,13 @@ const config: Config = {
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/constants/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
       screens: {
-        xs: "420px",
-        s: "430px",
+        // xs: "420px",
+        s: "380px",
         m: "767px",
         x: "1024px",
         xl: "1280px",
@@ -36,7 +37,9 @@ const config: Config = {
         md: "8px",
       },
       padding: {
+        tablet: "24px",
         desktop: "42px",
+        mobile: "20px",
       },
       spacing: {
         s: "5px",
@@ -79,7 +82,7 @@ const config: Config = {
           },
           green: "#093911",
           purple: "#441520",
-          maroon: '#392009'
+          maroon: "#392009",
         },
         text: {
           black: {
@@ -111,6 +114,8 @@ const config: Config = {
       boxShadow: {
         "product-card": "0px 4px 23px 0px rgba(236, 234, 234, 0.25)",
         navbar: "0px 13px 45px 0px rgba(21, 55, 0, 0.07)",
+        "category-card": "0px 13px 45px 0px rgba(21, 55, 0, 0.07)",
+        "menu": "0px 13px 45px 0px rgba(21, 55, 0, 0.07)"
       },
     },
   },

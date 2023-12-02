@@ -2,14 +2,12 @@ import { FC } from "react";
 import Link from "next/link";
 import { Button, IconButton, Typography } from "@/core";
 import { Flex, FlexColumn } from ".";
-import { Links } from "../../constants";
 import { Logo } from "@/logo";
-import { IconHandler } from "../../utils/icon";
 import { ProductSearch } from "@/core/input";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faL, faLocationDot, faSearchDollar, faShoppingBasket } from "@fortawesome/free-solid-svg-icons";
-import { faCircleUser } from "@fortawesome/free-regular-svg-icons";
 import { SafeScreen } from "./spacing";
+import { Bars, LocationBar, AccountIcon, CartIcon } from "../../svg";
+import { Links, PaddingX } from "../../constants";
+import { CustomIconHandler, IconHandler } from "../../utils/icon";
 
 type Props = {};
 
@@ -32,27 +30,24 @@ const CustomLink: FC<LinkType> = ({ text, icon }) => {
 };
 
 const LocationIndicator = () => {
-    return <Flex className="items-center gap-m">
+    return <Flex className="items-center xl:gap-m">
         <IconButton icon={
-            <FontAwesomeIcon icon={faLocationDot} className="text-[24px]" />
+            <LocationBar />
         } />
-        <Typography intent={"mons15"} classname="text-primary-black">
+        <Typography intent={"mons15"} classname="text-primary-black hidden xl:block">
             Eugene, OR
         </Typography>
-        <Button intent={"text"} typographyVariant="grstk10" text="CHANGE" textClassname="text-primary-brand" />
+        <Button intent={"text"} typographyVariant="grstk10" text="CHANGE" textClassname="text-primary-brand hidden xl:block" />
     </Flex>
 }
 
-const AccountIcon = () => {
-    return <FontAwesomeIcon icon={faCircleUser} className="text-2xl font-light" />
-}
 
 const ShoppingCart = () => {
-    return <FontAwesomeIcon icon={faShoppingBasket} className="text-2xl font-light" />
+    return <CustomIconHandler name="cart-icon" />
 }
 
 const Account = () => {
-    return <Flex className="gap-4">
+    return <Flex className="gap-2.5 m:gap-4 xl:gap-4">
         <AccountIcon />
         <ShoppingCart />
     </Flex>
@@ -63,25 +58,25 @@ export const Header: FC<Props> = () => {
         <header>
             <SafeScreen classname="bg-white relative z-20" withSpacing={false}>
                 <FlexColumn className="w-full">
-                    <Flex className="items-center justify-between border-b border-b-solid border-border-whiteSmoke py-l px-desktop">
-                        <Flex className="items-center gap-8">
-                            <IconHandler
-                                name="bars"
-                                classname="text-[24px] font-light tracking-[-0.96px] leading-6 "
-                            />
+                    <Flex className={["items-center justify-between border-b border-b-solid border-border-whiteSmoke py-l", PaddingX].join(" ")}>
+                        <Flex className="items-center gap-2.5 m:gap-6 xl:gap-8">
+                            <IconButton icon={<Bars />} />
                             <Logo />
                         </Flex>
-                        <ProductSearch />
-                        <Flex className="gap-6">
+                        <ProductSearch containerClassname="hidden m:flex" />
+                        <Flex className="gap-2.5 m:gap-4 xl:gap-6">
                             <LocationIndicator />
                             <Account />
                         </Flex>
                     </Flex>
-                    <nav className="flex h-[51px] items-center justify-between px-desktop">
-                        {Links.map(({ text, icon }) => {
-                            return <CustomLink text={text} icon={icon} />;
-                        })}
-                    </nav>
+                    <Flex className="relative">
+                        <nav className={["flex gap-5 w-full mxl:gap-0 h-[51px] items-center justify-between overflow-auto shadow-menu relative", PaddingX].join(" ")}>
+                            {Links.map(({ text, icon }) => {
+                                return <CustomLink text={text} icon={icon} />;
+                            })}
+                        </nav>
+                        <div className="xl:hidden gradient-menu h-[51px] absolute w-10 top-0 right-0" />
+                    </Flex>
                 </FlexColumn>
             </SafeScreen>
         </header>

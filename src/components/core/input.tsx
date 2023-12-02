@@ -30,8 +30,10 @@ export const Search = () => {
 
 type AdvancedSearchProps = {
     placeholder?: string
+    classname?: string
+    containerClassname?: string
 }
 
-export const ProductSearch: FC<AdvancedSearchProps> = ({ placeholder = "advanced search" }) => {
-    return <Input endingIcon={faSearch} placeholder={placeholder.toUpperCase()} classname="search-input" containerClassname="p-l rounded-md bg-background-primary" />
+export const ProductSearch: FC<AdvancedSearchProps> = ({ placeholder = "advanced search", classname = "", containerClassname = "" }) => {
+    return <Input endingIcon={faSearch} placeholder={placeholder.toUpperCase()} classname={["search-input"].join(" ")} containerClassname={["p-l rounded-md bg-background-primary shrink-0", containerClassname].join(" ")} />
 }

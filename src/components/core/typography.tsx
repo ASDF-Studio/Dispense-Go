@@ -42,9 +42,10 @@ export const typographyStyles = cva("", {
 interface TypographyProps extends VariantProps<typeof typographyStyles> {
     children: React.ReactNode
     classname?: string
+    style?: React.CSSProperties
 }
 
 
-export const Typography: FC<TypographyProps> = ({ children, intent, classname = "" }) => {
-    return <span className={[typographyStyles({ intent }), classname].join(" ")}> {children}</span >
+export const Typography: FC<TypographyProps> = ({ children, intent, classname = "", style }) => {
+    return <span style={style} className={[typographyStyles({ intent }), classname].join(" ")}> {children}</span >
 } 

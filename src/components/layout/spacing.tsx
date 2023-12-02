@@ -1,5 +1,5 @@
 import { FC, ReactNode, CSSProperties, useRef, useState, useEffect } from 'react';
-import { Paddings } from "../../constants";
+import { PaddingX } from "../../constants";
 
 type SpacingType = "s" | "m" | "l" | "x";
 
@@ -25,7 +25,7 @@ export const Margin: FC<SpacingProps> = ({ spacing, padding, children, classname
 
 export const SafeScreen: FC<SpacingProps> = ({ classname, children, withSpacing = true }) => {
     return <div className={[classname,
-        withSpacing ? "px-desktop" : "",
+        withSpacing ? PaddingX : "",
         ""
     ].join(" ")}>{children}</div>;
 }
@@ -34,7 +34,7 @@ export const SafeAreaSection: FC<SpacingProps> = ({ classname, children, withSpa
     return <section style={{
         background: color
     }} className={[classname,
-        withSpacing ? Paddings : "",
+        withSpacing && PaddingX,
         ""
     ].join(" ")}>{children}</section>;
 }

@@ -9,10 +9,7 @@ type Props = {
 }
 
 export const Logo: FC<Props> = ({ color = "black" }) => {
-    return <Link href="/"> 
-        <Flex className="gap-2">
-                <Image alt="dispense logo" width={25} height={35} src={color === "black" ? "assets/logo.svg" : "assets/logo-white.svg"} />
-                <Typography intent={"header3"} classname={["tracking-[-1.995px] leading-normal", color === "white" && "text-white"].join(" ")}>DISPENSE</Typography>
-        </Flex>
+    return <Link href="/">
+        <Image alt="dispense logo" width={198} height={35} src={color === "black" ? "/assets/Logo.png" : "/assets/Logo-white.png"} />
     </Link>
 }

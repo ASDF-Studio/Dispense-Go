@@ -17,6 +17,7 @@ type Props = {
   images?: string[];
   size?: "big" | "small";
   color?: "white" | "black";
+  classname?: string
 };
 
 type BadgeProps = {
@@ -26,7 +27,7 @@ type BadgeProps = {
 const ProductImage: FC<BadgeProps> = ({ size }) => {
   const sizes = {
     big: "w-[358px] h-[376px]",
-    small: "w-[250px] h-[227px]",
+    small: "w-[257px] h-[271px]",
   };
 
   return (
@@ -48,23 +49,23 @@ const ProductImage: FC<BadgeProps> = ({ size }) => {
           sizes[size],
         ].join(" ")}
         imageUrl="https://s3.amazonaws.com/www-inside-design/uploads/2020/10/aspect-ratios-blogpost-1x1-1.png"
-        width={size === "small" ? 250 : 358}
-        height={size === "small" ? 227 : 376}
+        width={size === "small" ? 257 : 358}
+        height={size === "small" ? 271 : 376}
       />
     </div>
   );
 };
 
-const ProductCard: FC<Props> = ({ price, size = "small", color = "black" }) => {
+const ProductCard: FC<Props> = ({ price, size = "small", color = "black", classname }) => {
 
   return (
-    <FlexColumn className={["gap-l"].join(" ")}>
+    <FlexColumn className={["gap-l", size === "small" ? "w-[257px]" : "w-[358px]", classname].join(" ")}>
       <ProductImage size={size} />
       <Flex className="gap-m justify-between">
         <FlexColumn className="gap-2.5">
           <Typography
             intent="monsNormal13"
-            classname={["line-clamp-2", color == "white" && "text-white"].join(
+            classname={["line-clamp-1 xl:line-clamp-2", color == "white" && "text-white"].join(
               " "
             )}
           >

@@ -35,8 +35,8 @@ interface NewsEventDetails {
             `}>
             <Flex className="relative z-10 p-6 min-w-[full] h-[382px]">
                 <FlexColumn className="justify-between">
-                    <Typography intent="grskt48" classname="leading-[48px] w-[360px]">{details.title}</Typography>
-                    <Typography intent="mons16" classname="w-[360px] font-normal leading-[19.2px] text-text-black-40 pb-5">{details.text}</Typography>
+                    <Typography intent="grskt48" classname="leading-[48px] max-w-[360px]">{details.title}</Typography>
+                    <Typography intent="mons16" classname="max-w-[360px] font-normal leading-[19.2px] text-text-black-40 pb-5">{details.text}</Typography>
                 </FlexColumn>
             </Flex>
         </div>
