@@ -8,7 +8,7 @@ import { Banner } from "@/sliders/banner"
 
 export const CategoryPoster = () => {
     return <SafeAreaSection withSpacing={false} classname="bg-primary-darkGreen flex justify-between mx-10 mt-10 rounded-xl h-[137px]">
-        <FlexColumn className={["pt-[20px]", Paddings].join(" ")}>
+        <FlexColumn className="p-[20px]">
             <Typography intent={"grskt32"} classname="text-white">
                 Deals Near You <br />
             </Typography>
