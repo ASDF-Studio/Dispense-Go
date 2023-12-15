@@ -30,8 +30,13 @@ export const typographyStyles = cva("", {
             grskt28: "text-grtsk-28",
             grskt32: "text-grtsk-32",
             grskt48: "text-grtsk-48",
+            grskt12: "text-grtsk-12",
+            grstkt20: "text-grtsk-20",
+            grskt18: "text-grstk-18",
             headingGrstk: "heading-grstk",
             headingGrstk2: "heading-2-grstk",
+            mons12: "text-mons-12",
+            mons18: "text-mons-18"
         },
         defaultVariants: {
             intent: "primary",

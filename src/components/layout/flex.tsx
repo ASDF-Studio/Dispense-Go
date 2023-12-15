@@ -1,4 +1,4 @@
-import { FC } from "react"
+import { ButtonHTMLAttributes, FC } from "react"
 
 type Props = {
     children: React.ReactNode
@@ -21,4 +21,9 @@ export const FlexCenter: FC<Props> = ({ children, className }) => {
     return <div className={[
         `flex items-center justify-center`, className
     ].join(" ")}> {children}</ div>
+}
+
+
+export const Pressable: FC<Props & ButtonHTMLAttributes<HTMLButtonElement>> = ({ children, ...rest }) => {
+    return <button {...rest}>{children}</button>
 }

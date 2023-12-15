@@ -1,3 +1,4 @@
+"use client"
 import React from 'react';
 import { Checkbox, CheckboxClild } from '@/core/checkbox'
 import { Flex, FlexCenter, FlexColumn } from '@/layout'
@@ -42,9 +43,9 @@ export default function Category() {
         <div className="w-4/5">
           <CategoryPoster />
           <div className="w-full">
-            <ProductList text={"Rendal Store - Jones Ave"} variant="tertiary" destination={0.05}/>
-            <ProductList text={"Jixon & Co’s Store"} variant="tertiary" destination={0.05}/>
-            <ProductList text={"Mike's dispensary"} variant="tertiary" destination={0.05}/>
+            <ProductList text={"Rendal Store - Jones Ave"} variant="tertiary" destination={0.05} />
+            <ProductList text={"Jixon & Co’s Store"} variant="tertiary" destination={0.05} />
+            <ProductList text={"Mike's dispensary"} variant="tertiary" destination={0.05} />
           </div>
         </div>
       </Flex>

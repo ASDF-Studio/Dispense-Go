@@ -38,6 +38,9 @@
   .text-mons-bold-12 {
     @apply text-[12px] font-sans uppercase font-bold tracking-[0.66px] leading-3;
   }
+  .text-grtsk-12 {
+    @apply text-[12px] font-grtskTera font-normal tracking-[2.82px] leading-[12px];
+  }
   .text-mons-normal-16 {
     @apply text-[16px] font-sans uppercase font-normal;
   }
@@ -83,6 +86,12 @@
   .text-grtsk-28 {
     @apply text-[28px] font-grtskTera font-medium leading-[28px] tracking-[-0.98px];
   }
+  .text-grtsk-20 {
+    @apply text-[20px] font-grtskTera font-medium leading-[30px];
+  }
+  .text-mons-20 {
+    @apply text-[20px] font-sans font-medium leading-[26px];
+  }
   .text-grtsk-32 {
     @apply text-[32px] font-grtskTera font-normal leading-[32px] text-white;
   }
@@ -103,6 +112,15 @@
   }
   .text-grstk-24 {
     @apply text-[24px] font-grtskTera font-medium leading-[28.8px];
+  }
+  .text-mons-12 {
+    @apply text-[12px] font-sans font-medium leading-[12px];
+  }
+  .text-mons-18 {
+    @apply text-[18px] font-sans font-medium leading-[18px];
+  }
+  .text-grstk-18 {
+    @apply text-[18px] font-grtskTera font-medium leading-[18px];
   }
   .tag-border {
     @apply border-[0.8px] border-solid border-text-red;
@@ -201,4 +219,12 @@ html {
 .grayscale-bottom {
   background: linear-gradient(180deg, #093911 0%, rgba(10, 139, 30, 0) 100%),
     lightgray 50% / cover no-repeat, #fff;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
 }

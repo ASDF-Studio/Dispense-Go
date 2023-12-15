@@ -1,5 +1,5 @@
 import { cva, VariantProps } from 'class-variance-authority'
-import { FC } from 'react'
+import { ButtonHTMLAttributes, FC } from 'react'
 import { Typography } from './typography';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
@@ -19,9 +19,9 @@ const buttonStyles = cva("gap-[8px]", {
     },
 });
 
-interface ButtonProps extends VariantProps<typeof buttonStyles> {
+interface ButtonProps extends VariantProps<typeof buttonStyles>, ButtonHTMLAttributes<HTMLButtonElement> {
     text: string;
-    typographyVariant?: "body" | "buttons" | "grstk10" | "grstk15" | "grstk14"
+    typographyVariant?: "body" | "buttons" | "grstk10" | "grstk15" | "grstk14" | "grskt12" | "mons15"
     textClassname?: string
     icon?: React.ReactNode
     classname?: string
@@ -42,10 +42,11 @@ type IcontButtonProps = {
     icon: React.ReactNode
     classname?: string
     onClick?: () => void
-}
+    disabled?: boolean
+} & React.HtmlHTMLAttributes<HTMLButtonElement>
 
-export const IconButton: FC<IcontButtonProps> = ({ icon, classname, onClick }) => {
-    return <button className={classname} onClick={onClick}>
+export const IconButton: FC<IcontButtonProps> = ({ icon, classname, onClick, disabled = false, ...rest }) => {
+    return <button disabled={disabled} className={classname} onClick={onClick} {...rest}>
         <FlexCenter>{icon}</FlexCenter>
     </button>
 }

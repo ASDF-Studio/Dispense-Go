@@ -1,8 +1,8 @@
 import { IconDefinition, IconProp } from "@fortawesome/fontawesome-svg-core"
-import { faArrowRight, faBars, faBox, faCannabis, faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons"
+import { faArrowRight, faBars, faBox, faCannabis, faChevronDown, faChevronUp, faCloudMoon, faMinus, faPlus } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { FC } from "react"
-import { BoxIcon, CanabisIcon, CandyIcon, CartIcon, ChevronDownIcon, ChevronUpIcon, CrownIcon, PanelIcon, StoreIcon, TagIcon, WaveIcon } from "../svg"
+import { BoxIcon, CanabisIcon, CandyIcon, CartIcon, ChevronDownIcon, ChevronUpIcon, CrownIcon, PanelIcon, StoreIcon, TagIcon, TagSaleIcon, WaveIcon } from "../svg"
 
 type Props = {
     name: string
@@ -46,7 +46,15 @@ const getIcon = (name: string): IconDefinition | JSX.Element => {
         case "chevronup-icon":
             return <ChevronUpIcon />
         case "chevrondown-icon":
-                return <ChevronDownIcon />
+            return <ChevronDownIcon />
+        case "clouds-moon":
+            return faCloudMoon
+        case "tag-sale":
+            return <TagSaleIcon />
+        case "minus":
+            return faMinus
+        case "plus":
+            return faPlus
         default:
             return faBox
     }

@@ -19,6 +19,7 @@ const config: Config = {
       },
       maxWidth: {
         "screen-2xl": "1440px",
+        "screen-margin": "1127px",
       },
       fontFamily: {
         sans: ["var(--font-montserrat)"],
@@ -65,7 +66,9 @@ const config: Config = {
           },
           green: {
             20: "rgba(122, 200, 14, 0.20)",
+            8: "rgba(122, 200, 14, 0.08)",
           },
+
           darkGreen: "#0B724E",
           lightGreen: "#E9FAD2",
           purple: "rgba(102, 17, 211)",
@@ -115,7 +118,8 @@ const config: Config = {
         "product-card": "0px 4px 23px 0px rgba(236, 234, 234, 0.25)",
         navbar: "0px 13px 45px 0px rgba(21, 55, 0, 0.07)",
         "category-card": "0px 13px 45px 0px rgba(21, 55, 0, 0.07)",
-        "menu": "0px 13px 45px 0px rgba(21, 55, 0, 0.07)"
+        menu: "0px 13px 45px 0px rgba(21, 55, 0, 0.07)",
+        brand: "0px 4px 23px 0px rgba(236, 234, 234, 0.25)",
       },
     },
   },

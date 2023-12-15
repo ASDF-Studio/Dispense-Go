@@ -71,8 +71,8 @@ export const Header: FC<Props> = () => {
                     </Flex>
                     <Flex className="relative">
                         <nav className={["flex gap-5 w-full mxl:gap-0 h-[51px] items-center justify-between overflow-auto shadow-menu relative", PaddingX].join(" ")}>
-                            {Links.map(({ text, icon }) => {
-                                return <CustomLink text={text} icon={icon} />;
+                            {Links.map(({ text, icon }, index) => {
+                                return <CustomLink text={text} key={index} icon={icon} />;
                             })}
                         </nav>
                         <div className="xl:hidden gradient-menu h-[51px] absolute w-10 top-0 right-0" />

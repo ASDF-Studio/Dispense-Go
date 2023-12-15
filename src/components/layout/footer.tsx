@@ -9,6 +9,7 @@ const Links = [
     "Deals", "Flowers", "Edibles", "Concertrates", "CBD", "Pre-rolls", "Brands", "Stores"
 ]
 
+
 const TOS = ["Refund Policy", "Privacy Policy", "Cookies Policy", "Terms & Conditions"]
 
 const About = ["About us", "FAQs", "Contact Us"]
@@ -22,8 +23,8 @@ export const Footer = () => {
                         <Typography intent={"grskt16"} classname="text-white/70">Quick links</Typography>
                         <FlexColumn className="gap-4 m:gap-[17px]">
                             {
-                                Links.map((link) => {
-                                    return <Link href={"www.example.com"}>
+                                Links.map((link, index) => {
+                                    return <Link href={"www.example.com"} key={index}>
                                         <Typography intent={"mons16"} classname="font-normal text-white">{link}</Typography>
                                     </Link>
                                 })
@@ -34,8 +35,8 @@ export const Footer = () => {
                         <Typography intent={"grskt16"} classname="text-white/70">terms & privacy</Typography>
                         <FlexColumn className="gap-4 m:gap-[17px]">
                             {
-                                TOS.map((link) => {
-                                    return <Link href={"www.example.com"}>
+                                TOS.map((link, index) => {
+                                    return <Link href={"www.example.com"} key={index}>
                                         <Typography intent={"mons16"} classname="font-normal text-white">{link}</Typography>
                                     </Link>
                                 })
@@ -46,8 +47,8 @@ export const Footer = () => {
                         <Typography intent={"grskt16"} classname="text-white/70">About</Typography>
                         <FlexColumn className="gap-4 m:gap-[17px]">
                             {
-                                About.map((link) => {
-                                    return <Link href={"www.example.com"}>
+                                About.map((link, index) => {
+                                    return <Link href={"www.example.com"} key={index}>
                                         <Typography intent={"mons16"} classname="font-normal text-white">{link}</Typography>
                                     </Link>
                                 })

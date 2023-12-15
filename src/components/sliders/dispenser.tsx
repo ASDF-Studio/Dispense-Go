@@ -1,11 +1,14 @@
+"use client";
+
 import { MemoProductCard } from "@/cards/deals"
 import { Button, Typography } from "@/core"
 import { Flex } from "@/layout"
 import { SafeAreaSection } from "@/layout/spacing"
 import { StoreBanner } from "./banner"
 import { IconHandler } from "../../utils/icon"
-import { FC } from "react"
+import { FC, useState } from "react"
 import { PaddingX, PaddingXL, PaddingXR } from "../../constants"
+import { CustomSwiper } from "./swiper"
 
 type DispenseInfoType = {
     destination?: number
@@ -77,5 +80,53 @@ export const ProductScroll: FC<Props> = ({ variant = "primary", text = "", produ
             <MemoProductCard color={productColor} />
             <MemoProductCard color={productColor} />
         </Flex>
+    </SafeAreaSection>
+}
+
+export const ProductScrollTest: FC<Props> = ({ variant = "primary", text = "", productColor = "black" }) => {
+    const [state, setState] = useState(true)
+
+    const colorMapping = {
+        primary: {
+            background: "bg-background-lightGreen",
+            infoVariant: "primary"
+        },
+        secondary: {
+            background: "bg-primary-green",
+            infoVariant: "secondary"
+        },
+        tertiary: {
+            background: "bg-white",
+            infoVariant: "primary"
+        },
+    }
+
+    // classname={["flex gap-9 m:gap-0 flex-col m:flex-row pt-8 m:pt-[44px] xl:pt-[41px] bg-background-lightGreen relative", PaddingXL, colorMapping[variant].background].join(" ")}
+
+    return <SafeAreaSection withSpacing={false} >
+        {/* <DispenseInformation destination={0.05} variant={colorMapping[variant].infoVariant as "primary" | "secondary"} title={text} /> */}
+        <Button text="dwqdwqwq" onClick={() => setState(!state)} />
+        <CustomSwiper>
+            <MemoProductCard size={state ? "big" : "small"} color={productColor} classname="hidden m:flex" />
+            <MemoProductCard color={productColor} />
+            <MemoProductCard color={productColor} />
+            <MemoProductCard color={productColor} />
+            <MemoProductCard color={productColor} />
+            <MemoProductCard color={productColor} />
+            <MemoProductCard color={productColor} />
+            <MemoProductCard color={productColor} />
+            <MemoProductCard color={productColor} />
+        </CustomSwiper>
+        {/* <Flex className="overflow-x-auto overflow-y-hidden gap-6 m:items-end pb-8 xl:pb-[50px] m:pb-[42px]">
+            <MemoProductCard size="big" color={productColor} classname="hidden m:flex" />
+            <MemoProductCard color={productColor} />
+            <MemoProductCard color={productColor} />
+            <MemoProductCard color={productColor} />
+            <MemoProductCard color={productColor} />
+            <MemoProductCard color={productColor} />
+            <MemoProductCard color={productColor} />
+            <MemoProductCard color={productColor} />
+            <MemoProductCard color={productColor} />
+        </Flex> */}
     </SafeAreaSection>
 }

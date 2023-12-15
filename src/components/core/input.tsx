@@ -10,12 +10,12 @@ type Props = {
     containerClassname?: string
     startingIcon?: IconProp
     endingIcon?: IconProp
-}
+} & React.InputHTMLAttributes<HTMLInputElement>
 
-const Input: FC<Props> = ({ classname, placeholder, endingIcon, startingIcon, containerClassname = "" }) => {
+export const Input: FC<Props> = ({ classname, placeholder, endingIcon, startingIcon, containerClassname = "", ...rest }) => {
     return <Flex className={[containerClassname, "gap-2 items-center"].join(" ")}>
         {startingIcon && <FontAwesomeIcon icon={startingIcon} className="" />}
-        <input className={[classname, ""].join(" ")} placeholder={placeholder} />
+        <input className={[classname, ""].join(" ")} placeholder={placeholder} {...rest} />
         {
             endingIcon && <FontAwesomeIcon icon={endingIcon} className="" />
         }
