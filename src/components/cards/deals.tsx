@@ -8,6 +8,7 @@ import { CustomImage } from "@/core/image";
 import { AddtoCart } from "./add-cart";
 import { AddToFavourite } from "./add-favourite";
 import { AnimatedDiv } from "@/animations/scroll";
+import Link from "next/link";
 
 type Props = {
   price?: number;
@@ -60,37 +61,39 @@ const ProductImage: FC<BadgeProps> = ({ size }) => {
 const ProductCard: FC<Props> = ({ price, size = "small", color = "black", classname }) => {
 
   return (
-    <AnimatedDiv>
-      <FlexColumn className={["gap-l", size === "small" ? "w-[257px]" : "w-[358px]", classname].join(" ")}>
-        <ProductImage size={size} />
-        <Flex className="gap-m justify-between">
-          <FlexColumn className="gap-2.5">
-            <Typography
-              intent="monsNormal13"
-              classname={["line-clamp-1 xl:line-clamp-2", color == "white" && "text-white"].join(
-                " "
-              )}
-            >
-              Pod Live Rosin 0.5g Pod Live Rosin 0.5g (T3)
-            </Typography>
-            <Flex className="gap-2.5 items-center">
-              <PriceTag
-                price={21.25}
-                classname={`${color === "white" && "text-white"}`}
-              />
-              <PriceTag
-                strikeThrough={true}
-                price={21.0}
-                classname={color === "white" ? "text-white" : ""}
-              />
-              <Tag text="THC 20%" type={color === "white" ? 1 : 0} />
-            </Flex>
-            <Rating textColor={color} rating={3.3} count={121} />
-          </FlexColumn>
-          <AddtoCart />
-        </Flex>
-      </FlexColumn>
-    </AnimatedDiv>
+    <Link href={"/product"}>
+      <AnimatedDiv>
+        <FlexColumn className={["gap-l", size === "small" ? "w-[257px]" : "w-[358px]", classname].join(" ")}>
+          <ProductImage size={size} />
+          <Flex className="gap-m justify-between">
+            <FlexColumn className="gap-2.5">
+              <Typography
+                intent="monsNormal13"
+                classname={["line-clamp-1 xl:line-clamp-2", color == "white" && "text-white"].join(
+                  " "
+                )}
+              >
+                Pod Live Rosin 0.5g Pod Live Rosin 0.5g (T3)
+              </Typography>
+              <Flex className="gap-2.5 items-center">
+                <PriceTag
+                  price={21.25}
+                  classname={`${color === "white" && "text-white"}`}
+                />
+                <PriceTag
+                  strikeThrough={true}
+                  price={21.0}
+                  classname={color === "white" ? "text-white" : ""}
+                />
+                <Tag text="THC 20%" type={color === "white" ? 1 : 0} />
+              </Flex>
+              <Rating textColor={color} rating={3.3} count={121} />
+            </FlexColumn>
+            <AddtoCart />
+          </Flex>
+        </FlexColumn>
+      </AnimatedDiv>
+    </Link>
   );
 };
 
