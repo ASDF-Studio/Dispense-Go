@@ -1,3 +1,4 @@
+"use client"
 import React from 'react';
 import { Checkbox, CheckboxClild } from '@/core/checkbox'
 import { Flex, FlexCenter, FlexColumn } from '@/layout'
