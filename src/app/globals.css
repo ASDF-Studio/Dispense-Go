@@ -66,7 +66,7 @@
     @apply text-[14px] font-grtskTera font-normal leading-[14px] uppercase text-white;
   }
   .text-grtsk-15 {
-    @apply text-[15px] font-grtskTera font-medium leading-[15px] tracking-[2.175px];
+    @apply text-[15px] font-grtskTera font-medium leading-[15px] tracking-[2.175px] leading-[15px];
   }
   .text-grtsk-16 {
     @apply text-[16px] font-grtskTera font-normal leading-[16px] uppercase text-white;

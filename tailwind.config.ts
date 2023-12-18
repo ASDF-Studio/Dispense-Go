@@ -59,6 +59,7 @@ const config: Config = {
           green: "#008254",
           darkGreen: "#033D28",
           black: "#161515",
+          modal: "#043E29",
         },
         background: {
           red: {

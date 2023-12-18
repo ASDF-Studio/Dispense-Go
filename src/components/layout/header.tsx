@@ -1,4 +1,6 @@
-import { FC } from "react";
+"use client"
+
+import { FC, useState } from "react";
 import Link from "next/link";
 import { Button, IconButton, Typography } from "@/core";
 import { Flex, FlexColumn } from ".";
@@ -8,6 +10,7 @@ import { SafeScreen } from "./spacing";
 import { Bars, LocationBar, AccountIcon, CartIcon } from "../../svg";
 import { Links, PaddingX } from "../../constants";
 import { CustomIconHandler, IconHandler } from "../../utils/icon";
+import { Drawer } from "@/modals/drawer";
 
 type Props = {};
 
@@ -54,13 +57,14 @@ const Account = () => {
 }
 
 export const Header: FC<Props> = () => {
+    const [showDrawer, setShowDrawer] = useState(false)
     return (
         <header>
             <SafeScreen classname="bg-white relative z-20" withSpacing={false}>
                 <FlexColumn className="w-full">
                     <Flex className={["items-center justify-between border-b border-b-solid border-border-whiteSmoke py-l", PaddingX].join(" ")}>
                         <Flex className="items-center gap-2.5 m:gap-6 xl:gap-8">
-                            <IconButton icon={<Bars />} />
+                            <IconButton icon={<Bars />} onClick={() => setShowDrawer(true)} />
                             <Logo />
                         </Flex>
                         <ProductSearch containerClassname="hidden m:flex" />
@@ -79,6 +83,7 @@ export const Header: FC<Props> = () => {
                     </Flex>
                 </FlexColumn>
             </SafeScreen>
+            <Drawer open={showDrawer} setOpen={setShowDrawer} />
         </header>
     );
 };

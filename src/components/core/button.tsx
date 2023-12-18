@@ -10,7 +10,8 @@ const buttonStyles = cva("gap-[8px]", {
     variants: {
         intent: {
             filled: "min-w-[229px] p-l rounded-md bg-primary-brand hover:bg-primary-hover",
-            outline: "min-w-[229px] p-l rounded-md bg-white border-border-green-70 border hover:bg-border-green-10",
+            outline: "min-w-[229px] p-l rounded-md bg-transparent border-border-green-70 border hover:bg-border-green-10",
+            inversed: "",
             text: ""
         },
         defaultVariants: {
