@@ -90,7 +90,8 @@ const config: Config = {
         },
         text: {
           black: {
-            40: "rgba(14, 14, 14, 0.70)",
+            20: "rgba(16, 16, 16, 0.20)",
+            40: "rgba(14, 14, 14, 0.40)",
             70: "rgba(14, 14, 14, 0.70)",
             100: "#161515",
           },
@@ -121,6 +122,8 @@ const config: Config = {
         "category-card": "0px 13px 45px 0px rgba(21, 55, 0, 0.07)",
         menu: "0px 13px 45px 0px rgba(21, 55, 0, 0.07)",
         brand: "0px 4px 23px 0px rgba(236, 234, 234, 0.25)",
+        "cart-item": "0px 2.443px 14.05px 0px rgba(236, 234, 234, 0.25)",
+        modal: "0px 4px 23px 0px rgba(13, 49, 36, 0.10)",
       },
     },
   },

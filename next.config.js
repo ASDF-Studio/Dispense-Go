@@ -14,6 +14,12 @@ const nextConfig = {
         port: "",
         // pathname: "www-inside-design",
       },
+      {
+        protocol: "https",
+        hostname: "retailminded.com",
+        port: "",
+        // pathname: "www-inside-design",
+      },
     ],
   },
 };

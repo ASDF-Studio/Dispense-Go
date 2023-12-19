@@ -11,6 +11,7 @@ import { Bars, LocationBar, AccountIcon, CartIcon } from "../../svg";
 import { Links, PaddingX } from "../../constants";
 import { CustomIconHandler, IconHandler } from "../../utils/icon";
 import { Drawer } from "@/modals/drawer";
+import { useCart } from "../../app/contexts/cart";
 
 type Props = {};
 
@@ -46,7 +47,8 @@ const LocationIndicator = () => {
 
 
 const ShoppingCart = () => {
-    return <CustomIconHandler name="cart-icon" />
+    const {toggleCartModal} = useCart()
+    return <IconButton icon={<CustomIconHandler name="cart-icon" />} onClick={toggleCartModal} />
 }
 
 const Account = () => {

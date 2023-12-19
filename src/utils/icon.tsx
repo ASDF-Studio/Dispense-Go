@@ -3,6 +3,7 @@ import { faArrowRight, faBars, faBox, faCannabis, faChevronDown, faChevronUp, fa
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { FC } from "react"
 import { BoxIcon, CanabisIcon, CandyIcon, CartIcon, ChevronDownIcon, ChevronUpIcon, CrownIcon, PanelIcon, StoreIcon, TagIcon, TagSaleIcon, WaveIcon } from "../svg"
+import { faEdit } from "@fortawesome/free-regular-svg-icons"
 
 type Props = {
     name: string
@@ -55,8 +56,10 @@ const getIcon = (name: string): IconDefinition | JSX.Element => {
             return faMinus
         case "plus":
             return faPlus
-        case "xmark": 
+        case "xmark":
             return faXmark
+        case "edit":
+            return faEdit
         default:
             return faBox
     }

@@ -12,7 +12,7 @@ const buttonStyles = cva("gap-[8px]", {
             filled: "min-w-[229px] p-l rounded-md bg-primary-brand hover:bg-primary-hover",
             outline: "min-w-[229px] p-l rounded-md bg-transparent border-border-green-70 border hover:bg-border-green-10",
             inversed: "",
-            text: ""
+            text: "",
         },
         defaultVariants: {
             intent: "filled",
@@ -28,8 +28,9 @@ interface ButtonProps extends VariantProps<typeof buttonStyles>, ButtonHTMLAttri
     classname?: string
 }
 
-export const Button: FC<ButtonProps> = ({ intent, defaultVariants, text, typographyVariant, icon, textClassname = "", classname, ...props }) => {
-    return <button className={[buttonStyles({ intent }), classname].join(" ")} {...props}>
+export const Button: FC<ButtonProps> = ({ intent, defaultVariants, text, typographyVariant, icon, textClassname = "", classname, disabled, ...props }) => {
+
+    return <button className={[buttonStyles({ intent }), classname].join(" ")} {...props} disabled={disabled}>
         <FlexCenter className="gap-3">
             <Typography intent={typographyVariant} classname={textClassname}>
                 {text}

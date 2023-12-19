@@ -34,6 +34,7 @@ export const BaseModal: FC<Props> = ({ children, open = false, setOpen, contentS
 
     return <Modal
         isOpen={open}
+        ariaHideApp={false}
         onRequestClose={handleClose}
         shouldCloseOnOverlayClick={overlayClose}
         style={{

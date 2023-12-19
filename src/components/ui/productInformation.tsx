@@ -89,7 +89,7 @@ const Variant: FC<VariantsProp> = ({ isSelected = false, desc, onClick }) => {
     );
 };
 
-const QuantitySelecter = () => {
+export const QuantitySelecter = () => {
     const [quantity, setQuantity] = useState<number | "">(0)
     return <Flex className="items-center">
         <IconButton disabled={quantity === 0} onClick={() => setQuantity(quantity !== "" ? quantity - 1 : 0)} classname="p-l border border-border-whiteSmoke" icon={<IconHandler name="minus" classname="text-[15px] leading-[18px]" />} />

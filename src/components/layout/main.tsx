@@ -4,6 +4,7 @@ import { Footer } from "./footer"
 import { NewsEvents } from "./news-events"
 import { FAQ } from "@/faq"
 import { AgeConfirmationModal } from "@/modals/AgeConfirmation"
+import { CartContextProvider } from "../../app/contexts/cart"
 
 type Props = {
     children?: React.ReactNode
@@ -11,13 +12,15 @@ type Props = {
 
 export const MainLayout: FC<Props> = ({ children }) => {
     return <>
-        <Header />
-        <AgeConfirmationModal />
-        <main>
-            {children}
-        </main>
-        <FAQ />
-        <NewsEvents />
-        <Footer />
+        <CartContextProvider>
+            <Header />
+            {/* <AgeConfirmationModal /> */}
+            <main>
+                {children}
+            </main>
+            <FAQ />
+            <NewsEvents />
+            <Footer />
+        </CartContextProvider>
     </>
 }
