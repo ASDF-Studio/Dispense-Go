@@ -48,13 +48,15 @@ const LocationIndicator = () => {
 
 
 const ShoppingCart = () => {
-    const {toggleCartModal} = useCart()
+    const { toggleCartModal } = useCart()
     return <IconButton icon={<CustomIconHandler name="cart-icon" />} onClick={toggleCartModal} />
 }
 
 const Account = () => {
     return <Flex className="gap-2.5 m:gap-4 xl:gap-4">
-        <AccountIcon />
+        <Link href={"/account"}>
+            <AccountIcon />
+        </Link>
         <ShoppingCart />
     </Flex>
 }
