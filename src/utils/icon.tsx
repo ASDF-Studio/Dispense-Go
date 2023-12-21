@@ -1,5 +1,5 @@
 import { IconDefinition, IconProp } from "@fortawesome/fontawesome-svg-core"
-import { faArrowRight, faBars, faBox, faCannabis, faChevronDown, faChevronUp, faCloudMoon, faMinus, faPlus, faXmark } from "@fortawesome/free-solid-svg-icons"
+import { faArrowRight, faBars, faBox, faCannabis, faChevronDown, faChevronUp, faCircleCheck, faCloudMoon, faMinus, faPlus, faSearch, faXmark } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { FC } from "react"
 import { BoxIcon, CanabisIcon, CandyIcon, CartIcon, ChevronDownIcon, ChevronUpIcon, CrownIcon, PanelIcon, StoreIcon, TagIcon, TagSaleIcon, WaveIcon } from "../svg"
@@ -60,6 +60,10 @@ const getIcon = (name: string): IconDefinition | JSX.Element => {
             return faXmark
         case "edit":
             return faEdit
+        case "circle-check":
+            return faCircleCheck
+        case "faSearch":
+            return faSearch
         default:
             return faBox
     }

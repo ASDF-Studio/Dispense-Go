@@ -7,34 +7,42 @@ export const PaddingXR = ` pr-mobile m:pr-tablet xl:pr-desktop `
 export const Links = [
   {
     text: "all",
-    icon: <CustomIconHandler name="box-icon" />
+    icon: <CustomIconHandler name="box-icon" />,
+    href: "/category"
   },
   {
     text: "deals",
-    icon: <CustomIconHandler name="tag-icon" />
+    icon: <CustomIconHandler name="tag-icon" />,
+    href: "/category"
   },
   {
     text: "flowers",
-    icon: <CustomIconHandler name="canabis-icon" />
+    icon: <CustomIconHandler name="canabis-icon" />,
+    href: "/category"
   },
   {
     text: "edibles",
-    icon: <CustomIconHandler name="candy-icon" />
+    icon: <CustomIconHandler name="candy-icon" />,
+    href: "/category"
   },
   {
     text: "concentrates",
-    icon: <CustomIconHandler name="wave-icon" />
+    icon: <CustomIconHandler name="wave-icon" />,
+    href: "/category"
   },
   {
     text: "accessories",
-    icon: <CustomIconHandler name="panel-icon" />
+    icon: <CustomIconHandler name="panel-icon" />,
+    href: "/category"
   },
   {
     text: "brands",
-    icon: <CustomIconHandler name="crown-icon" />
+    icon: <CustomIconHandler name="crown-icon" />,
+    href: "/category"
   },
   {
     text: "stores",
-    icon: <CustomIconHandler name="store-icon" />
+    icon: <CustomIconHandler name="store-icon" />,
+    href: "/individualStore"
   },
 ];

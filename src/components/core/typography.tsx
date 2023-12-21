@@ -33,6 +33,7 @@ export const typographyStyles = cva("", {
             grskt12: "text-grtsk-12",
             grstkt20: "text-grtsk-20",
             grskt18: "text-grstk-18",
+            grstkt22: "text-grtsk-22",
             headingGrstk: "heading-grstk",
             headingGrstk2: "heading-2-grstk",
             mons12: "text-mons-12",

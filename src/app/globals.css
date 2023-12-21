@@ -134,6 +134,9 @@
   .category-hover {
     @apply hover:scale-110 duration-300 hover:z-10 hover:bg-gradient-to-b hover:cursor-pointer hover:shadow-category-card hover:border-border-whiteSmoke;
   }
+  .text-grtsk-22 {
+    @apply text-[22px] font-grtskTera font-medium leading-[22px];
+  }
 
   .gradient-text-green {
     background: linear-gradient(98deg, #008254 24.29%, #7ac80e 122.44%);

@@ -18,11 +18,12 @@ type Props = {};
 type LinkType = {
     text: string;
     icon: JSX.Element;
+    href: string
 };
 
-const CustomLink: FC<LinkType> = ({ text, icon }) => {
+const CustomLink: FC<LinkType> = ({ text, icon, href }) => {
     return (
-        <Link href="/category">
+        <Link href={href}>
             <Flex className="gap-2">
                 {icon}
                 <Typography intent="navbar13" classname="uppercase text-text-black-100">
@@ -77,8 +78,8 @@ export const Header: FC<Props> = () => {
                     </Flex>
                     <Flex className="relative">
                         <nav className={["flex gap-5 w-full mxl:gap-0 h-[51px] items-center justify-between overflow-auto shadow-menu relative", PaddingX].join(" ")}>
-                            {Links.map(({ text, icon }, index) => {
-                                return <CustomLink text={text} key={index} icon={icon} />;
+                            {Links.map(({ text, icon, href }, index) => {
+                                return <CustomLink text={text} key={index} icon={icon} href={href} />;
                             })}
                         </nav>
                         <div className="xl:hidden gradient-menu h-[51px] absolute w-10 top-0 right-0" />

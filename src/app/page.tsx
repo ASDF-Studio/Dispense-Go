@@ -5,8 +5,6 @@ import { ProductScroll, ProductScrollTest } from '@/sliders/dispenser'
 import { Button } from '@/core'
 import { IconHandler } from '../utils/icon'
 import { DispenseInfo } from '@/poster/dispenseInfo'
-import { CategoryCard } from '@/cards/category'
-import { Slider } from '@/sliders/slider'
 import { CategorySlider } from '@/sliders/category'
 import { Swiper } from "swiper"
 import 'swiper/css';

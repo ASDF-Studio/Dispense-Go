@@ -69,7 +69,7 @@ const config: Config = {
             20: "rgba(122, 200, 14, 0.20)",
             8: "rgba(122, 200, 14, 0.08)",
           },
-
+          whiteGrey: "rgba(242, 242, 242, 0.40)",
           darkGreen: "#0B724E",
           lightGreen: "#E9FAD2",
           purple: "rgba(102, 17, 211)",
