@@ -12,6 +12,7 @@ import { Links, PaddingX } from "../../constants";
 import { CustomIconHandler, IconHandler } from "../../utils/icon";
 import { Drawer } from "@/modals/drawer";
 import { useCart } from "../../app/contexts/cart";
+import { LoginModal } from "@/modals/login";
 
 type Props = {};
 
@@ -42,7 +43,7 @@ const LocationIndicator = () => {
         <Typography intent={"mons15"} classname="text-primary-black hidden xl:block">
             Eugene, OR
         </Typography>
-        <Button intent={"text"} typographyVariant="grstk10" text="CHANGE" textClassname="text-primary-brand hidden xl:block" />
+        <Button intent={"text"} typographyVariant="grstk10" text="CHANGE" textClassname="text-primary-brand hidden xl:block" withWidth={false} />
     </Flex>
 }
 
@@ -63,6 +64,9 @@ const Account = () => {
 
 export const Header: FC<Props> = () => {
     const [showDrawer, setShowDrawer] = useState(false)
+    const [showModal, setShowModal] = useState<boolean>(true)
+
+
     return (
         <header>
             <SafeScreen classname="bg-white relative z-20" withSpacing={false}>
@@ -88,6 +92,7 @@ export const Header: FC<Props> = () => {
                     </Flex>
                 </FlexColumn>
             </SafeScreen>
+            <LoginModal open={showModal} setOpen={setShowModal} />
             <Drawer open={showDrawer} setOpen={setShowDrawer} />
         </header>
     );

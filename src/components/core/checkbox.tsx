@@ -3,7 +3,7 @@ import { Typography } from '.';
 import { FlexCenter } from '@/layout';
 
 interface CheckboxProps {
-  label: string;
+  label?: string;
 }
 
 export const Checkbox: React.FC<CheckboxProps> = ({ label }) => (

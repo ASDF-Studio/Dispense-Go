@@ -9,8 +9,8 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 const buttonStyles = cva("gap-[8px]", {
     variants: {
         intent: {
-            filled: "min-w-[229px] p-l rounded-md bg-primary-brand hover:bg-primary-hover",
-            outline: "min-w-[229px] p-l rounded-md bg-transparent border-border-green-70 border hover:bg-border-green-10",
+            filled: "p-l rounded-md bg-primary-brand hover:bg-primary-hover",
+            outline: "p-l rounded-md bg-transparent border-border-green-70 border hover:bg-border-green-10",
             inversed: "",
             text: "",
         },
@@ -26,11 +26,11 @@ interface ButtonProps extends VariantProps<typeof buttonStyles>, ButtonHTMLAttri
     textClassname?: string
     icon?: React.ReactNode
     classname?: string
+    withWidth?: boolean
 }
 
-export const Button: FC<ButtonProps> = ({ intent, defaultVariants, text, typographyVariant, icon, textClassname = "", classname, disabled, ...props }) => {
-
-    return <button className={[buttonStyles({ intent }), classname].join(" ")} {...props} disabled={disabled}>
+export const Button: FC<ButtonProps> = ({ intent, defaultVariants, text, typographyVariant, icon, textClassname = "", classname, disabled, withWidth = true, ...props }) => {
+    return <button className={[buttonStyles({ intent }), classname, withWidth && "min-w-[229px]"].join(" ")} {...props} disabled={disabled}>
         <FlexCenter className="gap-3">
             <Typography intent={typographyVariant} classname={textClassname}>
                 {text}

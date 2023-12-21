@@ -79,6 +79,7 @@ const config: Config = {
           brown: "#D36E11",
           primary: "#D1F89B",
           tagGreen: "#006340",
+          opacity: "#D8E2C9"
         },
         gradient: {
           linear: {
