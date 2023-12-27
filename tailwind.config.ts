@@ -69,6 +69,7 @@ const config: Config = {
             20: "rgba(122, 200, 14, 0.20)",
             8: "rgba(122, 200, 14, 0.08)",
           },
+          whiteS: "#F9F9F9",
           whiteGrey: "rgba(242, 242, 242, 0.40)",
           darkGreen: "#0B724E",
           lightGreen: "#E9FAD2",
@@ -79,7 +80,7 @@ const config: Config = {
           brown: "#D36E11",
           primary: "#D1F89B",
           tagGreen: "#006340",
-          opacity: "#D8E2C9"
+          opacity: "#D8E2C9",
         },
         gradient: {
           linear: {
@@ -91,6 +92,7 @@ const config: Config = {
         },
         text: {
           black: {
+            10: "rgba(14, 14, 14, 0.10)",
             20: "rgba(16, 16, 16, 0.20)",
             40: "rgba(14, 14, 14, 0.40)",
             70: "rgba(14, 14, 14, 0.70)",
@@ -125,6 +127,7 @@ const config: Config = {
         brand: "0px 4px 23px 0px rgba(236, 234, 234, 0.25)",
         "cart-item": "0px 2.443px 14.05px 0px rgba(236, 234, 234, 0.25)",
         modal: "0px 4px 23px 0px rgba(13, 49, 36, 0.10)",
+        order: "-3px 12px 26px 0px rgba(0, 28, 18, 0.06)",
       },
     },
   },

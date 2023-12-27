@@ -20,5 +20,5 @@ export const Divider: FC<Props> = ({ color = "whitesmoke", type, classname = "" 
         </svg>
     }
 
-    return <div className={["h-[1px]", classMapping[color]].join(" ")} />
+    return <div className={["h-[1px]", classMapping[color], classname].join(" ")} />
 }
