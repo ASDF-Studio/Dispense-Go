@@ -17,6 +17,7 @@ export const typographyStyles = cva("", {
             mons14: "text-mons-14",
             mons15: "text-mons-15",
             mons16: "text-mons-16",
+            mons22: "text-mons-22",
             navbar13: "text-link",
             header1: "text-header-1",
             header2: "text-header-2",

@@ -30,7 +30,7 @@ interface ButtonProps extends VariantProps<typeof buttonStyles>, ButtonHTMLAttri
 }
 
 export const Button: FC<ButtonProps> = ({ intent, defaultVariants, text, typographyVariant, icon, textClassname = "", classname, disabled, withWidth = true, ...props }) => {
-    return <button className={[buttonStyles({ intent }), classname, withWidth && "min-w-[229px]"].join(" ")} {...props} disabled={disabled}>
+    return <button className={[buttonStyles({ intent }), classname, withWidth && intent !== "text" && "min-w-[229px]"].join(" ")} {...props} disabled={disabled}>
         <FlexCenter className="gap-3">
             <Typography intent={typographyVariant} classname={textClassname}>
                 {text}

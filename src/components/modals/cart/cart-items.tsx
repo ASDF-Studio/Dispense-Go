@@ -46,7 +46,7 @@ type DispensaryProps = {
 }
 
 const DispensaryItems: FC<DispensaryProps> = ({ name }) => {
-    const {setShowDelte} = useCart()
+    const { setShowDelte } = useCart()
     return <FlexColumn className="gap-4">
         <Flex className="justify-between items-center py-4">
             <Flex className="gap-2">
@@ -55,7 +55,7 @@ const DispensaryItems: FC<DispensaryProps> = ({ name }) => {
                     {name || "Mike's Dispensary"}
                 </Typography>
             </Flex>
-            <Button intent={"text"} text="DELETE" onClick={() => setShowDelte(true)} typographyVariant="grskt12" textClassname="leading-[12px] tracking-[1.74px[ uppercases text-primary-brand" />
+            <Button intent={"text"} text="DELETE" onClick={() => setShowDelte(true)} typographyVariant="grskt12" textClassname="leading-[12px] tracking-[1.74px[ uppercases text-primary-brand shrink-0" />
         </Flex>
         <Item />
         <Item />

@@ -98,6 +98,9 @@
   .text-mons-16 {
     @apply text-[16px] font-sans font-semibold leading-[16px];
   }
+  .text-mons-22 {
+    @apply text-[22px] font-sans font-medium leading-[22px];
+  }
   .search {
     @apply text-[15px] leading-[15px] font-normal font-sans placeholder-text-black-100 bg-transparent active:border-none focus:border-none focus-visible:border-none w-[400px];
   }

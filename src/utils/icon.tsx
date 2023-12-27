@@ -2,7 +2,7 @@ import { IconDefinition, IconProp } from "@fortawesome/fontawesome-svg-core"
 import { faArrowRight, faBars, faBox, faCannabis, faChevronDown, faChevronUp, faCircleCheck, faCloudMoon, faMinus, faPlus, faSearch, faXmark } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { FC } from "react"
-import { BoxIcon, CanabisIcon, CandyIcon, CartIcon, ChevronDownIcon, ChevronUpIcon, CrownIcon, Envelope, PanelIcon, StoreIcon, TagIcon, TagSaleIcon, WaveIcon } from "../svg"
+import { ArrowLeft, BoxIcon, CanabisIcon, CandyIcon, CartIcon, ChevronDownIcon, ChevronUpIcon, CrownIcon, Envelope, PanelIcon, StoreIcon, TagIcon, TagSaleIcon, TrashIcon, WaveIcon } from "../svg"
 import { faEdit } from "@fortawesome/free-regular-svg-icons"
 
 type Props = {
@@ -66,6 +66,10 @@ const getIcon = (name: string): IconDefinition | JSX.Element => {
             return faSearch
         case "envelope":
             return <Envelope />
+        case "trash":
+            return <TrashIcon />
+        case "arrowleft":
+            return <ArrowLeft />
         default:
             return faBox
     }
