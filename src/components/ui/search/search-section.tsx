@@ -18,7 +18,7 @@ export const SearchSection = () => {
                     placeholder="Brand, store, products"
                     startingIcon={<CustomIconHandler name="search-icon" />}
                     containerClassname="p-2 rounded-md border border-border-whiteSmoke  bg-background-whiteGrey w-full m:w-[232px] 2xl:w-[406px]"
-                    classname="bg-transparent search-input"
+                    classname="bg-transparent search-input-1"
                 />
                 <Button
                     text="search"

@@ -140,7 +140,7 @@
   .text-grtsk-22 {
     @apply text-[22px] font-grtskTera font-medium leading-[22px];
   }
-  .search-input {
+  .search-input-1 {
     @apply text-[15px] font-sans font-normal tracking-normal leading-[15px] placeholder:text-text-black-40 w-full;
   }
 
