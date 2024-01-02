@@ -7,7 +7,8 @@ import { CustomImage } from "@/core/image"
 import { AddToFavourite } from "./add-favourite"
 
 type Props = {
-
+    classname?: string
+    onClick?: () => void
 }
 
 const StoreImage = () => {
@@ -17,8 +18,8 @@ const StoreImage = () => {
     </div>
 }
 
-export const StoreCard: FC<Props> = ({ }) => {
-    return <Flex className="gap-l">
+export const StoreCard: FC<Props> = ({ classname, onClick }) => {
+    return <Flex className={["gap-l", classname].join(" ")} onClick={onClick}>
         <StoreImage />
         <FlexColumn className="gap-2">
             <Typography intent="mons13" classname="line-clamp-2 font-semibold leading-120% w-[136px]">Catalyst - Stanton (NOW OPEN)</Typography>

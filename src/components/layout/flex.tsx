@@ -3,10 +3,11 @@ import { ButtonHTMLAttributes, FC } from "react"
 type Props = {
     children: React.ReactNode
     className?: string
+    onClick?: () => void
 }
 
-export const Flex: FC<Props> = ({ children, className = "" }) => {
-    return <div className={[
+export const Flex: FC<Props> = ({ children, className = "", onClick }) => {
+    return <div onClick={onClick} className={[
         `flex`, className
     ].join(" ")}>{children}</div>
 }

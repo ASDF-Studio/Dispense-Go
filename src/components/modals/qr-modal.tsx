@@ -41,3 +41,59 @@ export const QrModal:FC<Props> = ({open, setOpen}) => {
         </BaseModal>
     );
 };
+
+
+
+// server {
+//     listen 80;
+//     listen [::]:80;
+//     server_name www.therapynotewriter.com;
+//     return 301 $scheme://therapynotewriter.com$request_uri;
+// }
+// server {
+//     server_name therapynotewriter.com;
+
+//     gzip on;
+//     gzip_proxied any;
+//     gzip_types application/javascript application/x-javascript text/css text/javascript;
+//     gzip_comp_level 5;
+//     gzip_buffers 16 8k;
+//     gzip_min_length 256;
+
+//     location /_next/static/ {
+//             alias /var/www/therapy-front/.next/static/;
+//             expires 365d;
+//             access_log off;
+//     }
+
+//     location / {
+//             proxy_pass http://127.0.0.1:4001;
+//             proxy_http_version 1.1;
+//             proxy_set_header Upgrade $http_upgrade;
+//             proxy_set_header Connection 'upgrade';
+//             proxy_set_header Host $host;
+//             proxy_cache_bypass $http_upgrade;
+//     }
+
+
+
+// listen 443 ssl; # managed by Certbot
+// ssl_certificate /etc/letsencrypt/live/therapynote.airlystudio.com/fullchain.pem; # managed by Certbot
+// ssl_certificate_key /etc/letsencrypt/live/therapynote.airlystudio.com/privkey.pem; # managed by Certbot
+// include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+// ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+// }
+
+// server {
+// if ($host = therapynotewriter.com) {
+//     return 301 https://$host$request_uri;
+// } # managed by Certbot
+
+
+//     server_name therapynotewriter.com;
+// listen 80;
+// return 404; # managed by Certbot
+
+
+// }

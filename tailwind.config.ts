@@ -111,7 +111,9 @@ const config: Config = {
           whiteSmoke: "#EFF5F3",
           purple: "#6611D3",
           green: {
+            60: "rgba(122, 200, 14, 0.60)",
             70: "rgba(122, 200, 14, 0.70)",
+            20: "rgba(0, 130, 84, 0.20)",
             10: "rgba(122, 200, 14, 0.10)",
           },
         },
@@ -128,6 +130,7 @@ const config: Config = {
         "cart-item": "0px 2.443px 14.05px 0px rgba(236, 234, 234, 0.25)",
         modal: "0px 4px 23px 0px rgba(13, 49, 36, 0.10)",
         order: "-3px 12px 26px 0px rgba(0, 28, 18, 0.06)",
+        categories: "0px 13px 45px 0px rgba(21, 55, 0, 0.07)",
       },
     },
   },

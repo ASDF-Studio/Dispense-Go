@@ -62,7 +62,11 @@ const Account = () => {
     </Flex>
 }
 
-export const Header: FC<Props> = () => {
+type HeaderProps = {
+    withSearchBar: boolean
+}
+
+export const Header: FC<HeaderProps> = ({ withSearchBar }) => {
     const [showDrawer, setShowDrawer] = useState(false)
     const [showModal, setShowModal] = useState<boolean>(true)
 
@@ -76,7 +80,7 @@ export const Header: FC<Props> = () => {
                             <IconButton icon={<Bars />} onClick={() => setShowDrawer(true)} />
                             <Logo />
                         </Flex>
-                        <ProductSearch containerClassname="hidden m:flex" />
+                        {withSearchBar && <Link href={"/search"}><ProductSearch containerClassname="hidden m:flex" /></Link>}
                         <Flex className="gap-2.5 m:gap-4 xl:gap-6">
                             <LocationIndicator />
                             <Account />

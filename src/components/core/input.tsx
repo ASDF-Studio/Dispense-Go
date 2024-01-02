@@ -39,7 +39,7 @@ type AdvancedSearchProps = {
 }
 
 export const ProductSearch: FC<AdvancedSearchProps> = ({ placeholder = "advanced search", classname = "", containerClassname = "" }) => {
-    return <Input endingIcon={<IconHandler name="faSearch" />} placeholder={placeholder.toUpperCase()} classname={["search-input"].join(" ")} containerClassname={["p-l rounded-md bg-background-primary shrink-0", containerClassname].join(" ")} />
+    return <Input endingIcon={<IconHandler name="faSearch" />} placeholder={placeholder.toUpperCase()} classname={["search-input disabled"].join(" ")} containerClassname={["p-l rounded-md bg-background-primary shrink-0", containerClassname].join(" ")} />
 }
 
 export const PasswordInput: FC<{ placeholder?: string }> = ({ placeholder }) => {

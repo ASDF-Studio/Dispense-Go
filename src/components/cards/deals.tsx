@@ -17,19 +17,20 @@ type Props = {
   badge?: "hybrid" | "indica" | "sativa";
   oldPrice?: number;
   images?: string[];
-  size?: "big" | "small";
+  size?: "big" | "small" | "xsmall";
   color?: "white" | "black";
   classname?: string
 };
 
 type BadgeProps = {
-  size: "big" | "small";
+  size: "big" | "small" | "xsmall";
 };
 
 const ProductImage: FC<BadgeProps> = ({ size }) => {
   const sizes = {
     big: "w-[358px] h-[376px]",
     small: "w-[257px] h-[271px]",
+    xsmall: "w-[232px] h-[189px]"
   };
 
   return (
@@ -60,10 +61,16 @@ const ProductImage: FC<BadgeProps> = ({ size }) => {
 
 const ProductCard: FC<Props> = ({ price, size = "small", color = "black", classname }) => {
 
+  const getSize = {
+    "xsmall": "w-[232px]",
+    "small": "w-[257px]",
+    "big": "w-[358px]",
+  }
+
   return (
     <Link href={"/product"}>
       <AnimatedDiv>
-        <FlexColumn className={["gap-l", size === "small" ? "w-[257px]" : "w-[358px]", classname].join(" ")}>
+        <FlexColumn className={["gap-l", getSize[size], classname].join(" ")}>
           <ProductImage size={size} />
           <Flex className="gap-m justify-between">
             <FlexColumn className="gap-2.5">
@@ -73,7 +80,7 @@ const ProductCard: FC<Props> = ({ price, size = "small", color = "black", classn
                   " "
                 )}
               >
-                Pod Live Rosin 0.5g Pod Live Rosin 0.5g (T3)
+                1:1 Strawberry Lemonade [10pk] (100mg CBD/100mg THC)
               </Typography>
               <Flex className="gap-2.5 items-center">
                 <PriceTag

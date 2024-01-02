@@ -140,6 +140,9 @@
   .text-grtsk-22 {
     @apply text-[22px] font-grtskTera font-medium leading-[22px];
   }
+  .search-input {
+    @apply text-[15px] font-sans font-normal tracking-normal leading-[15px] placeholder:text-text-black-40 w-full;
+  }
 
   .gradient-text-green {
     background: linear-gradient(98deg, #008254 24.29%, #7ac80e 122.44%);
@@ -233,4 +236,11 @@ input[type="number"]::-webkit-outer-spin-button {
   -moz-appearance: none;
   appearance: none;
   margin: 0;
+}
+
+
+::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+  background: transparent; /* make scrollbar transparent */
 }
