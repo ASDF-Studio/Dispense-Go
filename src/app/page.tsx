@@ -6,9 +6,7 @@ import { Button } from '@/core'
 import { IconHandler } from '../utils/icon'
 import { DispenseInfo } from '@/poster/dispenseInfo'
 import { CategorySlider } from '@/sliders/category'
-import { Swiper } from "swiper"
 import 'swiper/css';
-import { CustomSwiper } from '@/sliders/swiper'
 
 export default function Home() {
   return (

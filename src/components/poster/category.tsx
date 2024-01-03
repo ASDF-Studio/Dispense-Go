@@ -1,38 +1,21 @@
-import { Button, Typography } from "@/core"
-import { ProductSearch, Search } from "@/core/input"
-import { Flex, FlexColumn } from "@/layout"
-import { SafeAreaSection } from "@/layout/spacing"
-import Image from "next/image"
-import { Paddings } from "../../constants"
-import { Banner } from "@/sliders/banner"
+import { Button, Typography } from "@/core";
+import { Flex, FlexColumn } from "@/layout";
+import Image from "next/image";
 
 export const CategoryPoster = () => {
-    return <SafeAreaSection withSpacing={false} classname="bg-primary-darkGreen flex justify-between mx-10 mt-10 rounded-xl h-[137px]">
-        <FlexColumn className="p-[20px]">
-            <Typography intent={"grskt32"} classname="text-white">
-                Deals Near You <br />
-            </Typography>
-            <Typography intent={"mons15"} classname="text-text-white-70 pt-3">
-                Latest products and exclusive bundle <br/> deals and promos from stores
-            </Typography>
-        </FlexColumn>|
-        <Flex className="mr-10 overflow-hidden">
-            <Image
-                alt="illustration"
-                className="relative"
-                width={160}
-                height={220}
-                src={"assets/CannabisFlower2.svg"}
-            />
-            <Image
-                alt="illustration"
-                className="relative -ml-[110px] -mt-[20px]"
-                width={160}
-                height={220}
-                src={"assets/CannabisFlower.svg"}
-            />
+    return (
+        <Flex className="bg-primary-darkGreen flex justify-between rounded-xl m:h-[137px] p-4 mx-5 m:mx-6 xl:mx-[42px] relative overflow-hidden">
+            <FlexColumn className="max-w-[175px] m:max-w-[258px] xl:max-w-[295px]">
+                <Typography intent={"grskt32"} classname="text-white text-[24px] leading-[24px] tracking-[-0.84px] xl:text-[32px] xl:leading-[32px] xl:tracking-[-1.12px]">
+                    Deals Near You <br />
+                </Typography>
+                <Typography intent={"mons15"} classname="text-text-white-70 pt-3">
+                    Latest products and exclusive bundle deals and promos from
+                    stores
+                </Typography>
+            </FlexColumn>
+            <img src={"/assets/canabis1.svg"} alt="canabis" className="absolute h-full top-0 right-0 hidden m:block" />
+            <img src={"/assets/canabis1-mobile.svg"} alt="canabis" className="absolute h-full top-0 right-0 m:hidden" />
         </Flex>
-
-
-    </SafeAreaSection>
-}
+    );
+};
