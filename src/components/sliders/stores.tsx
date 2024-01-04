@@ -32,16 +32,39 @@ export const ShopByStores = () => {
 
 
                 <Flex className="overflow-auto">
-                    <StoreCard />
-                    <StoreCard />
-                    <StoreCard />
-                    <StoreCard />
-                    <StoreCard />
-                    <StoreCard />
-                    <StoreCard />
-                    <StoreCard />
-                    <StoreCard />
-                    <StoreCard />
+                    <Link href={"/individualStore"}>
+                        <StoreCard />
+                    </Link>
+                    <Link href={"/individualStore"}>
+                        <StoreCard />
+                    </Link>
+                    <Link href={"/individualStore"}>
+                        <StoreCard />
+                    </Link>
+                    <Link href={"/individualStore"}>
+                        <StoreCard />
+                    </Link>
+                    <Link href={"/individualStore"}>
+                        <StoreCard />
+                    </Link>
+                    <Link href={"/individualStore"}>
+                        <StoreCard />
+                    </Link>
+                    <Link href={"/individualStore"}>
+                        <StoreCard />
+                    </Link>
+                    <Link href={"/individualStore"}>
+                        <StoreCard />
+                    </Link>
+                    <Link href={"/individualStore"}>
+                        <StoreCard />
+                    </Link>
+                    <Link href={"/individualStore"}>
+                        <StoreCard />
+                    </Link>
+                    <Link href={"/individualStore"}>
+                        <StoreCard />
+                    </Link>
                 </Flex>
 
                 <Link href={'/individualStore'} className="m:hidden mx-auto">
