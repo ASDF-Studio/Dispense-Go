@@ -23,7 +23,7 @@ export const MainLayout: FC<Props> = ({
     <>
       <CartContextProvider>
         <Header withSearchBar={withSearch} />
-        {/* <AgeConfirmationModal /> */}
+        <AgeConfirmationModal />
         <main>{children}</main>
         {footerItems.includes("faq") && <FAQ />}
         {footerItems.includes("news") && <NewsEvents />}
