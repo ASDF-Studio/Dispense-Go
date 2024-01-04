@@ -13,7 +13,7 @@ type Props = {
     extend?: boolean
 };
 
-export const Rating: FC<Props> = ({ rating, count, textColor, starColor = "brand", extend = false }) => {
+export const Rating: FC<Props> = ({ rating, count, textColor = "black", starColor = "brand", extend = false }) => {
     const textColorMapping = {
         "black": "text-black",
         white: "text-white"

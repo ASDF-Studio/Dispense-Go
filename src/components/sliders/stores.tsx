@@ -30,20 +30,20 @@ export const ShopByStores = () => {
                     </Link>
                 </Flex>
 
-                <DraggingScrollY>
-                    <Flex className="overflow-hidden">
-                        <StoreCard />
-                        <StoreCard />
-                        <StoreCard />
-                        <StoreCard />
-                        <StoreCard />
-                        <StoreCard />
-                        <StoreCard />
-                        <StoreCard />
-                        <StoreCard />
-                        <StoreCard />
-                    </Flex>
-                </DraggingScrollY>
+
+                <Flex className="overflow-auto">
+                    <StoreCard />
+                    <StoreCard />
+                    <StoreCard />
+                    <StoreCard />
+                    <StoreCard />
+                    <StoreCard />
+                    <StoreCard />
+                    <StoreCard />
+                    <StoreCard />
+                    <StoreCard />
+                </Flex>
+
                 <Link href={'/individualStore'} className="m:hidden mx-auto">
                     <Button
                         intent={"text"}

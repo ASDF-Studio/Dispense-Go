@@ -17,19 +17,20 @@ type Props = {
   badge?: "hybrid" | "indica" | "sativa";
   oldPrice?: number;
   images?: string[];
-  size?: "big" | "small" | "xsmall";
+  size?: "big" | "small" | "xsmall" | "msmall";
   color?: "white" | "black";
   classname?: string
 };
 
 type BadgeProps = {
-  size: "big" | "small" | "xsmall";
+  size: "big" | "small" | "xsmall" | "msmall";
 };
 
 const ProductImage: FC<BadgeProps> = ({ size }) => {
   const sizes = {
     big: "w-[358px] h-[376px]",
     small: "w-[257px] h-[271px]",
+    msmall: "w-[252px] h-[189px]",
     xsmall: "w-[232px] h-[189px]"
   };
 

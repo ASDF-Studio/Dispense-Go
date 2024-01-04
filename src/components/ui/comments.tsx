@@ -4,12 +4,11 @@ import { Flex, FlexColumn } from "@/layout";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { faStar as RegularStar } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { AccountIcon } from "../../svg";
-import { CustomIconHandler, IconHandler } from "../../utils/icon";
+import {  IconHandler } from "../../utils/icon";
 
 const CommentCard = () => {
     return (
-        <FlexColumn className="p-6 rounded-md border border-border-whiteSmoke bg-white gap-5">
+        <FlexColumn className="p-6 rounded-md border border-border-whiteSmoke bg-white gap-5 shadow-navbar">
             <Flex className="justify-between">
                 <Flex className="gap-0.5">
                     {Array(5)

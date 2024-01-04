@@ -19,7 +19,7 @@ type ItemType = {
   isChildren?: boolean
 }
 
-const Item: FC<ItemType> = ({ label, isChildren = false }) => {
+export const Item: FC<ItemType> = ({ label, isChildren = false }) => {
   return <Flex className={['gap-2', isChildren && "pl-4"].join(" ")} >
     <input type="checkbox" className="accent-black" />
     <Typography classname="text-text-black-100 leading-[13px] font-medium tracking-[1.885px] uppercase" intent={"grstk13"}>{label}</Typography>

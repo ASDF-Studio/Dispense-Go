@@ -4,10 +4,11 @@ type Props = {
     children: React.ReactNode
     className?: string
     onClick?: () => void
+    id?: any
 }
 
-export const Flex: FC<Props> = ({ children, className = "", onClick }) => {
-    return <div onClick={onClick} className={[
+export const Flex: FC<Props> = ({ children, className = "", onClick, id }) => {
+    return <div id={id} onClick={onClick} className={[
         `flex`, className
     ].join(" ")}>{children}</div>
 }

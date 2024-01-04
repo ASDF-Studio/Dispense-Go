@@ -13,6 +13,7 @@ const buttonStyles = cva("gap-[8px]", {
             outline: "p-l rounded-md bg-transparent border-border-green-70 border hover:bg-border-green-10",
             inversed: "",
             text: "",
+            ghost: "px-3 py-2 m:p-3 border border-[#044E33] rounded-[4px] bg-primary-darkGreen/70"
         },
         defaultVariants: {
             intent: "filled",

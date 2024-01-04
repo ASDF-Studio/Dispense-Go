@@ -12,17 +12,19 @@ type Props = {
   children?: React.ReactNode;
   footerItems?: FooterItem[];
   withSearch?: boolean
+  withNavigation?: boolean
 };
 
 export const MainLayout: FC<Props> = ({
   children,
   footerItems = ["faq", "footer", "news"],
-  withSearch = true
+  withSearch = true,
+  withNavigation = true
 }) => {
   return (
     <>
       <CartContextProvider>
-        <Header withSearchBar={withSearch} />
+        <Header withNavigation={withNavigation} withSearchBar={withSearch} />
         <AgeConfirmationModal />
         <main>{children}</main>
         {footerItems.includes("faq") && <FAQ />}

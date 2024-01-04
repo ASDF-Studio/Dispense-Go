@@ -20,6 +20,19 @@ const nextConfig = {
         port: "",
         // pathname: "www-inside-design",
       },
+      {
+        protocol: "https",
+        hostname: "placehold.co",
+        port: "",
+        // pathname: "www-inside-design",
+      },
+      {
+        protocol: "https",
+        hostname: "via.placeholder.com",
+        port: "",
+        // pathname: "www-inside-design",
+      },
+      
     ],
   },
 };

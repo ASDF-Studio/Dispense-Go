@@ -35,15 +35,18 @@ export const ProductListInformation: FC<ProductListInfoType> = ({ variant = "pri
 
     return <Flex className="relative items-center xl:gap-12 justify-between pr-5 m:pr-6 xl:pr-[40px]">
         <FlexCenter className="gap-4 relative max-w-[256px] m:max-w-[292px] xl:max-w-full">
-            <Typography intent={"grskt28"} classname="line-clamp-2 leading-[33.6px] xl:leading-[28px]">
+            <Typography intent={"grskt28"} classname="line-clamp-2 leading-[33.6px] xl:leading-[28px] uppercase">
                 {title}
             </Typography>
 
-            <Flex className={["p-[5px] right-0 bottom-0 xl:hidden absolute", tagClassMapping[variant].tagbg].join(" ")}>
-                <Typography intent={"mons13"} classname={[tagClassMapping[variant].tagtext, "leading-[13px] font-semibold tracking-normal"].join(" ")}>
-                    {destination} miles
-                </Typography>
-            </Flex>
+            {destination != 0 &&
+                <Flex className={["p-[5px] right-0 bottom-0 xl:hidden absolute", tagClassMapping[variant].tagbg].join(" ")}>
+                    <Typography intent={"mons13"} classname={[tagClassMapping[variant].tagtext, "leading-[13px] font-semibold tracking-normal"].join(" ")}>
+                        {destination} miles
+                    </Typography>
+                </Flex>
+            }
+
 
             {
                 destination != 0 &&
@@ -75,7 +78,7 @@ type Props = {
     destination?: number
 }
 
-export const ProductList: FC<Props> = ({ variant = "tertiary", text = "", productColor = "black", destination = 0 }) => {
+export const ProductList: FC<Props> = ({ variant = "tertiary", text = "", productColor = "black", destination = 0}) => {
 
     const colorMapping = {
         primary: {
@@ -92,7 +95,7 @@ export const ProductList: FC<Props> = ({ variant = "tertiary", text = "", produc
         },
     }
 
-    return <div><SafeAreaSection withSpacing={false} classname={["flex pl-5 m:pl-6 xl:pl-[42px] gap-[26px] m:gap-6 xl:gap-12 overflow-hidden  relative flex-col", colorMapping[variant].background].join(" ")}>
+    return <div><SafeAreaSection withSpacing={false} classname={["flex pl-5 m:pl-6 xl:pl-[42px] gap-6 xl:gap-12 overflow-hidden  relative flex-col", colorMapping[variant].background].join(" ")}>
         <ProductListInformation destination={destination} variant={colorMapping[variant].infoVariant as "primary" | "secondary"} title={text} />
         {/* <DraggingScrollY> */}
         <Flex className="gap-6 overflow-auto">

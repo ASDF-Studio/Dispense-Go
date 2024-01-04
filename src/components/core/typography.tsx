@@ -13,6 +13,7 @@ export const typographyStyles = cva("", {
             monsBold10: "text-mons-bold",
             monsBold12: "text-mons-bold-12",
             monsBold16: "text-product-card",
+            mons10: "text-mons-10",
             mons13: "text-mons-13",
             mons14: "text-mons-14",
             mons15: "text-mons-15",
