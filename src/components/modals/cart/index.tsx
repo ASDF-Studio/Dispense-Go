@@ -10,6 +10,7 @@ import { Divider } from "@/divider";
 import { isEmpty } from "lodash"
 import { CartItems } from "./cart-items";
 import { CircleCheckBox } from "@/core/checkbox";
+import Link from "next/link";
 
 
 type Props = {
@@ -18,7 +19,7 @@ type Props = {
 };
 
 export const CartModal: FC<Props> = ({ open = false, setOpen }) => {
-    const { items, isCartEmpty, toggleCartModal, showVariants, setShowVariants, showDelete, setShowDelte } = useCart()
+    const { items, isCartEmpty, toggleCartModal, showVariants, setShowVariants, showDelete, setShowDelte, handleEmptyCart } = useCart()
 
     const [state, setState] = useState(0)
 
@@ -58,7 +59,13 @@ export const CartModal: FC<Props> = ({ open = false, setOpen }) => {
                         </FlexColumn>
                     </FlexColumn>
                 </FlexColumn>
-                <Button text="CHECKOUT" disabled intent={"filled"} typographyVariant="grstk15" textClassname={["leading-[15px] font-medium uppercase", isCartEmpty && "text-text-black-40"].join(" ")} classname={["rounded-none", isCartEmpty && "bg-primary-brand/10"].join(" ")} />
+
+
+
+                <Link href="/checkout">
+                    <Button text="CHECKOUT" disabled intent={"filled"} typographyVariant="grstk15" textClassname={["leading-[15px] font-medium uppercase", isCartEmpty && "text-text-black-40"].join(" ")} classname={["rounded-none w-full", isCartEmpty && "bg-primary-brand/10"].join(" ")} />
+                </Link>
+
                 {// move to component
                 }
                 {
@@ -137,7 +144,10 @@ export const CartModal: FC<Props> = ({ open = false, setOpen }) => {
                                 </Typography>
                             </FlexColumn>
                             <FlexColumn className="gap-4">
-                                <Button text="remove" onClick={() => setShowDelte(false)} intent={"filled"} typographyVariant="buttons" textClassname="text-white" />
+                                <Button text="remove" onClick={() => {
+                                    handleEmptyCart()
+                                    setShowDelte(false)
+                                }} intent={"filled"} typographyVariant="buttons" textClassname="text-white" />
                                 <Button text="cancel" onClick={() => setShowDelte(false)} intent={"outline"} typographyVariant="buttons" />
                             </FlexColumn>
                         </FlexColumn>

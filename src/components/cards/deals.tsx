@@ -24,15 +24,19 @@ type Props = {
 
 type BadgeProps = {
   size: "big" | "small" | "xsmall" | "msmall";
+  URLS?: string[]
+  badge?: "hybrid" | "indica" | "sativa";
+  sellPercentage?: number;
 };
 
-const ProductImage: FC<BadgeProps> = ({ size }) => {
+const ProductImage: FC<BadgeProps> = ({ size, URLS, badge, sellPercentage }) => {
   const sizes = {
     big: "w-[358px] h-[376px]",
     small: "w-[257px] h-[271px]",
     msmall: "w-[252px] h-[189px]",
     xsmall: "w-[232px] h-[189px]"
   };
+
 
   return (
     <div className="relative w-fit">
@@ -43,16 +47,18 @@ const ProductImage: FC<BadgeProps> = ({ size }) => {
         ].join(" ")}
       />
       <TypeBadge
-        intent={"sativa"}
+        intent={badge || "sativa"}
         classname={["absolute z-10", size === "small" ? " top-2.5 left-2.5" : " top-5 left-5"].join(" ")}
       />
-      <SaleTag percentage={15} classname={["absolute z-10", size === "small" ? "bottom-2.5 left-2.5" : "bottom-5 left-5"].join(" ")} />
+      {
+        sellPercentage && <SaleTag percentage={sellPercentage} classname={["absolute z-10", size === "small" ? "bottom-2.5 left-2.5" : "bottom-5 left-5"].join(" ")} />
+      }
       <CustomImage
         containerClassName={[
           "rounded-md shadow-product-card card-border",
           sizes[size],
         ].join(" ")}
-        imageUrl="https://s3.amazonaws.com/www-inside-design/uploads/2020/10/aspect-ratios-blogpost-1x1-1.png"
+        imageUrl={URLS?.[0] || "https://s3.amazonaws.com/www-inside-design/uploads/2020/10/aspect-ratios-blogpost-1x1-1.png"}
         width={size === "small" ? 257 : 358}
         height={size === "small" ? 271 : 376}
       />
@@ -60,7 +66,7 @@ const ProductImage: FC<BadgeProps> = ({ size }) => {
   );
 };
 
-const ProductCard: FC<Props> = ({ price, size = "small", color = "black", classname }) => {
+const ProductCard: FC<Props> = ({ price, size = "small", color = "black", classname, title, images, badge, sellPercentage, index }) => {
 
   const getSize = {
     "xsmall": "w-[232px]",
@@ -69,10 +75,10 @@ const ProductCard: FC<Props> = ({ price, size = "small", color = "black", classn
   }
 
   return (
-    <Link href={"/product"}>
+    // <Link href={"/product"}>
       <AnimatedDiv>
         <FlexColumn className={["gap-l", getSize[size], classname].join(" ")}>
-          <ProductImage size={size} />
+          <ProductImage size={size} URLS={images} badge={badge} sellPercentage={sellPercentage} />
           <Flex className="gap-m justify-between">
             <FlexColumn className="gap-2.5">
               <Typography
@@ -81,7 +87,7 @@ const ProductCard: FC<Props> = ({ price, size = "small", color = "black", classn
                   " "
                 )}
               >
-                1:1 Strawberry Lemonade [10pk] (100mg CBD/100mg THC)
+                {title || "1:1 Strawberry Lemonade [10pk] (100mg CBD/100mg THC)"}
               </Typography>
               <Flex className="gap-2.5 items-center">
                 <PriceTag
@@ -101,7 +107,7 @@ const ProductCard: FC<Props> = ({ price, size = "small", color = "black", classn
           </Flex>
         </FlexColumn>
       </AnimatedDiv>
-    </Link>
+    // </Link>
   );
 };
 

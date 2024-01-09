@@ -3,15 +3,26 @@ import { faShoppingBasket } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useCart } from "../../app/contexts/cart";
 import { ShopIcon } from "../../svg";
+import { FC } from "react";
+import { Products } from "../../constants";
 
-export const AddtoCart = () => {
-    const { toggleCartModal } = useCart()
+type Props = {
+    id: number
+}
+
+export const AddtoCart: FC<Props> = ({ id = 0 }) => {
+    const { toggleCartModal, addToCart } = useCart()   
+
+
     return (
         <IconButton
             icon={
                 <ShopIcon />
             }
-            onClick={toggleCartModal}
+            onClick={() => {
+                addToCart(Products[id])
+                toggleCartModal()
+            }}
             classname="w-10 h-10 bg-primary-brand rounded-full hover:bg-primary-hover shrink-0"
         />
     );

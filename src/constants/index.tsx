@@ -77,3 +77,81 @@ export const Categories = [
     imageURL: "/assets/category/search/7.png",
   },
 ];
+
+export const Products = [
+  {
+    title: "Capsules 1:10 CBD Reserve - 300mg - 30 Count",
+    price: 21.25,
+    rating: 4,
+    type: "hybrid",
+    sale: 10,
+    image: ["https://shopcannabisnl.com/cdn/shop/files/52907-m_500x.png?v=1698768379"],
+  },
+  {
+    title: "Sea Star - 3.5g Indoor",
+    price: 21.25,
+    rating: 4,
+    type: "hybrid",
+    sale: 15,
+    image: ["https://shopcannabisnl.com/cdn/shop/products/52431_m_500x.png?v=1684325721"],
+  },
+  {
+    title: "E85 - 7g Smediums",
+    price: 21.25,
+    rating: 4,
+    type: "sativa",
+    sale: 20,
+    image: ["https://shopcannabisnl.com/cdn/shop/products/51930_m_500x.png?v=1698944531"],
+  },
+  {
+    title: "E85 - 7g Smediums",
+    price: 21.25,
+    rating: 4,
+    type: "indica",
+    image: ["https://shopcannabisnl.com/cdn/shop/products/52977_m_500x.png?v=1690205435"],
+  },
+  {
+    title: "E85 - 7g Smediums",
+    price: 21.25,
+    rating: 4,
+    type: "sativa",
+    sale: 13,
+    image: ["https://shopcannabisnl.com/cdn/shop/products/51930_m_500x.png?v=1698944531"],
+  },
+  {
+    title: "E85 - 7g Smediums",
+    price: 21.25,
+    rating: 4,
+    type: "indica",
+    image: ["https://shopcannabisnl.com/cdn/shop/products/52977_m_500x.png?v=1690205435"],
+  },
+  {
+    title: "E85 - 7g Smediums",
+    price: 21.25,
+    rating: 4,
+    type: "sativa",
+    image: ["https://shopcannabisnl.com/cdn/shop/products/51930_m_500x.png?v=1698944531"],
+  },
+  {
+    title: "E85 - 7g Smediums",
+    price: 21.25,
+    rating: 4,
+    type: "indica",
+    image: ["https://shopcannabisnl.com/cdn/shop/products/52977_m_500x.png?v=1690205435"],
+  },
+  {
+    title: "E85 - 7g Smediums",
+    price: 21.25,
+    rating: 4,
+    type: "sativa",
+    image: ["https://shopcannabisnl.com/cdn/shop/products/51930_m_500x.png?v=1698944531"],
+  },
+  {
+    title: "E85 - 7g Smediums",
+    price: 21.25,
+    rating: 4,
+    type: "indica",
+    image: ["https://shopcannabisnl.com/cdn/shop/products/52977_m_500x.png?v=1690205435"],
+  }
+
+]

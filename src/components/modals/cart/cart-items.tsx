@@ -33,9 +33,9 @@ const Item: FC<ItemProps> = ({ name, imageURL, quantity = 0 }) => {
                 <Typography intent={"mons15"} classname="leading-[15px] font-medium text-text-black-40 line-through">$21.25</Typography>
             </Flex>
             <Flex className="items-center">
-                <IconButton classname="px-[12px] h-8 py-[5px] border border-r-0 border-border-whiteSmoke" icon={<IconHandler name="minus" classname="text-[15px] leading-[18px]" />} />
-                <Input containerClassname="border border-border-whiteSmoke h-[32px] w-full" type="number" value={quantity} className="text-mons-20 text-center w-full" />
-                <IconButton classname="px-[12px] h-8 py-[5px] border border-l-0 border-border-whiteSmoke" icon={<IconHandler name="plus" classname="text-[15px] leading-[18px]" />} />
+                <IconButton disabled={state === 0} onClick={() => setState(state !== "" ? state - 1 : 0)} classname="px-[12px] h-8 py-[5px] border border-r-0 border-border-whiteSmoke" icon={<IconHandler name="minus" classname="text-[15px] leading-[18px]" />} />
+                <Input onChange={(e) => setState(Math.abs(Number(e.target.value)) || "")} containerClassname="border border-border-whiteSmoke h-[32px] w-full" type="number" value={state} className="text-mons-20 text-center w-full" />
+                <IconButton onClick={() => setState(state !== "" ? state + 1 : 0)} classname="px-[12px] h-8 py-[5px] border border-l-0 border-border-whiteSmoke" icon={<IconHandler name="plus" classname="text-[15px] leading-[18px]" />} />
             </Flex>
         </FlexColumn>
     </Flex>
@@ -47,6 +47,10 @@ type DispensaryProps = {
 
 const DispensaryItems: FC<DispensaryProps> = ({ name }) => {
     const { setShowDelte } = useCart()
+    const [state, setState] = useState({
+        dispenseName: "",
+        items: [0, 1]
+    })
     return <FlexColumn className="gap-4">
         <Flex className="justify-between items-center py-4">
             <Flex className="gap-2">
@@ -63,8 +67,11 @@ const DispensaryItems: FC<DispensaryProps> = ({ name }) => {
 }
 
 export const CartItems = ({ handleVariant }) => {
+    const { items } = useCart()
+
     return <FlexColumn className="gap-6 overflow-hidden flex-grow">
-        <DispensaryItems />
-        <DispensaryItems name="Jane Neuewzel & Ma Dispensary - Manhattan Avenue" />
+        {items.map(() => {
+            return <DispensaryItems />
+        })}
     </FlexColumn>
 }

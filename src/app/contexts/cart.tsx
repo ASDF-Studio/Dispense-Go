@@ -16,6 +16,8 @@ type CartType = {
     setShowVariants: Dispatch<SetStateAction<boolean>>
     showDelete: boolean
     setShowDelte: Dispatch<SetStateAction<boolean>>
+    addToCart: (item: any) => void
+    handleEmptyCart: () => void
 }
 
 const CartContext = createContext<CartType>({} as CartType)
@@ -25,15 +27,21 @@ type CartContextProps = {
 }
 
 export const CartContextProvider: FC<CartContextProps> = ({ children }) => {
-    const [cart, setCart] = useState<IItems[]>([{
-        name: "Testing123",
-        price: 123321
-    }])
+    const [cart, setCart] = useState<IItems[]>([])
     const [open, setOpen] = useState<boolean>(false)
     const [showVariants, setShowVariants] = useState(false)
     const [showDelete, setShowDelte] = useState(false)
 
-    const toggleCartModal = () => setOpen(!open)
+    const addToCart = (item) => {
+        setCart([...cart, item])
+    }
+
+    const toggleCartModal = (e: Event) => {
+        setOpen(!open)
+        // e.stopPropagation()
+
+    }
+    const handleEmptyCart = () => setCart([])
     const isCartEmpty = isEmpty(cart)
 
     return <CartContext.Provider value={{
@@ -43,7 +51,9 @@ export const CartContextProvider: FC<CartContextProps> = ({ children }) => {
         showVariants,
         setShowVariants,
         showDelete,
-        setShowDelte
+        setShowDelte,
+        addToCart,
+        handleEmptyCart
     }}>
         <CartModal open={open} setOpen={setOpen} />
         {children}

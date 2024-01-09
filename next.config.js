@@ -32,6 +32,12 @@ const nextConfig = {
         port: "",
         // pathname: "www-inside-design",
       },
+      {
+        protocol: "https",
+        hostname: "shopcannabisnl.com",
+        port: "",
+        // pathname: "www-inside-design",
+      },
       
     ],
   },
