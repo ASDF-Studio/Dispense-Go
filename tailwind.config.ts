@@ -16,10 +16,12 @@ const config: Config = {
         x: "1024px",
         xl: "1280px",
         "2xl": "1440px",
+        "5xl": "1920px"
       },
       maxWidth: {
         "screen-2xl": "1440px",
         "screen-margin": "1127px",
+        "screen-5xl": "1622px"
       },
       fontFamily: {
         sans: ["var(--font-montserrat)"],

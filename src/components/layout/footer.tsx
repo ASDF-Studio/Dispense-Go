@@ -48,7 +48,7 @@ export const Footer = () => {
                         <FlexColumn className="gap-4 m:gap-[17px]">
                             {
                                 About.map((link, index) => {
-                                    return <Link href={"www.example.com"} key={index}>
+                                    return <Link href={"/contact"} key={index}>
                                         <Typography intent={"mons16"} classname="font-normal text-white">{link}</Typography>
                                     </Link>
                                 })

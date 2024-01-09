@@ -38,7 +38,7 @@ const Column: FC<ColumnType> = ({ title, value }) => {
 export default function Account() {
     return (
         <MainLayout footerItems={[]}>
-            <FlexColumn className="max-w-[666px] mx-auto w-full gap-6 py-[42px]">
+            <FlexColumn className="px-8 m:px-0 m:max-w-[606px] xl:max-w-[666px] mx-auto w-full gap-6 py-[42px]">
                 <Flex className="justify-between">
                     <Typography
                         intent={"grstkt22"}
@@ -55,11 +55,11 @@ export default function Account() {
                 </Flex>
                 <Divider />
 
-                <Flex className="gap-6">
+                <Flex className="gap-6  flex-col m:flex-row">
                     <Column title="name" value="Marcus Inigo Pascual" />
                     <Column title="sex" value="male" />
                 </Flex>
-                <Flex className="gap-6">
+                <Flex className="gap-6 flex-col m:flex-row">
                     <Column title="Date of Birth" value="June 10, 1972" />
                     <Column title="Contact Number" value="088 1672 9128" />
                 </Flex>

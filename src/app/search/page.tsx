@@ -11,7 +11,7 @@ export default function IndividualStore() {
   return (
     <MainLayout withSearch={false}>
       <SafeAreaSection withSpacing={false}
-        classname={["2xl:px-desktop py-6 w-full mx-auto max-w-screen-2xl"].join(" ")}>
+        classname={[" 2xl:px-desktop 5xl:px-0 py-6 w-full mx-auto 5xl:max-w-screen-5xl 2xl:max-w-screen-2xl"].join(" ")}>
         <FlexColumn className="gap-[30px]">
           <SearchSection />
           <FlexColumn>

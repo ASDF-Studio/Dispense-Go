@@ -75,28 +75,28 @@ const Type = () => {
             <Flex className="gap-5 m:gap-6 overflow-auto">
                 <FilterBox
                     text="all (320)"
-                    classname="w-[160px] m:w-[276px]"
+                    classname="w-[160px] m:w-[276px] 5xl:w-[343px]"
                     isSelected={selectedType === 0}
                     icon={faBox}
                     onClick={() => setSelectedType(0)}
                 />
                 <FilterBox
                     text="INDICA (20)"
-                    classname="w-[160px] m:w-[276px]"
+                    classname="w-[160px] m:w-[276px] 5xl:w-[343px]"
                     isSelected={selectedType === 1}
                     icon={faCloudMoon}
                     onClick={() => setSelectedType(1)}
                 />
                 <FilterBox
                     text="SATIVA (200)"
-                    classname="w-[160px] m:w-[276px]"
+                    classname="w-[160px] m:w-[276px] 5xl:w-[343px]"
                     isSelected={selectedType === 2}
                     icon={faSun}
                     onClick={() => setSelectedType(2)}
                 />
                 <FilterBox
                     text="HYBRID (100)"
-                    classname="w-[160px] m:w-[276px]"
+                    classname="w-[160px] m:w-[276px] 5xl:w-[343px]"
                     isSelected={selectedType === 3}
                     icon={faYinYang}
                     onClick={() => setSelectedType(3)}
@@ -119,21 +119,21 @@ const StoreFilter = () => {
             <Flex className="gap-5 m:gap-6 overflow-auto">
                 <FilterBox
                     text="SELECT STORE (24)"
-                    classname="min-w-[206px] m:w-[376px]"
+                    classname="min-w-[206px] m:w-[376px] 5xl:w-[466px]"
                     isSelected={selectedStore === 0}
                     icon={faStore}
                     onClick={() => setSelectedStore(0)}
                 />
                 <FilterBox
                     text="ALL FROM 3 MILE RADIUS (10)"
-                    classname="min-w-[206px] m:w-[376px]"
+                    classname="min-w-[206px] m:w-[376px] 5xl:w-[466px]"
                     isSelected={selectedStore === 1}
                     icon={faRoad}
                     onClick={() => setSelectedStore(1)}
                 />
                 <FilterBox
                     text="ALL FROM 10 MILE RADIUS (14)"
-                    classname="min-w-[206px] m:w-[376px]"
+                    classname="min-w-[206px] m:w-[376px] 5xl:w-[466px]"
                     isSelected={selectedStore === 2}
                     icon={faRoad}
                     onClick={() => setSelectedStore(2)}
@@ -147,7 +147,7 @@ const FilteredStores = () => {
     const [selectedStore, setSelectedStore] = useState(0);
 
     return (
-        <Flex className="pl-5 m:pl-[24px] gap-8 relative -bottom-[1px] overflow-auto">
+        <Flex className="pl-5 m:pl-[24px] gap-8 relative -bottom-[1px] overflow-auto 5xl:w-[1352px] 5xl:mx-auto">
             <StoreCard
                 onClick={() => setSelectedStore(0)}
                 classname={[
@@ -189,6 +189,15 @@ const FilteredStores = () => {
                 classname={[
                     "border rounded-t-lg  p-l w-[280px] xl:w-[373px] hover:cursor-pointer",
                     selectedStore === 4
+                        ? "border-primary-green border-b-white bg-white"
+                        : "border-transparent",
+                ].join(" ")}
+            />
+            <StoreCard
+                onClick={() => setSelectedStore(5)}
+                classname={[
+                    "border rounded-t-lg  p-l w-[280px] xl:w-[373px] hover:cursor-pointer",
+                    selectedStore === 5
                         ? "border-primary-green border-b-white bg-white"
                         : "border-transparent",
                 ].join(" ")}

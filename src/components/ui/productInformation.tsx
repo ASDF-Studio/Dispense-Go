@@ -8,11 +8,12 @@ import { CustomIconHandler, IconHandler } from "../../utils/icon";
 import { FC, useState } from "react";
 import { PriceTag } from "@/cards/price";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircle, faTag } from "@fortawesome/free-solid-svg-icons";
+import { faChevronRight, faCircle, faTag } from "@fortawesome/free-solid-svg-icons";
 import { CircleCheckBox } from "@/core/checkbox";
 import { Input } from "@/core/input";
 import { SafeAreaSection } from "@/layout/spacing";
 import Image from "next/image";
+import { ChevronIcon } from "../../svg";
 
 const Badge = () => {
     return (
@@ -73,7 +74,7 @@ const Variant: FC<VariantsProp> = ({ isSelected = false, desc, onClick }) => {
         <Pressable onClick={onClick}>
             <Flex
                 className={[
-                    "rounded-md border justify-between border-border-whiteSmoke min-w-[244px] p-l items-center",
+                    "rounded-md border justify-between border-border-whiteSmoke min-w-[162px] m:min-w-[167px] xl:min-w-[244px] p-l items-center",
                     isSelected && "border-primary-brand",
                 ].join(" ")}
             >
@@ -99,21 +100,25 @@ export const QuantitySelecter = () => {
 }
 
 const ProductImageSlider = () => {
-    return <FlexColumn className="w-[552px] gap-2">
-        <Flex className="w-[551px] h-[543px] relative">
+    const [selectedImage, setSelectedImage] = useState(0)
+
+    return <FlexColumn className="w-full m:w-[348px] xl:w-[552px] gap-[5px] m:gap-2">
+        <Flex className="w-full h-[337px] m:w-[348px] m:h-[342px] xl:w-[551px] xl:h-[543px] relative">
+            <IconButton onClick={() => setSelectedImage(selectedImage + 1)} classname="py-2.5 px-3 z-10 rounded-full border border-border-whiteSmoke w-[44px] h-[44px] bg-white right-0 absolute translate-x-1/2 top-1/2 -translate-y-1/2" icon={<ChevronIcon />} />
+            <IconButton onClick={() => setSelectedImage(selectedImage - 1)} classname="py-2.5 px-3 z-10 rounded-full border border-border-whiteSmoke w-[44px] h-[44px] bg-white left-0 absolute -translate-x-1/2 top-1/2 -translate-y-1/2" icon={<ChevronIcon className="rotate-180" />} />
+
             <Image src={"https://s3.amazonaws.com/www-inside-design/uploads/2020/10/aspect-ratios-blogpost-1x1-1.png"} fill alt="image" />
         </Flex>
-        <Flex className="gap-2">
-            <Pressable>
-                <Flex className={["rounded-md w-[122px] h-[105px] relative overflow-hidden border-[1px] border-primary-brand"].join(" ")}>
-                    <Image src={"https://s3.amazonaws.com/www-inside-design/uploads/2020/10/aspect-ratios-blogpost-1x1-1.png"} fill alt="image" />
-                </Flex>
-            </Pressable>
-            <Pressable>
-                <Flex className="rounded-md w-[122px] h-[105px] relative overflow-hidden">
-                    <Image src={"https://s3.amazonaws.com/www-inside-design/uploads/2020/10/aspect-ratios-blogpost-1x1-1.png"} fill alt="image" />
-                </Flex>
-            </Pressable>
+        <Flex className="gap-[5px] m:gap-2">
+            {
+                [0, 0, 0, 0].map((_, index) => {
+                    return <Pressable onClick={() => setSelectedImage(index)}>
+                        <Flex className={["rounded-md w-[77px] h-[66px] xl:w-[122px] xl:h-[105px] relative overflow-hidden border-[1px] ", index === selectedImage ? "border-primary-brand" : "border-border-whiteSmoke"].join(" ")}>
+                            <Image src={"https://s3.amazonaws.com/www-inside-design/uploads/2020/10/aspect-ratios-blogpost-1x1-1.png"} fill alt="image" />
+                        </Flex>
+                    </Pressable>
+                })
+            }
         </Flex>
     </FlexColumn>
 }
@@ -121,7 +126,7 @@ const ProductImageSlider = () => {
 const StoreCard = () => {
     return <FlexColumn className="py-[27px] px-[22px] rounded-md bg-primary-darkGreen gap-4">
         <Flex className="gap-4">
-            <Flex className="rounded-full w-[100px] h-[100px] relative overflow-hidden border border-white">
+            <Flex className="rounded-full w-[100px] h-[100px] relative overflow-hidden border border-white shrink-0">
                 <Image src={"https://s3.amazonaws.com/www-inside-design/uploads/2020/10/aspect-ratios-blogpost-1x1-1.png"} fill alt="image" />
             </Flex>
             <FlexColumn className="gap-2">
@@ -150,9 +155,9 @@ export const ProductInformation = () => {
 
     return (
         <SafeAreaSection>
-            <Flex className="gap-[68px] py-[48px] justify-center">
+            <Flex className="gap-5 xl:gap-[68px] pt-6 pb-[52px] m:py-[48px] justify-center flex-col m:flex-row">
                 <ProductImageSlider />
-                <FlexColumn className="gap-6 max-w-[505px]">
+                <FlexColumn className="gap-6 m:max-w-[351px] xl:max-w-[505px]">
                     <FlexColumn className="gap-5">
                         <Typography intent={"grskt12"} classname="text-text-black-70">
                             EDIBLES
@@ -162,7 +167,7 @@ export const ProductInformation = () => {
                         </Typography>
                         <Rating count={121} rating={3.3} textColor="black" />
                     </FlexColumn>
-                    <Flex className="gap-3">
+                    <Flex className="gap-3 flex-wrap">
                         <Badge />
                         <Tag title="THC" percentage={6} />
                         <Tag title="Delta" percentage={9} />
@@ -260,7 +265,7 @@ export const ProductInformation = () => {
                             <IconButton onClick={() => setState1(!state1)} icon={<IconHandler name={state1 ? "minus" : "plus"} classname="text-[20px] leading-[24px] font-light" />} />
                         </Flex>
                         {state1 && <Flex className="gap-l">
-                            <Flex className="rounded-md w-[107px] h-[80px] relative overflow-hidden shadow-brand border-2 border-border-whiteSmoke">
+                            <Flex className="rounded-md w-[100px] h-[100px] xl:w-[107px] xl:h-[80px] relative overflow-hidden shadow-brand border-2 border-border-whiteSmoke">
                                 <Image src={"https://s3.amazonaws.com/www-inside-design/uploads/2020/10/aspect-ratios-blogpost-1x1-1.png"} fill alt="image" />
                             </Flex>
                             <FlexColumn className="gap-2">

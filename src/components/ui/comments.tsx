@@ -4,7 +4,8 @@ import { Flex, FlexColumn } from "@/layout";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { faStar as RegularStar } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {  IconHandler } from "../../utils/icon";
+import { IconHandler } from "../../utils/icon";
+import { SafeAreaSection } from "@/layout/spacing";
 
 const CommentCard = () => {
     return (
@@ -69,40 +70,42 @@ const CommentCard = () => {
 
 export const Comments = () => {
     return (
-        <FlexColumn>
-            <div className="h-[1px] bg-border-whiteSmoke" />
-            <FlexColumn className="max-w-screen-margin mx-auto w-full gap-6 pt-[47px] pb-[142px]">
-                <FlexColumn className="gap-2.5">
-                    <Typography
-                        intent={"grstk24"}
-                        classname="uppercase leading-[24px] tracking-[-0.84px] font-medium text-black"
-                    >
-                        Customer reviews
-                    </Typography>
-                    <Rating
-                        textColor="black"
-                        starColor="black"
-                        rating={4}
-                        count={212}
-                        extend
-                    />
+        <SafeAreaSection>
+            <FlexColumn>
+                <div className="h-[1px] bg-border-whiteSmoke" />
+                <FlexColumn className="max-w-screen-margin mx-auto w-full gap-6 pt-[35px] xl:pt-[47px] pb-12 xl:pb-[142px]">
+                    <FlexColumn className="gap-2.5">
+                        <Typography
+                            intent={"grstk24"}
+                            classname="uppercase leading-[24px] tracking-[-0.84px] font-medium text-black"
+                        >
+                            Customer reviews
+                        </Typography>
+                        <Rating
+                            textColor="black"
+                            starColor="black"
+                            rating={4}
+                            count={212}
+                            extend
+                        />
+                    </FlexColumn>
+                    <Flex className="gap-2 justify-end">
+                        <Typography intent={"mons15"} classname="font-normal leading-[19.5px] text-primary-black"> Sort by <Typography classname="font-bold">
+                            Newest First
+                        </Typography></Typography>
+                        <IconHandler name="chevrondown" />
+                    </Flex>
+                    <CommentCard />
+                    <CommentCard />
+                    <CommentCard />
+                    <CommentCard />
+                    <CommentCard />
+                    <CommentCard />
+                    <CommentCard />
+                    <CommentCard />
+                    <CommentCard />
                 </FlexColumn>
-                <Flex className="gap-2 justify-end">
-                    <Typography intent={"mons15"} classname="font-normal leading-[19.5px] text-primary-black"> Sort by <Typography classname="font-bold">
-                        Newest First
-                    </Typography></Typography>
-                    <IconHandler name="chevrondown" />
-                </Flex>
-                <CommentCard />
-                <CommentCard />
-                <CommentCard />
-                <CommentCard />
-                <CommentCard />
-                <CommentCard />
-                <CommentCard />
-                <CommentCard />
-                <CommentCard />
             </FlexColumn>
-        </FlexColumn>
+        </SafeAreaSection>
     );
 };

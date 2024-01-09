@@ -35,7 +35,7 @@ export default function ChangePassword() {
     const [showPassword1, setShowPassword1] = useState(false)
     return (
         <MainLayout footerItems={[]}>
-            <FlexColumn className="max-w-[666px] mx-auto w-full gap-6 py-[42px]">
+            <FlexColumn className="px-8 m:px-0 m:max-w-[606px] max-w-[666px] mx-auto w-full gap-6 py-[42px]">
                 <Typography
                     intent={"grstkt22"}
                     classname="tracking-[-0.77px] text-text-black-100"

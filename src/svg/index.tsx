@@ -679,7 +679,7 @@ export const ExitIcon = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 )
 
-export const  BoxRegular= (props: SVGProps<SVGSVGElement>) => (
+export const BoxRegular = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={14}
@@ -700,6 +700,21 @@ export const  BoxRegular= (props: SVGProps<SVGSVGElement>) => (
       fill="#000"
       fillOpacity={0.2}
       d="M10.395.813c.732 0 1.406.439 1.699 1.142l1.23 2.725c.117.234.176.498.176.761v6.622a1.87 1.87 0 0 1-1.875 1.874H2.25a1.851 1.851 0 0 1-1.875-1.874V5.44c0-.263.03-.527.146-.761l1.23-2.725a1.842 1.842 0 0 1 1.7-1.143h6.944Zm0 1.406H7.64v2.344h4.101l-.908-2.051a.513.513 0 0 0-.44-.293Zm1.699 3.75H1.78v6.093c0 .264.205.47.469.47h9.375a.482.482 0 0 0 .469-.47V5.97Zm-9.99-1.407h4.13V2.22H3.451a.513.513 0 0 0-.44.293l-.907 2.05Z"
+    />
+  </svg>
+)
+
+export const ChevronIcon = (props: SVGProps<SVGSVGElement>) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={12}
+    height={22}
+    fill="none"
+    {...props}
+  >
+    <path
+      fill="#000"
+      d="M.977 20.998a.648.648 0 0 1-.281-.516c0-.187.094-.375.234-.515l8.485-9.235L.93 1.452A.698.698 0 0 1 .977.42a.698.698 0 0 1 1.031.047l9 9.75a.68.68 0 0 1 0 .984l-9 9.75a.697.697 0 0 1-1.03.047Z"
     />
   </svg>
 )

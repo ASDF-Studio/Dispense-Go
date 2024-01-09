@@ -13,6 +13,7 @@ import { CustomIconHandler, IconHandler } from "../../utils/icon";
 import { Drawer } from "@/modals/drawer";
 import { useCart } from "../../app/contexts/cart";
 import { LoginModal } from "@/modals/login";
+import { LocationModal } from "@/modals/location";
 
 type Props = {};
 
@@ -36,8 +37,10 @@ export const CustomLink: FC<LinkType> = ({ text, icon, href }) => {
 };
 
 const LocationIndicator = () => {
+  const [state, setState] = useState(false)
   return (
     <Flex className="items-center xl:gap-m">
+      <LocationModal open={state} setOpen={setState} />
       <IconButton icon={<LocationBar />} />
       <Typography
         intent={"mons15"}
@@ -47,6 +50,7 @@ const LocationIndicator = () => {
       </Typography>
       <Button
         intent={"text"}
+        onClick={() => setState(true)}
         typographyVariant="grstk10"
         text="CHANGE"
         textClassname="text-primary-brand hidden xl:block"

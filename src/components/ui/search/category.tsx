@@ -28,7 +28,7 @@ const CategoryCart: FC<CategoryCartProps> = ({
         <Flex
             onClick={onClick}
             className={[
-                "w-[171px] m:w-[178px] xl:w-[193.57px] h-[86px] px-[11px] pt-[11px] relative shrink-0 hover:cursor-pointer",
+                "w-[171px] m:w-[178px] xl:w-[193.57px] 5xl:w-[231.8px] h-[86px] px-[11px] pt-[11px] relative shrink-0 hover:cursor-pointer",
                 // isChildBesideSelected && "border-r-0",
                 isFirst && "rounded-tl-[4px] border-l",
                 isLast && "rounded-tr-[4px]",
