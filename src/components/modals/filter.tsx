@@ -1,5 +1,5 @@
 "use client"
-import { Dispatch, FC, SetStateAction } from "react";
+import { Dispatch, FC, SetStateAction, useState } from "react";
 import { BaseModal } from ".";
 import { Button, IconButton, Typography } from "@/core";
 import { Flex, FlexColumn } from "@/layout";
@@ -20,26 +20,56 @@ interface checkboxDetails {
 type ItemType = {
     label: string
     isChildren?: boolean
+    isSelected?: boolean
+    onCheck: () => void
 }
 
-const Item: FC<ItemType> = ({ label, isChildren = false }) => {
+const Item: FC<ItemType> = ({ label, isChildren = false, isSelected = false, onCheck }) => {
     return <Flex className={['gap-2', isChildren && "pl-4"].join(" ")} >
-        <input type="checkbox" className="accent-black" />
+        <input type="checkbox" checked={isSelected} onChange={() => onCheck()} className="accent-black" />
         <Typography classname="text-text-black-100 leading-[13px] font-medium tracking-[1.885px] uppercase" intent={"grstk13"}>{label}</Typography>
     </Flex >
 }
 
 
 export const FilterModal: FC<Props> = ({ open = false, setOpen }) => {
-
+    const [activeFilter, setSelectedFilter] = useState<string[]>([])
     const data: checkboxDetails[] = [
-        { label: 'All', children: ['indica', 'sativa', 'hybrid'] },
+        { label: 'ALL', children: ['INDICA', 'SATIVA', 'HYBRID'] },
         { label: 'FLOWERS', children: [] },
         { label: 'EDIBLES', children: [] },
         { label: 'CONCENTRATES', children: [] },
         { label: 'CBD', children: [] },
         { label: 'PRE-ROLLS', children: [] },
     ];
+
+    const handleFilterClick = (label: string, isSelected: boolean) => {
+        if (isSelected) {
+            let newState = activeFilter
+            if (label === "INDICA" || label === "SATIVA" || label === "HYBRID") {
+                newState = newState.filter(el => el !== "ALL")
+            }
+            newState = newState.filter(el => el !== label)
+            setSelectedFilter(newState)
+
+        } else {
+            let newState: string[] = []
+
+            if (label === "ALL") {
+                // @ts-ignore
+                newState = [...new Set([...activeFilter, label, "INDICA", "SATIVA", "HYBRID"])]
+            } else {
+                // @ts-ignore
+                newState = [...new Set([...activeFilter, label])]
+            }
+
+            if (newState.includes("INDICA") && newState.includes("SATIVA") && newState.includes("HYBRID") && !newState.includes("ALL")) {
+                newState.push("ALL")
+            }
+
+            setSelectedFilter(newState)
+        }
+    }
 
 
     return (
@@ -70,10 +100,11 @@ export const FilterModal: FC<Props> = ({ open = false, setOpen }) => {
                 </Flex>
                 <FlexColumn className='gap-6 w-full border-r border-border-whiteSmoke'>
                     {data.map(({ children, label }) => {
+                        const isActive = activeFilter.includes(label)
                         return <FlexColumn className="gap-6 w-full">
-                            <Item label={label} />
+                            <Item label={label} isSelected={isActive} onCheck={() => handleFilterClick(label, isActive)} />
                             {children.map((el) => {
-                                return <Item label={el} isChildren={true} />
+                                return <Item label={el} isChildren={true} isSelected={activeFilter.includes(el)} onCheck={() => handleFilterClick(el, activeFilter.includes(el))} />
                             })}
                             <Divider />
                         </FlexColumn>

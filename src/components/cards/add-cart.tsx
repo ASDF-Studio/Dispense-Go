@@ -8,10 +8,11 @@ import { Products } from "../../constants";
 
 type Props = {
     id: number
+    classname?: string
 }
 
-export const AddtoCart: FC<Props> = ({ id = 0 }) => {
-    const { toggleCartModal, addToCart } = useCart()   
+export const AddtoCart: FC<Props> = ({ id = 0, classname }) => {
+    const { toggleCartModal, addToCart } = useCart()
 
 
     return (
@@ -23,7 +24,7 @@ export const AddtoCart: FC<Props> = ({ id = 0 }) => {
                 addToCart(Products[id])
                 toggleCartModal()
             }}
-            classname="w-10 h-10 bg-primary-brand rounded-full hover:bg-primary-hover shrink-0"
+            classname={["w-10 h-10 bg-primary-brand rounded-full hover:bg-primary-hover shrink-0", classname].join(" ")}
         />
     );
 };

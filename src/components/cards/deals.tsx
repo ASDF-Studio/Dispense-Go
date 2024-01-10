@@ -17,7 +17,7 @@ type Props = {
   badge?: "hybrid" | "indica" | "sativa";
   oldPrice?: number;
   images?: string[];
-  size?: "big" | "small" | "xsmall" | "msmall";
+  size?: "big" | "small" | "xsmall" | "msmall" | "phone" | "tablet";
   color?: "white" | "black";
   classname?: string
 };
@@ -34,7 +34,9 @@ const ProductImage: FC<BadgeProps> = ({ size, URLS, badge, sellPercentage }) => 
     big: "w-[358px] h-[376px]",
     small: "w-[257px] h-[271px]",
     msmall: "w-[252px] h-[189px]",
-    xsmall: "w-[232px] h-[189px]"
+    xsmall: "w-[232px] h-[189px]",
+    phone: "w-[160px] h-[189px]",
+    tablet: "w-[229px] h-[189px]"
   };
 
 
@@ -69,6 +71,8 @@ const ProductImage: FC<BadgeProps> = ({ size, URLS, badge, sellPercentage }) => 
 const ProductCard: FC<Props> = ({ price, size = "small", color = "black", classname, title, images, badge, sellPercentage, index }) => {
 
   const getSize = {
+    "tablet": "w-[229px]",
+    "phone": "w-[160px]",
     "xsmall": "w-[232px]",
     "small": "w-[257px]",
     "big": "w-[358px]",
@@ -76,11 +80,12 @@ const ProductCard: FC<Props> = ({ price, size = "small", color = "black", classn
 
   return (
     // <Link href={"/product"}>
-      <AnimatedDiv>
-        <FlexColumn className={["gap-l", getSize[size], classname].join(" ")}>
-          <ProductImage size={size} URLS={images} badge={badge} sellPercentage={sellPercentage} />
-          <Flex className="gap-m justify-between">
-            <FlexColumn className="gap-2.5">
+    <AnimatedDiv>
+      <FlexColumn className={["gap-l", getSize[size], classname].join(" ")}>
+        <ProductImage size={size} URLS={images} badge={badge} sellPercentage={sellPercentage} />
+        <Flex className="gap-m justify-between">
+          <FlexColumn className="gap-2.5">
+            <Flex className="gap-2.5">
               <Typography
                 intent="monsNormal13"
                 classname={["line-clamp-1 xl:line-clamp-2", color == "white" && "text-white"].join(
@@ -89,24 +94,26 @@ const ProductCard: FC<Props> = ({ price, size = "small", color = "black", classn
               >
                 {title || "1:1 Strawberry Lemonade [10pk] (100mg CBD/100mg THC)"}
               </Typography>
-              <Flex className="gap-2.5 items-center">
-                <PriceTag
-                  price={21.25}
-                  classname={`${color === "white" && "text-white"}`}
-                />
-                <PriceTag
-                  strikeThrough={true}
-                  price={21.0}
-                  classname={color === "white" ? "text-white" : ""}
-                />
-                <Tag text="THC 20%" type={color === "white" ? 1 : 0} />
-              </Flex>
-              <Rating textColor={color} rating={3.3} count={121} />
-            </FlexColumn>
-            <AddtoCart />
-          </Flex>
-        </FlexColumn>
-      </AnimatedDiv>
+              <AddtoCart classname="m:hidden" />
+            </Flex>
+            <Flex className="gap-2.5 items-center">
+              <PriceTag
+                price={21.25}
+                classname={`${color === "white" && "text-white"}`}
+              />
+              <PriceTag
+                strikeThrough={true}
+                price={21.0}
+                classname={color === "white" ? "text-white" : ""}
+              />
+              <Tag text="THC 20%" type={color === "white" ? 1 : 0} />
+            </Flex>
+            <Rating textColor={color} rating={3.3} count={121} />
+          </FlexColumn>
+          <AddtoCart classname="hidden m:block" />
+        </Flex>
+      </FlexColumn>
+    </AnimatedDiv>
     // </Link>
   );
 };

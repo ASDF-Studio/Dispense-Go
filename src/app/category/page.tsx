@@ -17,11 +17,13 @@ interface checkboxDetails {
 type ItemType = {
   label: string
   isChildren?: boolean
+  isSelected?: boolean
+  onCheck: () => void
 }
 
-export const Item: FC<ItemType> = ({ label, isChildren = false }) => {
+export const Item: FC<ItemType> = ({ label, isChildren = false, isSelected = false, onCheck }) => {
   return <Flex className={['gap-2', isChildren && "pl-4"].join(" ")} >
-    <input type="checkbox" className="accent-black" />
+    <input type="checkbox" checked={isSelected} onChange={() => onCheck()} className="accent-black" />
     <Typography classname="text-text-black-100 leading-[13px] font-medium tracking-[1.885px] uppercase" intent={"grstk13"}>{label}</Typography>
   </Flex >
 }
