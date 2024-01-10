@@ -158,21 +158,21 @@ export default function IndividualStore() {
               <ProductList text={"pre-rolls"} variant="tertiary" />
             </> : <FlexColumn className="gap-6 xl:gap-12 w-full px-5 m:pl-6 xl:pl-[42px]">
               <Typography intent={"grstk24"} classname="tracking-[-0.84px] leading-[24px] text-text-black-100 font-medium uppercase">{menu[state]}</Typography>
-              <Flex className="flex-wrap w-full gap-6 hidden xl:flex xl:flex-wrap">
+              <Flex className="flex-wrap w-full gap-6 hidden xl:flex xl:flex-wrap gap-y-12">
                 {
                   Products.map((product, index) => {
                     return <MemoProductCard index={index} size={"xsmall"} color={"black"} title={product.title} images={product.image} badge={product.type} sellPercentage={product?.sale} />
                   })
                 }
               </Flex>
-              <Flex className="flex-wrap w-full gap-6 hidden m:flex m:flex-wrap xl:hidden">
+              <Flex className="flex-wrap w-full gap-6 hidden m:flex m:flex-wrap xl:hidden gap-y-12">
                 {
                   Products.map((product, index) => {
                     return <MemoProductCard index={index} size={"tablet"} color={"black"} title={product.title} images={product.image} badge={product.type} sellPercentage={product?.sale} />
                   })
                 }
               </Flex>
-              <Flex className="flex-wrap w-full gap-6 m:hidden">
+              <Flex className="flex-wrap w-full gap-6 m:hidden gap-y-12">
                 {
                   Products.map((product, index) => {
                     return <MemoProductCard index={index} size={"phone"} color={"black"} title={product.title} images={product.image} badge={product.type} sellPercentage={product?.sale} />

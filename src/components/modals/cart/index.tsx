@@ -63,7 +63,7 @@ export const CartModal: FC<Props> = ({ open = false, setOpen }) => {
 
 
                 <Link href="/checkout">
-                    <Button text="CHECKOUT" disabled intent={"filled"} typographyVariant="grstk15" textClassname={["leading-[15px] font-medium uppercase", isCartEmpty && "text-text-black-40"].join(" ")} classname={["rounded-none w-full", isCartEmpty && "bg-primary-brand/10"].join(" ")} />
+                    <Button text="CHECKOUT" disabled={isCartEmpty} intent={"filled"} typographyVariant="grstk15" textClassname={["leading-[15px] font-medium uppercase", isCartEmpty && "text-text-black-40"].join(" ")} classname={["rounded-none w-full", isCartEmpty && "bg-primary-brand/10"].join(" ")} />
                 </Link>
 
                 {// move to component
