@@ -79,10 +79,13 @@ const ProductCard: FC<Props> = ({ price, size = "small", color = "black", classn
   }
 
   return (
-    // <Link href={"/product"}>
+
     <AnimatedDiv>
       <FlexColumn className={["gap-l", getSize[size], classname].join(" ")}>
-        <ProductImage size={size} URLS={images} badge={badge} sellPercentage={sellPercentage} />
+        <Link href={"/product"}>
+
+          <ProductImage size={size} URLS={images} badge={badge} sellPercentage={sellPercentage} />
+        </Link>
         <Flex className="gap-m justify-between">
           <FlexColumn className="gap-2.5">
             <Flex className="gap-2.5">
@@ -114,7 +117,7 @@ const ProductCard: FC<Props> = ({ price, size = "small", color = "black", classn
         </Flex>
       </FlexColumn>
     </AnimatedDiv>
-    // </Link>
+
   );
 };
 

@@ -7,7 +7,7 @@ import { FC } from "react";
 import { Products } from "../../constants";
 
 type Props = {
-    id: number
+    id?: number
     classname?: string
 }
 
