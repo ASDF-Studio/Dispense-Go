@@ -250,3 +250,20 @@ input[type="number"]::-webkit-outer-spin-button {
 input {
   outline: none;
 }
+
+.modal-slide-left {
+  animation-name: slide-left;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes slide-left {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

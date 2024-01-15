@@ -7,11 +7,11 @@ type Props = {
 }
 
 export const AnimatedDiv: FC<Props> = ({ children }) => {
-    const { scrollXProgress } = useScroll()
-    console.log(scrollXProgress)
+    // const { scrollXProgress } = useScroll()
+    // console.log(scrollXProgress)
 
     return <motion.div className="w-fit" animate={{
-        // scale: 3,
+        scale: 3,
         transition: {
             duration: 1000
         }

@@ -34,6 +34,7 @@ export const BaseModal: FC<Props> = ({ children, open = false, setOpen, contentS
 
     return <Modal
         isOpen={open}
+        // className={"modal-slide-left"}
         ariaHideApp={false}
         onRequestClose={handleClose}
         shouldCloseOnOverlayClick={overlayClose}
