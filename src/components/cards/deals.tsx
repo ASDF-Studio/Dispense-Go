@@ -80,7 +80,7 @@ const ProductCard: FC<Props> = ({ price, size = "small", color = "black", classn
 
   return (
 
-    <AnimatedDiv>
+    // <AnimatedDiv>
       <FlexColumn className={["gap-l", getSize[size], classname].join(" ")}>
         <Link href={"/product"}>
 
@@ -116,7 +116,7 @@ const ProductCard: FC<Props> = ({ price, size = "small", color = "black", classn
           <AddtoCart classname="hidden m:block" />
         </Flex>
       </FlexColumn>
-    </AnimatedDiv>
+    // </AnimatedDiv>
 
   );
 };
