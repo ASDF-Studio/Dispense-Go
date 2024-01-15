@@ -52,8 +52,6 @@ export const MainLayout: FC<Props> = ({
         <Header withNavigation={withNavigation} withSearchBar={withSearch} />
         {/* <AgeConfirmationModal /> */}
         {withNavigation && <NavLinks />}
-
-
         <main>{children}</main>
         {footerItems.includes("faq") && <FAQ />}
         {footerItems.includes("news") && <NewsEvents />}

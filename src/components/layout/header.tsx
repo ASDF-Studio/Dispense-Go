@@ -160,7 +160,7 @@ export const Header: FC<HeaderProps> = ({ withSearchBar, withNavigation = true }
           </Flex>
         </FlexColumn>
       </SafeScreen>
-      {/* <LoginModal open={showModal} setOpen={setShowModal} /> */}
+      <LoginModal open={showModal} setOpen={setShowModal} />
       <Drawer open={showDrawer} setOpen={setShowDrawer} />
     </header>
   );
