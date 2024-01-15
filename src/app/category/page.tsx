@@ -10,15 +10,15 @@ import { Filter } from '../../svg';
 import { FilterModal } from '@/modals/filter';
 
 interface checkboxDetails {
-  label: string;
+  label?: string;
   children: string[];
 }
 
 type ItemType = {
-  label: string
+  label?: string
   isChildren?: boolean
   isSelected?: boolean
-  onCheck: () => void
+  onCheck?: () => void
 }
 
 export const Item: FC<ItemType> = ({ label, isChildren = false, isSelected = false, onCheck }) => {

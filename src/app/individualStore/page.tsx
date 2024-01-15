@@ -26,7 +26,7 @@ type FilterItemType = {
 
 const FilterItem: FC<FilterItemType> = ({ text, isSelected, onClick }) => {
   return (
-    <Flex onClick={onClick} className={["h-auto shrink-0 items-center border-b-4 border-t-4 border-t-transparent", isSelected ? "border-b-primary-brand" : "border-b-transparent"].join(" ")}>
+    <Flex onClick={onClick} className={["hover:cursor-pointer h-auto shrink-0 items-center border-b-4 border-t-4 border-t-transparent", isSelected ? "border-b-primary-brand" : "border-b-transparent"].join(" ")}>
       <Typography
         intent={"grstk13"}
         classname="tracking-[1.885px] leading-[13px] text-text-black-100 font-medium uppercase"

@@ -19,7 +19,7 @@ type Props = {
 export const Input: FC<Props> = ({ classname, placeholder, endingIcon, startingIcon, containerClassname = "", ...rest }) => {
     return <Flex className={[containerClassname, "gap-2 items-center"].join(" ")}>
         {startingIcon && startingIcon}
-        <input className={[classname, ""].join(" ")} placeholder={placeholder} {...rest} />
+        <input className={[classname, "outline-none"].join(" ")} placeholder={placeholder} {...rest} />
         {
             endingIcon && endingIcon
         }
@@ -39,7 +39,7 @@ type AdvancedSearchProps = {
 }
 
 export const ProductSearch: FC<AdvancedSearchProps> = ({ placeholder = "advanced search", classname = "", containerClassname = "" }) => {
-    return <Input endingIcon={<IconHandler name="faSearch" />} placeholder={placeholder.toUpperCase()} classname={["search-input"].join(" ")} containerClassname={["p-l rounded-md bg-background-primary shrink-0", containerClassname].join(" ")} />
+    return <Input readOnly endingIcon={<IconHandler name="faSearch" />} placeholder={placeholder.toUpperCase()} classname={["search-input hover:cursor-pointer outline-none"].join(" ")} containerClassname={["p-l rounded-md bg-background-primary shrink-0", containerClassname].join(" ")} />
 }
 
 export const PasswordInput: FC<{ placeholder?: string }> = ({ placeholder }) => {

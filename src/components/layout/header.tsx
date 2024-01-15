@@ -136,11 +136,11 @@ export const Header: FC<HeaderProps> = ({ withSearchBar, withNavigation = true }
 
   return (
     <header>
-      <SafeScreen classname="bg-white relative z-20" withSpacing={false}>
+      <SafeScreen classname="bg-white z-50 w-full fixed" withSpacing={false}>
         <FlexColumn className="w-full">
           <Flex
             className={[
-              "items-center justify-between border-b border-b-solid border-border-whiteSmoke py-l",
+              "items-center justify-between border-b border-b-solid border-border-whiteSmoke py-l h-[65px]",
               PaddingX,
             ].join(" ")}
           >
@@ -149,8 +149,8 @@ export const Header: FC<HeaderProps> = ({ withSearchBar, withNavigation = true }
               <Logo />
             </Flex>
             {withSearchBar && (
-              <Link href={"/search"}>
-                <ProductSearch containerClassname="hidden m:flex" />
+              <Link href={"/search"} className="hover:cursor-pointer">
+                <ProductSearch containerClassname="hidden m:flex" classname="hover:cursor-pointer" />
               </Link>
             )}
             <Flex className="gap-2.5 m:gap-4 xl:gap-6">
@@ -158,28 +158,6 @@ export const Header: FC<HeaderProps> = ({ withSearchBar, withNavigation = true }
               <Account />
             </Flex>
           </Flex>
-          {withNavigation && (
-            <Flex className="relative">
-              <nav
-                className={[
-                  "flex gap-5 w-full mxl:gap-0 h-[51px] items-center justify-between overflow-auto shadow-menu relative",
-                  PaddingX,
-                ].join(" ")}
-              >
-                {Links.map(({ text, icon, href }, index) => {
-                  return (
-                    <CustomLink
-                      text={text}
-                      key={index}
-                      icon={icon}
-                      href={href}
-                    />
-                  );
-                })}
-              </nav>
-              <div className="xl:hidden gradient-menu h-[51px] absolute w-10 top-0 right-0" />
-            </Flex>
-          )}
         </FlexColumn>
       </SafeScreen>
       {/* <LoginModal open={showModal} setOpen={setShowModal} /> */}

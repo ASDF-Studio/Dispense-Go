@@ -9,6 +9,7 @@ import { IconHandler } from "../../utils/icon"
 import { FC, useState } from "react"
 import { PaddingX, PaddingXL, PaddingXR, Products } from "../../constants"
 import { CustomSwiper } from "./swiper"
+import Link from "next/link";
 
 type DispenseInfoType = {
     destination?: number
@@ -40,7 +41,10 @@ export const DispenseInformation: FC<DispenseInfoType> = ({ variant = "primary",
             </Typography>
         </Flex>
         <StoreBanner text={title} color={tagClassMapping[variant].title} classname="max-w-[613px] order-3 xl:order-2" />
-        <Button intent={"text"} text="VIEW ALL" classname="order-2 xl:order-3" textClassname={tagClassMapping[variant].button} typographyVariant="grstk14" icon={<IconHandler name="arrow-right" classname={["font-light tracking-[2.03px]", tagClassMapping[variant].button].join(" ")} />} />
+        <Link href={"/category"} className="order-2 xl:order-3">
+            <Button intent={"text"} text="VIEW ALL" textClassname={tagClassMapping[variant].button} typographyVariant="grstk14" icon={<IconHandler name="arrow-right" classname={["font-light tracking-[2.03px]", tagClassMapping[variant].button].join(" ")} />} />
+        </Link>
+
     </Flex>
 }
 
