@@ -74,7 +74,6 @@ export const ProductScroll: FC<Props> = ({ variant = "primary", text = "", produ
     return <SafeAreaSection withSpacing={false} classname={["flex gap-9 m:gap-0 flex-col m:flex-row pt-8 m:pt-[44px] xl:pt-[41px] bg-background-lightGreen relative", PaddingXL, colorMapping[variant].background].join(" ")}>
         <DispenseInformation destination={0.05} variant={colorMapping[variant].infoVariant as "primary" | "secondary"} title={text} />
         <Flex className="overflow-x-auto overflow-y-hidden gap-6 m:items-end pb-8 xl:pb-[50px] m:pb-[42px]">
-
             {
                 Products.map((product, index) => {
                     return <MemoProductCard index={index} size={index === 0 ? "big" : "small"} color={productColor} title={product.title} images={product.image} badge={product.type} sellPercentage={product?.sale} />

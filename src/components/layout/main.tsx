@@ -51,7 +51,7 @@ export const MainLayout: FC<Props> = ({
       <CartContextProvider>
         <Header withNavigation={withNavigation} withSearchBar={withSearch} />
         {/* <AgeConfirmationModal /> */}
-        {withNavigation && <NavLinks />}
+        {withNavigation ? <NavLinks /> : <div className="pt-[65px]" />}
         <main>{children}</main>
         {footerItems.includes("faq") && <FAQ />}
         {footerItems.includes("news") && <NewsEvents />}
