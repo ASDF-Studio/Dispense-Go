@@ -31,9 +31,10 @@ export const Item: FC<ItemType> = ({ label, isChildren = false, isSelected = fal
 
 export default function Category() {
   const [showFilter, setShowFilter] = useState(false)
+  const [activeFilter, setSelectedFilter] = useState<string[]>([])
 
   const data: checkboxDetails[] = [
-    { label: 'All', children: ['indica', 'sativa', 'hybrid'] },
+    { label: 'ALL', children: ['INDICA', 'SATIVA', 'HYBRID'] },
     { label: 'FLOWERS', children: [] },
     { label: 'EDIBLES', children: [] },
     { label: 'CONCENTRATES', children: [] },
@@ -41,17 +42,46 @@ export default function Category() {
     { label: 'PRE-ROLLS', children: [] },
   ];
 
+  const handleFilterClick = (label: string, isSelected: boolean) => {
+    if (isSelected) {
+      let newState = activeFilter
+      if (label === "INDICA" || label === "SATIVA" || label === "HYBRID") {
+        newState = newState.filter(el => el !== "ALL")
+      }
+      newState = newState.filter(el => el !== label)
+      setSelectedFilter(newState)
+
+    } else {
+      let newState: string[] = []
+
+      if (label === "ALL") {
+        // @ts-ignore
+        newState = [...new Set([...activeFilter, label, "INDICA", "SATIVA", "HYBRID"])]
+      } else {
+        // @ts-ignore
+        newState = [...new Set([...activeFilter, label])]
+      }
+
+      if (newState.includes("INDICA") && newState.includes("SATIVA") && newState.includes("HYBRID") && !newState.includes("ALL")) {
+        newState.push("ALL")
+      }
+
+      setSelectedFilter(newState)
+    }
+  }
+
   return (
     <MainLayout>
       <FilterModal open={showFilter} setOpen={setShowFilter} />
-      <Flex className="relative m:pl-6 xl:pl-[45px]">
+      <Flex className="relative m:pl-6 xl:pl-[45px] bg-white">
         <Flex className="m:w-[213px] xl:w-[226px] sticky h-fit bg-white py-[34px] xl:py-[41px] shrink-0 top-0 border-r border-border-whiteSmoke hidden m:flex">
           <FlexColumn className='gap-6 w-full'>
             {data.map(({ children, label }) => {
+              const isActive = activeFilter.includes(label)
               return <FlexColumn className="gap-6 w-full">
-                <Item label={label} />
+                <Item label={label} isSelected={isActive} onCheck={() => handleFilterClick(label, isActive)} />
                 {children.map((el) => {
-                  return <Item label={el} isChildren={true} />
+                  return <Item label={el} isChildren={true} isSelected={activeFilter.includes(el)} onCheck={() => handleFilterClick(el, activeFilter.includes(el))} />
                 })}
                 <Divider />
               </FlexColumn>

@@ -8,6 +8,7 @@ import { FC } from "react"
 import { DraggingScrollY } from "@/layout/dragging"
 import Link from "next/link"
 import { Arrow } from "../../svg"
+import { Products } from "../../constants"
 
 type ProductListInfoType = {
     destination?: number
@@ -78,7 +79,7 @@ type Props = {
     destination?: number
 }
 
-export const ProductList: FC<Props> = ({ variant = "tertiary", text = "", productColor = "black", destination = 0}) => {
+export const ProductList: FC<Props> = ({ variant = "tertiary", text = "", productColor = "black", destination = 0 }) => {
 
     const colorMapping = {
         primary: {
@@ -99,17 +100,11 @@ export const ProductList: FC<Props> = ({ variant = "tertiary", text = "", produc
         <ProductListInformation destination={destination} variant={colorMapping[variant].infoVariant as "primary" | "secondary"} title={text} />
         {/* <DraggingScrollY> */}
         <Flex className="gap-6 overflow-auto">
-            <MemoProductCard size="xsmall" color={productColor} />
-            <MemoProductCard size="xsmall" color={productColor} />
-            <MemoProductCard size="xsmall" color={productColor} />
-            <MemoProductCard size="xsmall" color={productColor} />
-            <MemoProductCard size="xsmall" color={productColor} />
-            <MemoProductCard size="xsmall" color={productColor} />
-            <MemoProductCard size="xsmall" color={productColor} />
-            <MemoProductCard size="xsmall" color={productColor} />
-            <MemoProductCard size="xsmall" color={productColor} />
-            <MemoProductCard size="xsmall" color={productColor} />
-            <MemoProductCard size="xsmall" color={productColor} />
+            {
+                Products.map((product, index) => {
+                    return <MemoProductCard index={index} size="xsmall" color={productColor} title={product.title} images={product.image} badge={product.type} sellPercentage={product?.sale} />
+                })
+            }
         </Flex>
         {/* </DraggingScrollY> */}
         <Link href={'/individualStore'} className="m:hidden self-center">
