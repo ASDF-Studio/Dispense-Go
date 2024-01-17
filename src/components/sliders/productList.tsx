@@ -9,6 +9,7 @@ import { DraggingScrollY } from "@/layout/dragging"
 import Link from "next/link"
 import { Arrow } from "../../svg"
 import { Products } from "../../constants"
+import { CustomSwiper } from "./swiper"
 
 type ProductListInfoType = {
     destination?: number
@@ -99,13 +100,17 @@ export const ProductList: FC<Props> = ({ variant = "tertiary", text = "", produc
     return <div><SafeAreaSection withSpacing={false} classname={["flex pl-5 m:pl-6 xl:pl-[42px] gap-6 xl:gap-12 overflow-hidden  relative flex-col", colorMapping[variant].background].join(" ")}>
         <ProductListInformation destination={destination} variant={colorMapping[variant].infoVariant as "primary" | "secondary"} title={text} />
         {/* <DraggingScrollY> */}
-        <Flex className="gap-6 overflow-auto">
-            {
-                Products.map((product, index) => {
-                    return <MemoProductCard index={index} size="xsmall" color={productColor} title={product.title} images={product.image} badge={product.type} sellPercentage={product?.sale} />
-                })
-            }
-        </Flex>
+        <div>
+            <CustomSwiper withPagination={false} gap={24}>
+
+                {
+                    Products.map((product, index) => {
+                        return <MemoProductCard index={index} size="xsmall" color={productColor} title={product.title} images={product.image} badge={product.type} sellPercentage={product?.sale} />
+                    })
+                }
+
+            </CustomSwiper>
+        </div>
         {/* </DraggingScrollY> */}
         <Link href={'/individualStore'} className="m:hidden self-center">
             <Button

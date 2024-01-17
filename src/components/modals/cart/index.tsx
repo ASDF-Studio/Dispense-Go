@@ -4,7 +4,7 @@ import { Dispatch, FC, SetStateAction, useState } from "react";
 import { BaseModal } from "..";
 import { EmptyCart } from "./empty-cart";
 import { Flex, FlexColumn, Pressable } from "@/layout";
-import { useCart } from "../../../app/contexts/cart";
+import { useCart } from "../../../contexts/cart";
 import Image from "next/image";
 import { Divider } from "@/divider";
 import { isEmpty } from "lodash"

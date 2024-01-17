@@ -11,24 +11,29 @@ import { Pagination, EffectFade } from 'swiper/modules';
 
 type Props = {
     children: React.ReactNode
+    withPagination?: boolean
+    classname?: string
+    gap?: number
+    wrapperClass?: string
 }
 
-export const CustomSwiper: FC<Props> = ({ children }) => {
+export const CustomSwiper: FC<Props> = ({ children, withPagination = true, classname = "", gap = 0, wrapperClass = "" }) => {
 
     return <Swiper
         slidesPerView={"auto"}
-        // spaceBetween={30}
+        spaceBetween={gap}
         pagination={{
             clickable: true,
         }}
-        loop={true}
-        freeMode={true}
-        modules={[Pagination]}
-        className="mySwiper"
+        wrapperClass={wrapperClass}
+        mousewheel={true}
+        // freeMode={true}
+        modules={withPagination ? [Pagination] : undefined}
+        className={["mySwiper", classname].join(" ")}
     >
         {
             React.Children.map(children, child => {
-                return <SwiperSlide className='!w-fit'>
+                return <SwiperSlide className='!w-fit !h-fit'>
                     {child}
                 </SwiperSlide>
             })

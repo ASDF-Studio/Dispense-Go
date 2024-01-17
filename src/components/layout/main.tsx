@@ -3,10 +3,8 @@ import { CustomLink, Header } from "./header";
 import { Footer } from "./footer";
 import { NewsEvents } from "./news-events";
 import { FAQ } from "@/faq";
-import { AgeConfirmationModal } from "@/modals/AgeConfirmation";
-import { CartContextProvider } from "../../app/contexts/cart";
-import { Flex } from ".";
-import { Links, PaddingX } from "../../constants";
+import { CartContextProvider } from "../../contexts/cart";
+import { NavLinks } from "./navbar";
 
 type FooterItem = "faq" | "news" | "footer";
 
@@ -17,28 +15,6 @@ type Props = {
   withNavigation?: boolean
 };
 
-const NavLinks = () => {
-  return <Flex className="relative pt-[65px]">
-    <nav
-      className={[
-        "flex gap-5 w-full mxl:gap-0 h-[51px] items-center justify-between overflow-auto shadow-menu relative",
-        PaddingX,
-      ].join(" ")}
-    >
-      {Links.map(({ text, icon, href }, index) => {
-        return (
-          <CustomLink
-            text={text}
-            key={index}
-            icon={icon}
-            href={href}
-          />
-        );
-      })}
-    </nav>
-    <div className="xl:hidden gradient-menu h-[51px] absolute w-10 top-[65px] right-0" />
-  </Flex>
-}
 
 export const MainLayout: FC<Props> = ({
   children,
@@ -46,6 +22,7 @@ export const MainLayout: FC<Props> = ({
   withSearch = true,
   withNavigation = true
 }) => {
+
   return (
     <>
       <CartContextProvider>

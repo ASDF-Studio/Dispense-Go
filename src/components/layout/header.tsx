@@ -11,30 +11,12 @@ import { Bars, LocationBar, AccountIcon, CartIcon, UserIcon, BoxIcon, ExitIcon, 
 import { Links, PaddingX } from "../../constants";
 import { CustomIconHandler, IconHandler } from "../../utils/icon";
 import { Drawer } from "@/modals/drawer";
-import { useCart } from "../../app/contexts/cart";
+import { useCart } from "../../contexts/cart";
 import { LoginModal } from "@/modals/login";
 import { LocationModal } from "@/modals/location";
+import { useSearchParams } from "next/navigation";
 
 type Props = {};
-
-type LinkType = {
-  text: string;
-  icon: JSX.Element;
-  href: string;
-};
-
-export const CustomLink: FC<LinkType> = ({ text, icon, href }) => {
-  return (
-    <Link href={href}>
-      <Flex className="gap-2">
-        {icon}
-        <Typography intent="navbar13" classname="uppercase text-text-black-100">
-          {text}
-        </Typography>
-      </Flex>
-    </Link>
-  );
-};
 
 const LocationIndicator = () => {
   const [state, setState] = useState(false)

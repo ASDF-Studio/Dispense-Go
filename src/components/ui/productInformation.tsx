@@ -19,7 +19,7 @@ import { SafeAreaSection } from "@/layout/spacing";
 import Image from "next/image";
 import { ChevronIcon } from "../../svg";
 import Link from "next/link";
-import { useCart } from "../../app/contexts/cart";
+import { useCart } from "../../contexts/cart";
 import { Products } from "../../constants";
 
 const Badge = () => {

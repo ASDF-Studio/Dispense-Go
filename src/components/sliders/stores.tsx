@@ -7,11 +7,12 @@ import { DraggingScrollY } from "@/layout/dragging";
 import Link from "next/link";
 import { IconHandler } from "../../utils/icon";
 import { PaddingXL, PaddingXR } from "../../constants";
+import { CustomSwiper } from "./swiper";
 
 export const ShopByStores = () => {
     return (
         <SafeAreaSection withSpacing={false} classname={["py-8 xl:py-12", PaddingXL].join(" ")}>
-            <FlexColumn className="gap-9 m:gap-12">
+            <FlexColumn className="gap-9 m:gap-12 w-full">
                 <Flex className={["justify-between items-center", PaddingXR].join(" ")}>
                     <Typography intent={"header2"}>SHOP BY STORES</Typography>
                     <Link href={'/individualStore'} className="hidden m:block">
@@ -29,43 +30,37 @@ export const ShopByStores = () => {
                         />
                     </Link>
                 </Flex>
-
-
-                <Flex className="overflow-auto">
-                    <Link href={"/individualStore"}>
-                        <StoreCard />
-                    </Link>
-                    <Link href={"/individualStore"}>
-                        <StoreCard />
-                    </Link>
-                    <Link href={"/individualStore"}>
-                        <StoreCard />
-                    </Link>
-                    <Link href={"/individualStore"}>
-                        <StoreCard />
-                    </Link>
-                    <Link href={"/individualStore"}>
-                        <StoreCard />
-                    </Link>
-                    <Link href={"/individualStore"}>
-                        <StoreCard />
-                    </Link>
-                    <Link href={"/individualStore"}>
-                        <StoreCard />
-                    </Link>
-                    <Link href={"/individualStore"}>
-                        <StoreCard />
-                    </Link>
-                    <Link href={"/individualStore"}>
-                        <StoreCard />
-                    </Link>
-                    <Link href={"/individualStore"}>
-                        <StoreCard />
-                    </Link>
-                    <Link href={"/individualStore"}>
-                        <StoreCard />
-                    </Link>
+                <Flex>
+                    <CustomSwiper withPagination={false}>
+                        <Link href={"/individualStore"}>
+                            <StoreCard />
+                        </Link>
+                        <Link href={"/individualStore"}>
+                            <StoreCard />
+                        </Link><Link href={"/individualStore"}>
+                            <StoreCard />
+                        </Link><Link href={"/individualStore"}>
+                            <StoreCard />
+                        </Link><Link href={"/individualStore"}>
+                            <StoreCard />
+                        </Link><Link href={"/individualStore"}>
+                            <StoreCard />
+                        </Link><Link href={"/individualStore"}>
+                            <StoreCard />
+                        </Link><Link href={"/individualStore"}>
+                            <StoreCard />
+                        </Link><Link href={"/individualStore"}>
+                            <StoreCard />
+                        </Link>
+                        <Link href={"/individualStore"}>
+                            <StoreCard />
+                        </Link>
+                        <Link href={"/individualStore"}>
+                            <StoreCard />
+                        </Link>
+                    </CustomSwiper>
                 </Flex>
+
 
                 <Link href={'/individualStore'} className="m:hidden mx-auto">
                     <Button

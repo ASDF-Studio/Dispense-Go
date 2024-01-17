@@ -8,6 +8,8 @@ import { Button, Typography } from '@/core';
 import { Divider } from '@/divider';
 import { Filter } from '../../svg';
 import { FilterModal } from '@/modals/filter';
+import { useParams } from 'next/navigation';
+import { useQueryString } from '../../hooks/useQueryString';
 
 interface checkboxDetails {
   label?: string;
@@ -24,7 +26,7 @@ type ItemType = {
 export const Item: FC<ItemType> = ({ label, isChildren = false, isSelected = false, onCheck }) => {
   return <Flex className={['gap-2', isChildren && "pl-4"].join(" ")} >
     <input type="checkbox" checked={isSelected} onChange={() => onCheck()} className="accent-black" />
-    <Typography classname="text-text-black-100 leading-[13px] font-medium tracking-[1.885px] uppercase" intent={"grstk13"}>{label}</Typography>
+    <Typography classname="leading-[13px] font-medium tracking-[1.885px] uppercase text-text-black-100" intent={"grstk13"}>{label}</Typography>
   </Flex >
 }
 
@@ -32,6 +34,7 @@ export const Item: FC<ItemType> = ({ label, isChildren = false, isSelected = fal
 export default function Category() {
   const [showFilter, setShowFilter] = useState(false)
   const [activeFilter, setSelectedFilter] = useState<string[]>([])
+  const { param } = useQueryString("filter")
 
   const data: checkboxDetails[] = [
     { label: 'ALL', children: ['INDICA', 'SATIVA', 'HYBRID'] },
@@ -48,6 +51,7 @@ export default function Category() {
       if (label === "INDICA" || label === "SATIVA" || label === "HYBRID") {
         newState = newState.filter(el => el !== "ALL")
       }
+
       newState = newState.filter(el => el !== label)
       setSelectedFilter(newState)
 
@@ -78,6 +82,7 @@ export default function Category() {
           <FlexColumn className='gap-6 w-full'>
             {data.map(({ children, label }) => {
               const isActive = activeFilter.includes(label)
+              if (param?.toUpperCase() === "FLOWERS" && label !== "ALL") return
               return <FlexColumn className="gap-6 w-full">
                 <Item label={label} isSelected={isActive} onCheck={() => handleFilterClick(label, isActive)} />
                 {children.map((el) => {

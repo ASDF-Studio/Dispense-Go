@@ -5,7 +5,7 @@ import { CustomIconHandler, IconHandler } from "../../../utils/icon"
 import { FC, useState } from "react"
 import Image from "next/image"
 import { Input } from "@/core/input"
-import { useCart } from "../../../app/contexts/cart"
+import { useCart } from "../../../contexts/cart"
 
 type ItemProps = {
     name: string

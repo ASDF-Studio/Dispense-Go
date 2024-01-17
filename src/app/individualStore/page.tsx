@@ -5,7 +5,6 @@ import { Flex, FlexCenter, FlexColumn } from "@/layout";
 import { MainLayout } from "@/layout/main";
 import { StoreBanner } from "@/ui/individual-store/store-info";
 import { Links, PaddingX, Products } from "../../constants";
-import { CustomLink } from "@/layout/header";
 import { Input } from "@/core/input";
 import { CustomIconHandler } from "../../utils/icon";
 import { Button, Typography } from "@/core";
@@ -126,6 +125,7 @@ export default function IndividualStore() {
             <FlexColumn className='gap-6 w-full'>
               {data.map(({ children, label }) => {
                 const isActive = activeFilter.includes(label)
+                if (state === 2 && label !== "ALL") return 
                 return <FlexColumn className="gap-6 w-full">
                   <Item label={label} isSelected={isActive} onCheck={() => handleFilterClick(label, isActive)} />
                   {children.map((el) => {
@@ -180,8 +180,6 @@ export default function IndividualStore() {
                 }
               </Flex>
             </FlexColumn>
-
-
           }
 
         </FlexColumn>

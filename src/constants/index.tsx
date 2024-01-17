@@ -1,6 +1,6 @@
 import { CustomIconHandler, IconHandler } from "../utils/icon";
 
-export const PaddingX = ` px-mobile m:px-tablet xl:px-desktop `;
+export const PaddingX = ` !px-mobile m:!px-tablet xl:!px-desktop `;
 export const PaddingXL = ` pl-mobile m:pl-tablet xl:pl-desktop `;
 export const PaddingXR = ` pr-mobile m:pr-tablet xl:pr-desktop `;
 
@@ -8,42 +8,42 @@ export const Links = [
   {
     text: "all",
     icon: <CustomIconHandler name="box-icon" />,
-    href: "/category",
+    href: "/category?filter=all",
   },
   {
     text: "deals",
     icon: <CustomIconHandler name="tag-icon" />,
-    href: "/category",
+    href: "/category?filter=deals",
   },
   {
     text: "flowers",
     icon: <CustomIconHandler name="canabis-icon" />,
-    href: "/category",
+    href: "/category?filter=flowers",
   },
   {
     text: "edibles",
     icon: <CustomIconHandler name="candy-icon" />,
-    href: "/category",
+    href: "/category?filter=edibles",
   },
   {
     text: "concentrates",
     icon: <CustomIconHandler name="wave-icon" />,
-    href: "/category",
+    href: "/category?filter=concentrates",
   },
   {
     text: "accessories",
     icon: <CustomIconHandler name="panel-icon" />,
-    href: "/category",
+    href: "/category?filter=accessories",
   },
   {
     text: "brands",
     icon: <CustomIconHandler name="crown-icon" />,
-    href: "/category",
+    href: "/category?filter=brands",
   },
   {
     text: "stores",
     icon: <CustomIconHandler name="store-icon" />,
-    href: "/individualStore",
+    href: "/category?filter=stores",
   },
 ];
 
