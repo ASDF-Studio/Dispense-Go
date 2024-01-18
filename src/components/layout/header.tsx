@@ -132,7 +132,8 @@ export const Header: FC<HeaderProps> = ({ withSearchBar, withNavigation = true }
             </Flex>
             {withSearchBar && (
               <Link href={"/search"} className="hover:cursor-pointer">
-                <ProductSearch containerClassname="hidden m:flex" classname="hover:cursor-pointer" />
+                <Button text="advanced search" classname="hidden m:flex !bg-background-primary hover:!bg-primary-hover" intent={"filled"} typographyVariant="buttons" icon={<IconHandler name="faSearch" />} />
+                {/* <ProductSearch containerClassname="hidden m:flex" classname="hover:cursor-pointer" /> */}
               </Link>
             )}
             <Flex className="gap-2.5 m:gap-4 xl:gap-6">

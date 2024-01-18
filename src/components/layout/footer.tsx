@@ -31,7 +31,7 @@ export const Footer = () => {
                             }
                         </FlexColumn>
                     </FlexColumn>
-                    <FlexColumn className="gap-6 m:gap-[17px]">
+                    {/* <FlexColumn className="gap-6 m:gap-[17px]">
                         <Typography intent={"grskt16"} classname="text-white/70">terms & privacy</Typography>
                         <FlexColumn className="gap-4 m:gap-[17px]">
                             {
@@ -42,7 +42,7 @@ export const Footer = () => {
                                 })
                             }
                         </FlexColumn>
-                    </FlexColumn>
+                    </FlexColumn> */}
                     <FlexColumn className="gap-6 m:gap-[17px]">
                         <Typography intent={"grskt16"} classname="text-white/70">About</Typography>
                         <FlexColumn className="gap-4 m:gap-[17px]">

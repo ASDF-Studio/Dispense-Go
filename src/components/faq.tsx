@@ -16,12 +16,11 @@ const Accordion: FC<Props> = ({ title, description, isLast = false }) => {
     const [isActive, setIsActive] = useState(false)
 
     return <FlexColumn className={["gap-4 m:gap-5 border  border-transparent border-t-border-whiteSmoke py-6", isLast && " border-b-border-whiteSmoke"].join(" ")}>
-        <Flex className="justify-between items-center">
+        <Flex className="justify-between items-center hover:cursor-pointer" onClick={() => setIsActive(!isActive)}>
             <Typography intent={"grstk24"} classname="text-white max-w-[272px] m:max-w-[660px] xl:max-w-none">
                 {title}
             </Typography>
             <IconButton
-                onClick={() => setIsActive(!isActive)}
                 icon={<CustomIconHandler name={isActive ? "chevronup-icon" : "chevrondown-icon"} classname="text-[32px] leading-[32px] font-light text-white" />}
             />
         </Flex>

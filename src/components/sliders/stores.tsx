@@ -15,7 +15,7 @@ export const ShopByStores = () => {
             <FlexColumn className="gap-9 m:gap-12 w-full">
                 <Flex className={["justify-between items-center", PaddingXR].join(" ")}>
                     <Typography intent={"header2"}>SHOP BY STORES</Typography>
-                    <Link href={'/individualStore'} className="hidden m:block">
+                    <Link href={'/category?filter=stores'} className="hidden m:block">
                         <Button
                             intent={"text"}
                             text="VIEW ALL"

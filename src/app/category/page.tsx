@@ -82,7 +82,7 @@ export default function Category() {
           <FlexColumn className='gap-6 w-full'>
             {data.map(({ children, label }) => {
               const isActive = activeFilter.includes(label)
-              if (param?.toUpperCase() === "FLOWERS" && label !== "ALL") return
+              if ((param?.toUpperCase() === "EDIBLES" || param?.toUpperCase() === "CONCENTRATES") && label !== "ALL") return
               return <FlexColumn className="gap-6 w-full">
                 <Item label={label} isSelected={isActive} onCheck={() => handleFilterClick(label, isActive)} />
                 {children.map((el) => {
