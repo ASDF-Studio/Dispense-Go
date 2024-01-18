@@ -4,6 +4,7 @@ import { SafeAreaSection } from "@/layout/spacing"
 import { IconHandler } from "../../utils/icon"
 import { FC } from "react"
 import { CustomImage } from "@/core/image"
+import Image from "next/image"
 
 interface NewsEventDetails {
     title: string;
@@ -63,10 +64,7 @@ const NewsEventSection: FC<{ details: NewsEventDetails }> = ({ details }) => {
               </Typography>
             </FlexColumn>
             <Flex className="justify-end">
-              <IconHandler
-                name="arrow-right"
-                classname="text-[83.38px] font-light leading-[83.38px] tracking-[-3.335px]"
-              />
+              <Image src={"/assets/icons/arrow-right.svg"} width={73} height={83} alt="arrow right" />
             </Flex>
           </FlexColumn>
         </div>

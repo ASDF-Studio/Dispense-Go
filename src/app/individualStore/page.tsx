@@ -64,7 +64,7 @@ export default function IndividualStore() {
     "edibles",
     "concentrates",
     "cbd",
-    "pre-rolss",
+    "pre-rolls",
     "brands",
   ]
 
@@ -125,7 +125,7 @@ export default function IndividualStore() {
             <FlexColumn className='gap-6 w-full'>
               {data.map(({ children, label }) => {
                 const isActive = activeFilter.includes(label)
-                if (state === 2 && label !== "ALL") return 
+                if ((state === 3 || state === 4 || state === 5 || state === 6) && label !== "ALL") return 
                 return <FlexColumn className="gap-6 w-full">
                   <Item label={label} isSelected={isActive} onCheck={() => handleFilterClick(label, isActive)} />
                   {children.map((el) => {
