@@ -13,7 +13,7 @@ type Props = {
 }
 
 export const CategoryCard: FC<Props> = ({ title, description, image = "category1.png", isLast = false }) => {
-    return <FlexColumn className={["min-w-[338px] h-[382px] justify-between relative p-5 gradient-text-white shrink-0 category-hover z-0 border-2 border-transparent", !isLast && "border-r-white"].join(" ")}>
+    return <FlexColumn className={["min-w-[338px] h-[382px] justify-between relative p-5 gradient-text-white shrink-0 category-hover border-2 border-transparent", !isLast && "border-r-white"].join(" ")}>
         <FlexColumn className="gap-2.5">
             <Typography intent={"grskt32"} classname=" tracking-[-1.12px] leading-[32px] font-medium gradient-text-green bg-clip-text text-transparent" >
                 {title}
