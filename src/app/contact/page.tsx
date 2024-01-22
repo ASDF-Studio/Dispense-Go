@@ -15,7 +15,7 @@ export default function Page() {
 
     return (
         <MainLayout>
-            <Flex className="justify-end bg-[url('/assets/background.svg')]">
+            <Flex className="justify-end bg-[url('/assets/background.webp')] bg-repeat bg-cover">
                 <FlexColumn className="px-6 py-8 m:p-8 xl:p-12 gap-6 bg-background-whiteS m:max-w-[580px] xl:max-w-[823px]">
                     <Typography intent={"header2"} classname="uppercase">
                         contact us

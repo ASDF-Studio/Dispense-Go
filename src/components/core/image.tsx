@@ -12,6 +12,6 @@ type ImageProps = {
 
 export const CustomImage: FC<ImageProps> = ({ imageUrl, width, height, classname = "", alt = "image", containerClassName = "" }) => {
     return <div className={[containerClassName, "overflow-hidden relative"].join(" ")}>
-        <Image fill src={imageUrl} className={classname} alt={alt} />
+        <Image fill src={imageUrl} className={[classname, "bg-white"].join(" ")} alt={alt} />
     </div>
 }

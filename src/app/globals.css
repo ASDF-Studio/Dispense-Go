@@ -146,6 +146,7 @@
   .search-input-1 {
     @apply text-[15px] font-sans font-normal tracking-normal leading-[15px] placeholder:text-text-black-40 w-full;
   }
+  
 
   .gradient-text-green {
     background: linear-gradient(98deg, #008254 24.29%, #7ac80e 122.44%);
@@ -266,4 +267,11 @@ input {
     transform: translateX(0);
     opacity: 1;
   }
+}
+
+
+
+.tooltip-container:hover .tooltip-child {
+  visibility: visible !important;
+  display: flex !important;
 }

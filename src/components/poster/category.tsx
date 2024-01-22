@@ -1,15 +1,17 @@
 import { Button, Typography } from "@/core";
 import { Flex, FlexColumn } from "@/layout";
 import Image from "next/image";
+import { useQueryString } from "../../hooks/useQueryString";
 
 export const CategoryPoster = () => {
+    const { param } = useQueryString("filter")
     return (
         <Flex className="bg-primary-darkGreen flex justify-between rounded-xl m:h-[137px] p-4 mx-5 m:mx-6 xl:mx-[42px] relative overflow-hidden">
-            <FlexColumn className="max-w-[175px] m:max-w-[258px] xl:max-w-[295px]">
-                <Typography intent={"grskt32"} classname="text-white text-[24px] leading-[24px] tracking-[-0.84px] xl:text-[32px] xl:leading-[32px] xl:tracking-[-1.12px]">
-                    Deals Near You <br />
+            <FlexColumn>
+                <Typography intent={"grskt32"} classname="text-white text-[24px] leading-[24px] tracking-[-0.84px] xl:text-[32px] xl:leading-[32px] xl:tracking-[-1.12px] capitalize">
+                    {param || "Deals"} Near You <br />
                 </Typography>
-                <Typography intent={"mons15"} classname="text-text-white-70 pt-3">
+                <Typography intent={"mons15"} classname="text-text-white-70 pt-3 max-w-[175px] m:max-w-[258px] xl:max-w-[295px]">
                     Latest products and exclusive bundle deals and promos from
                     stores
                 </Typography>

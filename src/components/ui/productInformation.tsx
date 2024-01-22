@@ -307,7 +307,7 @@ export const ProductInformation = () => {
                     />
                     <div className="h-[1px] bg-border-whiteSmoke" />
                     <FlexColumn className="gap-2.5">
-                        <Flex className="items-center justify-between">
+                        <Flex className="items-center justify-between hover:cursor-pointer" onClick={() => setState(!state)}>
                             <Typography
                                 intent={"grskt18"}
                                 classname="leading-[23.4px] font-normal uppercase"
@@ -315,7 +315,7 @@ export const ProductInformation = () => {
                                 PRODUCT DETAILS
                             </Typography>
                             <IconButton
-                                onClick={() => setState(!state)}
+                            
                                 icon={
                                     <IconHandler
                                         name={state ? "minus" : "plus"}
@@ -394,7 +394,7 @@ export const ProductInformation = () => {
                     </FlexColumn>
                     <div className="h-[1px] bg-border-whiteSmoke" />
                     <FlexColumn className="gap-2.5">
-                        <Flex className="items-center justify-between">
+                        <Flex className="items-center justify-between hover:cursor-pointer" onClick={() => setState1(!state1)}>
                             <Typography
                                 intent={"grskt18"}
                                 classname="leading-[23.4px] font-normal uppercase"
@@ -402,7 +402,7 @@ export const ProductInformation = () => {
                                 BRAND
                             </Typography>
                             <IconButton
-                                onClick={() => setState1(!state1)}
+                                
                                 icon={
                                     <IconHandler
                                         name={state1 ? "minus" : "plus"}
@@ -435,6 +435,7 @@ export const ProductInformation = () => {
                                     >
                                         232 Retail Dispensaries
                                     </Typography>
+                                    <Link href={"/category?filter=brands"}>
                                     <Button
                                         text="shop brand"
                                         intent={"text"}
@@ -442,6 +443,7 @@ export const ProductInformation = () => {
                                         typographyVariant="grskt12"
                                         textClassname="leading-[12px] uppercase tracking-[1.75px] font-medium hover:underline text-primary-brand"
                                     />
+                                    </Link>
                                 </FlexColumn>
                             </Flex>
                         )}
