@@ -69,7 +69,7 @@ export const Banner: FC<Props> = ({ classname }) => {
 export const StoreBanner: FC<Props> = ({ classname, color, text }) => {
     return <div className={["flex items-center h-[40px] xl:h-[60px] overflow-hidden  z-20 relative", classname].join(" ")}>
         <div className="scroll w-full">
-            <div className="RightToLeft flex gap-8 items-center">
+            <div className="LeftToRight flex gap-8 items-center">
                 {
                     Array(5).fill(0).map(() => {
                         return <Typography intent={"header2"} classname={["uppercase", color].join(" ")}>

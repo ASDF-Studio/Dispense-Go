@@ -30,14 +30,13 @@ export const LocationModal: FC<Props> = ({ open = true, setOpen }) => {
 
     }
 
-    useEffect(() => {
+    const handleUserLocation = () => {
         if (navigator && navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(getUserLocation)
         } else {
             console.log("not supported")
         }
-    }, [])
-
+    }
 
 
     return (
@@ -68,7 +67,7 @@ export const LocationModal: FC<Props> = ({ open = true, setOpen }) => {
                         startingIcon={<img src="/assets/icons/location-dot.svg" />}
                         containerClassname="p-2 rounded-md border border-border-whiteSmoke  bg-background-whiteGrey w-full"
                         classname="bg-transparent search-input-1 w-full"
-                        endingIcon={<img src="/assets/icons/location-active.svg" />}
+                        endingIcon={<img src="/assets/icons/location-active.svg" className="hover:cursor-pointer" onClick={handleUserLocation} />}
                     />
                 </Flex>
 

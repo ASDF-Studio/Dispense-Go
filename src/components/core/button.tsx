@@ -9,7 +9,7 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 const buttonStyles = cva("gap-[8px]", {
     variants: {
         intent: {
-            filled: "p-l rounded-md bg-primary-brand hover:bg-primary-hover",
+            filled: "p-l rounded-md bg-primary-brand hover:bg-primary-hover disabled:hover:bg-red",
             outline: "p-l rounded-md bg-transparent border-border-green-70 border hover:bg-border-green-10",
             inversed: "",
             text: "",

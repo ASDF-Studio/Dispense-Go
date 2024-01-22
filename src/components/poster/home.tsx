@@ -5,6 +5,7 @@ import { SafeAreaSection } from "@/layout/spacing"
 import { PaddingX } from "../../constants"
 import { Banner } from "@/sliders/banner"
 import Image from "next/image"
+import Link from "next/link"
 
 export const HomePoster = () => {
     return <SafeAreaSection withSpacing={false} classname="bg-primary-darkGreen relative pt-[35px] m:pt-[80px]  xl:pt-[86px] overflow-hidden">
@@ -18,7 +19,9 @@ export const HomePoster = () => {
             </Typography>
             <Flex className="gap-2 flex-col m:flex-row z-20">
                 <Search />
-                <Button classname="bg-gradient-linear-green min-w-[206px]" text="SEARCH" intent={"filled"} typographyVariant="grstk15" textClassname="font-semibold" />
+                <Link href={"/search"} className="">
+                <Button classname="bg-gradient-linear-green min-w-[206px] h-full" text="SEARCH" intent={"filled"} typographyVariant="grstk15" textClassname="font-semibold" />
+                </Link>
             </Flex>
         </FlexColumn>
         <Banner />

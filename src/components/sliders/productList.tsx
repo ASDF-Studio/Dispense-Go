@@ -36,7 +36,7 @@ export const ProductListInformation: FC<ProductListInfoType> = ({ variant = "pri
     }
 
     return <Flex className="relative items-center xl:gap-12 justify-between pr-5 m:pr-6 xl:pr-[40px]">
-        <FlexCenter className="gap-4 relative max-w-[256px] m:max-w-[292px] xl:max-w-full">
+        <FlexCenter className="gap-4 relative max-w-full m:max-w-[292px] xl:max-w-full">
             <Typography intent={"grskt28"} classname="line-clamp-2 leading-[33.6px] xl:leading-[28px] uppercase">
                 {title}
             </Typography>
@@ -48,8 +48,6 @@ export const ProductListInformation: FC<ProductListInfoType> = ({ variant = "pri
                     </Typography>
                 </Flex>
             }
-
-
             {
                 destination != 0 &&
                 <Flex className={["py-2 px-3 hidden xl:flex", tagClassMapping[variant].tagbg].join(" ")}>

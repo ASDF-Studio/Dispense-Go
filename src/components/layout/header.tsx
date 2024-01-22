@@ -23,7 +23,7 @@ const LocationIndicator = () => {
   return (
     <Flex className="items-center xl:gap-m">
       <LocationModal open={state} setOpen={setState} />
-      <IconButton icon={<LocationBar />} />
+      <IconButton icon={<LocationBar />} onClick={() => setState(true)} />
       <Typography
         intent={"mons15"}
         classname="text-primary-black hidden xl:block"
