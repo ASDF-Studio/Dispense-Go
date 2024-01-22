@@ -33,7 +33,7 @@ export const CustomSwiper: FC<Props> = ({ children, withPagination = true, class
     >
         {
             React.Children.map(children, child => {
-                return <SwiperSlide className='!w-fit !h-fit'>
+                return <SwiperSlide className='!w-fit !h-fit z-0 hover:z-10'>
                     {child}
                 </SwiperSlide>
             })
