@@ -10,6 +10,7 @@ import { Filter } from '../../svg';
 import { FilterModal } from '@/modals/filter';
 import { useParams } from 'next/navigation';
 import { useQueryString } from '../../hooks/useQueryString';
+import { storeNames } from '../../static-data/stores';
 
 interface checkboxDetails {
   label?: string;
@@ -98,11 +99,21 @@ export default function Category() {
           <Flex className='m:hidden justify-end px-5'>
             <Button text='filter' withWidth={false} onClick={() => setShowFilter(true)} startIcon={<Filter />} />
           </Flex>
-          <ProductList text={"Rendal Store - Jones Ave"} variant="tertiary" destination={0.5} />
-          <div className="border-b border-border-whiteSmoke mb-2"></div>
-          <ProductList text={"Jixon & Co’s Store"} variant="tertiary" destination={0.05} />
-          <div className="border-b border-border-whiteSmoke mb-2"></div>
-          <ProductList text={"Rendal Store - Clark Park"} variant="tertiary" destination={0.05} />
+          {storeNames.map((store, index) => {
+                        return (
+                            <>
+                                <ProductList
+                                    key={store.storeId}
+                                    text={store.storeName}
+                                    variant='tertiary'
+                                    destination={store.destination}
+                                />
+                                {index + 1 === storeNames.length ? null : (
+                                    <div className='border-b border-border-whiteSmoke mb-2'></div>
+                                )}
+                            </>
+                        );
+                    })}
         </FlexColumn>
       </Flex>
     </MainLayout>
