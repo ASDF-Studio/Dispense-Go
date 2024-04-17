@@ -21,8 +21,13 @@ import { ChevronIcon } from "../../svg";
 import Link from "next/link";
 import { useCart } from "../../contexts/cart";
 import { Products } from "../../constants";
+import { singleProductDetails } from "../../static-data/single-product-details";
 
-const Badge = () => {
+type BatchProps = {
+    batchName: string;
+};
+
+const Badge: FC<BatchProps> = ({ batchName }) => {
     return (
         <Flex className="px-2 py-l border border-border-whiteSmoke items-center gap-1 rounded-md">
             <IconHandler name="clouds-moon" classname="text-background-blue" />
@@ -30,7 +35,7 @@ const Badge = () => {
                 classname="leading-[13px] tracking-[0.71px] text-background-blue font-semibold"
                 intent={"mons13"}
             >
-                INDICA
+                {batchName}
             </Typography>
         </Flex>
     );
@@ -54,7 +59,11 @@ const Tag: FC<TagProps> = ({ title, percentage }) => {
     );
 };
 
-const SaleTag = () => {
+type SaleTagProp = {
+    discountPercentage: number;
+};
+
+const SaleTag: FC<SaleTagProp> = ({ discountPercentage }) => {
     return (
         <Flex className="rounded-[2px] border-[0.8px] border-text-red bg-text-red p-[3px] gap-0.5">
             <CustomIconHandler name="tag-sale" />
@@ -62,7 +71,7 @@ const SaleTag = () => {
             <Typography
                 intent={"monsBold12"}
                 classname="text-white"
-            >{`15%`}</Typography>
+            >{`${discountPercentage}%`}</Typography>
             <Typography intent={"monsBold12"} classname="text-white">
                 OFF
             </Typography>
@@ -106,7 +115,10 @@ export const QuantitySelecter = () => {
                 onClick={() => setQuantity(quantity !== "" ? quantity - 1 : 0)}
                 classname="p-l border border-border-whiteSmoke"
                 icon={
-                    <IconHandler name="minus" classname="text-[15px] leading-[18px]" />
+                    <IconHandler
+                        name="minus"
+                        classname="text-[15px] leading-[18px]"
+                    />
                 }
             />
             <Input
@@ -114,13 +126,18 @@ export const QuantitySelecter = () => {
                 type="number"
                 className="text-mons-20 text-center w-full"
                 value={quantity}
-                onChange={(e) => setQuantity(Math.abs(Number(e.target.value)) || "")}
+                onChange={(e) =>
+                    setQuantity(Math.abs(Number(e.target.value)) || "")
+                }
             />
             <IconButton
                 onClick={() => setQuantity(quantity !== "" ? quantity + 1 : 0)}
                 classname="p-l border border-border-whiteSmoke"
                 icon={
-                    <IconHandler name="plus" classname="text-[15px] leading-[18px]" />
+                    <IconHandler
+                        name="plus"
+                        classname="text-[15px] leading-[18px]"
+                    />
                 }
             />
         </Flex>
@@ -141,12 +158,24 @@ const ProductImageSlider = () => {
         <FlexColumn className="w-full m:w-[348px] xl:w-[552px] gap-[5px] m:gap-2">
             <Flex className="w-full h-[337px] m:w-[348px] m:h-[342px] xl:w-[551px] xl:h-[543px] relative">
                 <IconButton
-                    onClick={() => setSelectedImage((previousState) => previousState + 1 >= images.length ? 0 : previousState + 1)}
+                    onClick={() =>
+                        setSelectedImage((previousState) =>
+                            previousState + 1 >= images.length
+                                ? 0
+                                : previousState + 1
+                        )
+                    }
                     classname="py-2.5 px-3 z-10 rounded-full border border-border-whiteSmoke w-[44px] h-[44px] bg-white right-0 absolute translate-x-1/2 top-1/2 -translate-y-1/2"
                     icon={<ChevronIcon />}
                 />
                 <IconButton
-                    onClick={() => setSelectedImage((previousState) => previousState == 0 ? images.length - 1 : previousState - 1)}
+                    onClick={() =>
+                        setSelectedImage((previousState) =>
+                            previousState == 0
+                                ? images.length - 1
+                                : previousState - 1
+                        )
+                    }
                     classname="py-2.5 px-3 z-10 rounded-full border border-border-whiteSmoke w-[44px] h-[44px] bg-white left-0 absolute -translate-x-1/2 top-1/2 -translate-y-1/2"
                     icon={<ChevronIcon className="rotate-180" />}
                 />
@@ -175,7 +204,19 @@ const ProductImageSlider = () => {
     );
 };
 
-const StoreCard = () => {
+type StoreCardProps = {
+    storeName: string;
+    storeAddress: string;
+    storeReviewCount: number;
+    storeReviewStars: number;
+};
+
+const StoreCard: FC<StoreCardProps> = ({
+    storeAddress,
+    storeName,
+    storeReviewCount,
+    storeReviewStars,
+}) => {
     return (
         <FlexColumn className="py-[27px] px-[22px] rounded-md bg-primary-darkGreen gap-4">
             <Flex className="gap-4">
@@ -201,15 +242,20 @@ const StoreCard = () => {
                         intent={"grskt18"}
                         classname=" tracking-[-0.63px] font-medium text-white"
                     >
-                        Rendal Store - Jones Ave
+                        {storeName}
                     </Typography>
                     <Typography
                         intent={"mons12"}
                         classname="leading-[15.6px] text-text-white-70"
                     >
-                        Toronto, ON, Canada
+                        {storeAddress}
                     </Typography>
-                    <Rating rating={4} count={212} textColor="white" extend />
+                    <Rating
+                        rating={storeReviewStars}
+                        count={storeReviewCount}
+                        textColor="white"
+                        extend
+                    />
                 </FlexColumn>
             </Flex>
             <Link href={"/individualStore"} className="w-full">
@@ -226,37 +272,60 @@ const StoreCard = () => {
 };
 
 export const ProductInformation = () => {
-    const { toggleCartModal, addToCart } = useCart()
+    const { toggleCartModal, addToCart } = useCart();
     const [variant, setVariants] = useState<null | number>(null);
     const [state, setState] = useState(false);
     const [state1, setState1] = useState(false);
-
+    const { productDetails } = singleProductDetails;
     return (
         <SafeAreaSection>
             <Flex className="gap-5 xl:gap-[68px] pt-6 pb-[52px] m:py-[48px] justify-center flex-col m:flex-row">
                 <ProductImageSlider />
                 <FlexColumn className="gap-6 m:max-w-[351px] xl:max-w-[505px]">
                     <FlexColumn className="gap-5">
-                        <Typography intent={"grskt12"} classname="text-text-black-70">
-                            EDIBLES
+                        <Typography
+                            intent={"grskt12"}
+                            classname="text-text-black-70"
+                        >
+                            {productDetails.productCategory}
                         </Typography>
                         <Typography intent={"grstkt20"}>
-                            Evidence™️ Prison Shortys - Guava
+                            {productDetails.productName}
                         </Typography>
                         <Rating count={121} rating={3.3} textColor="black" />
                     </FlexColumn>
                     <Flex className="gap-3 flex-wrap">
-                        <Badge />
-                        <Tag title="THC" percentage={6} />
-                        <Tag title="Delta" percentage={9} />
-                        <Tag title="CBD" percentage={5} />
+                        <Badge batchName={productDetails.productBatch} />
+                        <Tag
+                            title="THC"
+                            percentage={productDetails.productComposition.THC}
+                        />
+                        <Tag
+                            title="Delta"
+                            percentage={productDetails.productComposition.DELTA}
+                        />
+                        <Tag
+                            title="CBD"
+                            percentage={productDetails.productComposition.CBD}
+                        />
                     </Flex>
                     <Flex className="gap-4 items-center">
                         <Flex className="gap-2.5">
-                            <PriceTag price={21.25} variant="big" />
-                            <PriceTag price={21.25} strikeThrough variant="big" />
+                            <PriceTag
+                                price={productDetails.productDiscountPrice}
+                                variant="big"
+                            />
+                            <PriceTag
+                                price={productDetails.productPrice}
+                                strikeThrough
+                                variant="big"
+                            />
                         </Flex>
-                        <SaleTag />
+                        <SaleTag
+                            discountPercentage={
+                                productDetails.discountPercentage
+                            }
+                        />
                     </Flex>
                     <FlexColumn className="gap-4">
                         <Typography
@@ -290,7 +359,8 @@ export const ProductInformation = () => {
                                 intent={"mons15"}
                                 classname="leading-[19.5px] font-medium text-text-black-40"
                             >
-                                4749 pieces available
+                                {productDetails.availableQuantity} pieces
+                                available
                             </Typography>
                         </Flex>
                         <QuantitySelecter />
@@ -301,13 +371,16 @@ export const ProductInformation = () => {
                         typographyVariant="grstk15"
                         textClassname="uppercase"
                         onClick={() => {
-                            addToCart(Products[0])
-                            toggleCartModal()
+                            addToCart(Products[0]);
+                            toggleCartModal();
                         }}
                     />
                     <div className="h-[1px] bg-border-whiteSmoke" />
                     <FlexColumn className="gap-2.5">
-                        <Flex className="items-center justify-between hover:cursor-pointer" onClick={() => setState(!state)}>
+                        <Flex
+                            className="items-center justify-between hover:cursor-pointer"
+                            onClick={() => setState(!state)}
+                        >
                             <Typography
                                 intent={"grskt18"}
                                 classname="leading-[23.4px] font-normal uppercase"
@@ -315,7 +388,6 @@ export const ProductInformation = () => {
                                 PRODUCT DETAILS
                             </Typography>
                             <IconButton
-                            
                                 icon={
                                     <IconHandler
                                         name={state ? "minus" : "plus"}
@@ -330,12 +402,7 @@ export const ProductInformation = () => {
                                     intent={"mons15"}
                                     classname="leading-[19.5px] font-normal"
                                 >
-                                    Lineage: Marshmallow OG x grape gasoline Flavor: Flower only:
-                                    Similar to Marshmallow OG but perhaps even better – similar
-                                    unique, nutty flavor with a little more creamy smoothness.
-                                    There's a good reason why our flower is renowned in the
-                                    industry - we don't blind-source. Our ladies are grown
-                                    in-house using only organic ingredients, dried and cured.
+                                    {productDetails.productDetails}
                                 </Typography>
                                 <Typography
                                     intent={"mons15"}
@@ -346,7 +413,7 @@ export const ProductInformation = () => {
                                         intent={"mons15"}
                                         classname="leading-[19.5px] font-bold"
                                     >
-                                        Indica
+                                        {productDetails.productType}
                                     </Typography>
                                     <br />
                                     Weight:{" "}
@@ -354,7 +421,7 @@ export const ProductInformation = () => {
                                         intent={"mons15"}
                                         classname="leading-[19.5px] font-bold"
                                     >
-                                        100g
+                                        {productDetails.productWeight}g
                                     </Typography>{" "}
                                     <br />
                                     Strain:{" "}
@@ -362,7 +429,7 @@ export const ProductInformation = () => {
                                         intent={"mons15"}
                                         classname="leading-[19.5px] font-bold"
                                     >
-                                        Low Key Kush
+                                        {productDetails.productStrain}
                                     </Typography>{" "}
                                     <br />
                                     Total Cannabinoids:{" "}
@@ -370,7 +437,7 @@ export const ProductInformation = () => {
                                         intent={"mons15"}
                                         classname="leading-[19.5px] font-bold"
                                     >
-                                        20
+                                        {productDetails.totalCannabinoids}
                                     </Typography>{" "}
                                     <br />
                                     Batch information:{" "}
@@ -378,7 +445,7 @@ export const ProductInformation = () => {
                                         intent={"mons15"}
                                         classname="leading-[19.5px] font-bold"
                                     >
-                                        KLT - 685115300
+                                        {productDetails.batchInfo}
                                     </Typography>{" "}
                                     <br />
                                     Harvest Date:{" "}
@@ -386,7 +453,7 @@ export const ProductInformation = () => {
                                         intent={"mons15"}
                                         classname="leading-[19.5px] font-bold"
                                     >
-                                        1/6/2023
+                                        {productDetails.harvestDate}
                                     </Typography>
                                 </Typography>
                             </FlexColumn>
@@ -394,7 +461,10 @@ export const ProductInformation = () => {
                     </FlexColumn>
                     <div className="h-[1px] bg-border-whiteSmoke" />
                     <FlexColumn className="gap-2.5">
-                        <Flex className="items-center justify-between hover:cursor-pointer" onClick={() => setState1(!state1)}>
+                        <Flex
+                            className="items-center justify-between hover:cursor-pointer"
+                            onClick={() => setState1(!state1)}
+                        >
                             <Typography
                                 intent={"grskt18"}
                                 classname="leading-[23.4px] font-normal uppercase"
@@ -402,7 +472,6 @@ export const ProductInformation = () => {
                                 BRAND
                             </Typography>
                             <IconButton
-                                
                                 icon={
                                     <IconHandler
                                         name={state1 ? "minus" : "plus"}
@@ -433,23 +502,31 @@ export const ProductInformation = () => {
                                         intent={"mons15"}
                                         classname="leading-[19.5px] font-medium text-text-black-70"
                                     >
-                                        232 Retail Dispensaries
+                                        {
+                                            productDetails.availableDispensariesCount
+                                        }{" "}
+                                        Retail Dispensaries
                                     </Typography>
                                     <Link href={"/category?filter=brands"}>
-                                    <Button
-                                        text="shop brand"
-                                        intent={"text"}
-                                        className="w-fit"
-                                        typographyVariant="grskt12"
-                                        textClassname="leading-[12px] uppercase tracking-[1.75px] font-medium hover:underline text-primary-brand"
-                                    />
+                                        <Button
+                                            text="shop brand"
+                                            intent={"text"}
+                                            className="w-fit"
+                                            typographyVariant="grskt12"
+                                            textClassname="leading-[12px] uppercase tracking-[1.75px] font-medium hover:underline text-primary-brand"
+                                        />
                                     </Link>
                                 </FlexColumn>
                             </Flex>
                         )}
                     </FlexColumn>
                     <div className="h-[1px] bg-border-whiteSmoke" />
-                    <StoreCard />
+                    <StoreCard
+                        storeName={productDetails.storeName}
+                        storeAddress={productDetails.storeAddress}
+                        storeReviewCount={productDetails.storeReviewCount}
+                        storeReviewStars={productDetails.storeReviewStars}
+                    />
                 </FlexColumn>
             </Flex>
         </SafeAreaSection>
