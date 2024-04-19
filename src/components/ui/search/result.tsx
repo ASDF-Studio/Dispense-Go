@@ -222,7 +222,29 @@ const FilteredProducts: FC<FilterProducts> = ({ title, viewAll = true, classname
                 >
                     {title}
                 </Typography>
-                {viewAll && <Link href={"/individualStore"} className="hidden m:block">
+                {viewAll && (
+                    <Link href={"/individualStore"} className='hidden m:block'>
+                        <Button
+                            intent={"text"}
+                            text='VIEW ALL'
+                            textClassname={"text-text-black-70"}
+                            typographyVariant='grstk14'
+                            icon={<Arrow />}
+                        />
+                    </Link>
+                )}
+            </Flex>
+            <Flex className='overflow-auto gap-6 pl-5 m:pl-6 overflow-y-hidden'>
+                <MemoProductCard size='xsmall' discountPrice={21.25} originalPrice={21}/>
+                <MemoProductCard size='xsmall' discountPrice={21.25} originalPrice={21}/>
+                <MemoProductCard size='xsmall' discountPrice={21.25} originalPrice={21}/>
+                <MemoProductCard size='xsmall' discountPrice={21.25} originalPrice={21}/>
+                <MemoProductCard size='xsmall' discountPrice={21.25} originalPrice={21}/>
+                <MemoProductCard size='xsmall' discountPrice={21.25} originalPrice={21}/>
+                <MemoProductCard size='xsmall' discountPrice={21.25} originalPrice={21}/>
+            </Flex>
+            {viewAll && (
+                <Link href={"/individualStore"} className=' m:hidden mx-auto'>
                     <Button
                         intent={"text"}
                         text="VIEW ALL"
@@ -232,28 +254,8 @@ const FilteredProducts: FC<FilterProducts> = ({ title, viewAll = true, classname
                             <Arrow />
                         }
                     />
-                </Link>}
-            </Flex>
-            <Flex className="overflow-auto gap-6 pl-5 m:pl-6 overflow-y-hidden">
-                <MemoProductCard size="xsmall" />
-                <MemoProductCard size="xsmall" />
-                <MemoProductCard size="xsmall" />
-                <MemoProductCard size="xsmall" />
-                <MemoProductCard size="xsmall" />
-                <MemoProductCard size="xsmall" />
-                <MemoProductCard size="xsmall" />
-            </Flex>
-            {viewAll && <Link href={"/individualStore"} className=" m:hidden mx-auto">
-                <Button
-                    intent={"text"}
-                    text="VIEW ALL"
-                    textClassname={"text-text-black-70"}
-                    typographyVariant="grstk14"
-                    icon={
-                        <Arrow />
-                    }
-                />
-            </Link>}
+                </Link>
+            )}
         </FlexColumn>
     );
 };
@@ -291,7 +293,6 @@ const FilterBrand = () => {
                 >
                     SORT BY BRAND
                 </Typography>
-
             </Flex>
             <Flex className="overflow-auto gap-6 pl-6">
                 <BrandCard onClick={() => setState(0)} isSelected={state === 0} />

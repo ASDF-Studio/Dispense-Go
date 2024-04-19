@@ -16,6 +16,7 @@ import { ProductList } from "@/sliders/productList";
 import { StoreInfoModal } from "@/modals/store-information";
 import { uniqBy } from "lodash";
 import { MemoProductCard } from "@/cards/deals";
+import { products } from "../../static-data/products";
 
 type FilterItemType = {
   text: string;
@@ -160,22 +161,22 @@ export default function IndividualStore() {
               <Typography intent={"grstk24"} classname="tracking-[-0.84px] leading-[24px] text-text-black-100 font-medium uppercase">{menu[state]}</Typography>
               <Flex className="flex-wrap w-full gap-6 hidden xl:flex xl:flex-wrap gap-y-12">
                 {
-                  Products.map((product, index) => {
-                    return <MemoProductCard index={index} size={"xsmall"} color={"black"} title={product.title} images={product.image} badge={product.type} sellPercentage={product?.sale} />
+                  products.map((product, index) => {
+                    return <MemoProductCard key={product.productId} originalPrice={product.originalPrice} discountPrice={product.discountPrice} index={index} size={"xsmall"} color={"black"} title={product.title} images={product.image} badge={product.type} sellPercentage={product?.sale} />
                   })
                 }
               </Flex>
               <Flex className="flex-wrap w-full gap-6 hidden m:flex m:flex-wrap xl:hidden gap-y-12">
                 {
-                  Products.map((product, index) => {
-                    return <MemoProductCard index={index} size={"tablet"} color={"black"} title={product.title} images={product.image} badge={product.type} sellPercentage={product?.sale} />
+                  products.map((product, index) => {
+                    return <MemoProductCard key={product.productId} originalPrice={product.originalPrice} discountPrice={product.discountPrice} index={index} size={"tablet"} color={"black"} title={product.title} images={product.image} badge={product.type} sellPercentage={product?.sale} />
                   })
                 }
               </Flex>
               <Flex className="flex-wrap w-full gap-6 m:hidden gap-y-12">
                 {
-                  Products.map((product, index) => {
-                    return <MemoProductCard index={index} size={"phone"} color={"black"} title={product.title} images={product.image} badge={product.type} sellPercentage={product?.sale} />
+                  products.map((product, index) => {
+                    return <MemoProductCard key={product.productId} originalPrice={product.originalPrice} discountPrice={product.discountPrice} index={index} size={"phone"} color={"black"} title={product.title} images={product.image} badge={product.type} sellPercentage={product?.sale} />
                   })
                 }
               </Flex>
