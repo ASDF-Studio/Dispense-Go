@@ -1,4 +1,4 @@
-export type Products = {
+export type Product = {
     productId: string;
     title: string;
     price: number;
@@ -10,7 +10,9 @@ export type Products = {
     thc: number;
     image: string[];
     count: number;
-}[];
+};
+export type Products = Product[];
+
 export const products: Products = [
     {
         productId: "e65dbfb9-195f-5785-a01f-81fecfd802c2",

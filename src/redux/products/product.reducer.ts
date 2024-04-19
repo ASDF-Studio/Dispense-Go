@@ -1,4 +1,4 @@
-import { type Products } from "../../static-data/products";
+import { type Product } from "../../static-data/products";
 import { type ProductsAction } from "./action.creators";
 import {
     GET_ALL_PRODUCTS_Failure,
@@ -9,7 +9,7 @@ import {
 type initialState = {
     loading: boolean;
     error: null;
-    products: Products[];
+    products: Product[];
     errMsg: string | null;
 };
 const initialState: initialState = {

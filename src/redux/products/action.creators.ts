@@ -1,4 +1,4 @@
-import { type Products } from "../../static-data/products";
+import { type Product } from "../../static-data/products";
 import {
     GET_ALL_PRODUCTS_Failure,
     GET_ALL_PRODUCTS_REQUEST,
@@ -11,7 +11,7 @@ export function requestProducts() {
     };
 }
 
-export function requestProductsSuccess(products: Products[]) {
+export function requestProductsSuccess(products: Product[]) {
     return {
         type: GET_ALL_PRODUCTS_SUCCESS,
         payload: products,
