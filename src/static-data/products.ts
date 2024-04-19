@@ -3,7 +3,7 @@ export type Product = {
     title: string;
     price: number;
     rating: number;
-    type: string;
+    type: "hybrid" | "indica" | "sativa" | undefined;
     sale?: number;
     originalPrice: number;
     discountPrice: number;
