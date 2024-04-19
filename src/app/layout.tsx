@@ -6,6 +6,7 @@ import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import 'react-tooltip/dist/react-tooltip.css'
 import { AgeConfirmationModal } from '@/modals/AgeConfirmation';
+import StoreProvider from "../redux/StoreProvider";
 
 config.autoAddCss = false;
 
@@ -41,9 +42,11 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  return (
-    <html lang="en">
-      <body className={`${montserrat.variable} ${grtskTera.variable}`}>{children}</body>
-    </html>
-  )
+    return (
+        <html lang='en'>
+            <body className={`${montserrat.variable} ${grtskTera.variable}`}>
+                <StoreProvider>{children}</StoreProvider>
+            </body>
+        </html>
+    );
 }

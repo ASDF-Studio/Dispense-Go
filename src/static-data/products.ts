@@ -1,4 +1,4 @@
-type Products = {
+export type Products = {
     productId: string;
     title: string;
     price: number;
