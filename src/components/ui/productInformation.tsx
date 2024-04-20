@@ -21,7 +21,8 @@ import { ChevronIcon } from "../../svg";
 import Link from "next/link";
 import { useCart } from "../../contexts/cart";
 import { Products } from "../../constants";
-import { singleProductDetails } from "../../static-data/single-product-details";
+import { AllproductDetails } from "../../static-data/single-product-details";
+import { findSingleProduct } from "../../utils/products";
 
 type BatchProps = {
     batchName: string;
@@ -144,10 +145,14 @@ export const QuantitySelecter = () => {
     );
 };
 
-const ProductImageSlider = () => {
+type ProductImageSliderProps={
+    imageArray:string[]
+}
+
+const ProductImageSlider = ({ imageArray }:ProductImageSliderProps) => {
     const [selectedImage, setSelectedImage] = useState(0);
 
-    const images = [
+    const images = imageArray ? imageArray: [
         "https://shopcannabisnl.com/cdn/shop/products/52947_m_500x.png?v=1698944424",
         "https://shopcannabisnl.com/cdn/shop/products/52716_m_500x.png?v=1680787718",
         "https://shopcannabisnl.com/cdn/shop/products/50305_m_cfa4298b-512d-4d82-87ac-166cd44bc7ca_500x.png?v=1648137959",
@@ -271,59 +276,68 @@ const StoreCard: FC<StoreCardProps> = ({
     );
 };
 
-export const ProductInformation = () => {
+type ProductInformationProps={
+    productId:string
+}
+
+export const ProductInformation:FC<ProductInformationProps> = ({
+    productId
+}) => {
+  
     const { toggleCartModal, addToCart } = useCart();
     const [variant, setVariants] = useState<null | number>(null);
     const [state, setState] = useState(false);
     const [state1, setState1] = useState(false);
-    const { productDetails } = singleProductDetails;
+
+    const selectedProduct = findSingleProduct(AllproductDetails,productId)
+
     return (
         <SafeAreaSection>
             <Flex className="gap-5 xl:gap-[68px] pt-6 pb-[52px] m:py-[48px] justify-center flex-col m:flex-row">
-                <ProductImageSlider />
+                <ProductImageSlider imageArray={selectedProduct?.productDetails.image as string[]} />
                 <FlexColumn className="gap-6 m:max-w-[351px] xl:max-w-[505px]">
                     <FlexColumn className="gap-5">
                         <Typography
                             intent={"grskt12"}
                             classname="text-text-black-70"
                         >
-                            {productDetails.productCategory}
+                            {selectedProduct?.productDetails.productCategory}
                         </Typography>
                         <Typography intent={"grstkt20"}>
-                            {productDetails.productName}
+                            {selectedProduct?.productDetails.productName}
                         </Typography>
                         <Rating count={121} rating={3.3} textColor="black" />
                     </FlexColumn>
                     <Flex className="gap-3 flex-wrap">
-                        <Badge batchName={productDetails.productBatch} />
+                        <Badge batchName={selectedProduct?.productDetails.productBatch as string} />
                         <Tag
                             title="THC"
-                            percentage={productDetails.productComposition.THC}
+                            percentage={selectedProduct?.productDetails.productComposition.THC as number}
                         />
                         <Tag
                             title="Delta"
-                            percentage={productDetails.productComposition.DELTA}
+                            percentage={selectedProduct?.productDetails.productComposition.DELTA as number}
                         />
                         <Tag
                             title="CBD"
-                            percentage={productDetails.productComposition.CBD}
+                            percentage={selectedProduct?.productDetails.productComposition.CBD as number}
                         />
                     </Flex>
                     <Flex className="gap-4 items-center">
                         <Flex className="gap-2.5">
                             <PriceTag
-                                price={productDetails.productDiscountPrice}
+                                price={selectedProduct?.productDetails.productDiscountPrice as number}
                                 variant="big"
                             />
                             <PriceTag
-                                price={productDetails.productPrice}
+                                price={selectedProduct?.productDetails.productPrice as number}
                                 strikeThrough
                                 variant="big"
                             />
                         </Flex>
                         <SaleTag
                             discountPercentage={
-                                productDetails.discountPercentage
+                                selectedProduct?.productDetails.discountPercentage as number
                             }
                         />
                     </Flex>
@@ -359,7 +373,7 @@ export const ProductInformation = () => {
                                 intent={"mons15"}
                                 classname="leading-[19.5px] font-medium text-text-black-40"
                             >
-                                {productDetails.availableQuantity} pieces
+                                {selectedProduct?.productDetails.availableQuantity} pieces
                                 available
                             </Typography>
                         </Flex>
@@ -402,7 +416,7 @@ export const ProductInformation = () => {
                                     intent={"mons15"}
                                     classname="leading-[19.5px] font-normal"
                                 >
-                                    {productDetails.productDetails}
+                                    {selectedProduct?.productDetails.productDetails}
                                 </Typography>
                                 <Typography
                                     intent={"mons15"}
@@ -413,7 +427,7 @@ export const ProductInformation = () => {
                                         intent={"mons15"}
                                         classname="leading-[19.5px] font-bold"
                                     >
-                                        {productDetails.productType}
+                                        {selectedProduct?.productDetails.productType}
                                     </Typography>
                                     <br />
                                     Weight:{" "}
@@ -421,7 +435,7 @@ export const ProductInformation = () => {
                                         intent={"mons15"}
                                         classname="leading-[19.5px] font-bold"
                                     >
-                                        {productDetails.productWeight}g
+                                        {selectedProduct?.productDetails.productWeight}g
                                     </Typography>{" "}
                                     <br />
                                     Strain:{" "}
@@ -429,7 +443,7 @@ export const ProductInformation = () => {
                                         intent={"mons15"}
                                         classname="leading-[19.5px] font-bold"
                                     >
-                                        {productDetails.productStrain}
+                                        {selectedProduct?.productDetails.productStrain}
                                     </Typography>{" "}
                                     <br />
                                     Total Cannabinoids:{" "}
@@ -437,7 +451,7 @@ export const ProductInformation = () => {
                                         intent={"mons15"}
                                         classname="leading-[19.5px] font-bold"
                                     >
-                                        {productDetails.totalCannabinoids}
+                                        {selectedProduct?.productDetails.totalCannabinoids}
                                     </Typography>{" "}
                                     <br />
                                     Batch information:{" "}
@@ -445,7 +459,7 @@ export const ProductInformation = () => {
                                         intent={"mons15"}
                                         classname="leading-[19.5px] font-bold"
                                     >
-                                        {productDetails.batchInfo}
+                                        {selectedProduct?.productDetails.batchInfo}
                                     </Typography>{" "}
                                     <br />
                                     Harvest Date:{" "}
@@ -453,7 +467,7 @@ export const ProductInformation = () => {
                                         intent={"mons15"}
                                         classname="leading-[19.5px] font-bold"
                                     >
-                                        {productDetails.harvestDate}
+                                        {selectedProduct?.productDetails.harvestDate}
                                     </Typography>
                                 </Typography>
                             </FlexColumn>
@@ -503,7 +517,7 @@ export const ProductInformation = () => {
                                         classname="leading-[19.5px] font-medium text-text-black-70"
                                     >
                                         {
-                                            productDetails.availableDispensariesCount
+                                            selectedProduct?.productDetails.availableDispensariesCount
                                         }{" "}
                                         Retail Dispensaries
                                     </Typography>
@@ -522,10 +536,10 @@ export const ProductInformation = () => {
                     </FlexColumn>
                     <div className="h-[1px] bg-border-whiteSmoke" />
                     <StoreCard
-                        storeName={productDetails.storeName}
-                        storeAddress={productDetails.storeAddress}
-                        storeReviewCount={productDetails.storeReviewCount}
-                        storeReviewStars={productDetails.storeReviewStars}
+                        storeName={selectedProduct?.productDetails.storeName as string}
+                        storeAddress={selectedProduct?.productDetails.storeAddress as string}
+                        storeReviewCount={selectedProduct?.productDetails.storeReviewCount as number}
+                        storeReviewStars={selectedProduct?.productDetails.storeReviewStars as number}
                     />
                 </FlexColumn>
             </Flex>

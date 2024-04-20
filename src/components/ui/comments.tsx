@@ -7,7 +7,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconHandler } from "../../utils/icon";
 import { SafeAreaSection } from "@/layout/spacing";
 import { type FC } from "react";
-import { singleProductDetails } from "../../static-data/single-product-details";
+import { AllproductDetails } from "../../static-data/single-product-details";
+import { findSingleProduct } from "../../utils/products";
 
 type CommentCardProps = {
   reviewText: string;
@@ -78,7 +79,14 @@ const CommentCard: FC<CommentCardProps> = ({
   );
 };
 
-export const Comments = () => {
+type CommentsProps={
+  productId:string
+}
+
+export const Comments:FC<CommentsProps> = ({productId}) => {
+
+  const selectedProduct = findSingleProduct(AllproductDetails,productId)
+
   return (
     <SafeAreaSection>
       <FlexColumn>
@@ -94,8 +102,8 @@ export const Comments = () => {
             <Rating
               textColor="black"
               starColor="black"
-              rating={singleProductDetails.customerReviews.overallRating + 1}
-              count={singleProductDetails.customerReviews.totalReviewCount}
+              rating={selectedProduct?.customerReviews?.overallRating! + 1}
+              count={selectedProduct?.customerReviews.totalReviewCount}
               extend
             />
           </FlexColumn>
@@ -110,7 +118,7 @@ export const Comments = () => {
             </Typography>
             <IconHandler name="chevrondown" />
           </Flex>
-          {singleProductDetails.customerReviews.reviews.map((review) => {
+          {selectedProduct?.customerReviews.reviews.map((review) => {
             return (
               <CommentCard
                 key={review.reviewId}
