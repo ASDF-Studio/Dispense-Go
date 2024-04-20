@@ -162,21 +162,21 @@ export default function IndividualStore() {
               <Flex className="flex-wrap w-full gap-6 hidden xl:flex xl:flex-wrap gap-y-12">
                 {
                   products.map((product, index) => {
-                    return <MemoProductCard key={product.productId} originalPrice={product.originalPrice} discountPrice={product.discountPrice} index={index} size={"xsmall"} color={"black"} title={product.title} images={product.image} badge={product.type} sellPercentage={product?.sale} />
+                    return <MemoProductCard productId={product.productId} key={product.productId} originalPrice={product.originalPrice} discountPrice={product.discountPrice} index={index} size={"xsmall"} color={"black"} title={product.title} images={product.image} badge={product.type} sellPercentage={product?.sale} />
                   })
                 }
               </Flex>
               <Flex className="flex-wrap w-full gap-6 hidden m:flex m:flex-wrap xl:hidden gap-y-12">
                 {
                   products.map((product, index) => {
-                    return <MemoProductCard key={product.productId} originalPrice={product.originalPrice} discountPrice={product.discountPrice} index={index} size={"tablet"} color={"black"} title={product.title} images={product.image} badge={product.type} sellPercentage={product?.sale} />
+                    return <MemoProductCard productId={product.productId} key={product.productId} originalPrice={product.originalPrice} discountPrice={product.discountPrice} index={index} size={"tablet"} color={"black"} title={product.title} images={product.image} badge={product.type} sellPercentage={product?.sale} />
                   })
                 }
               </Flex>
               <Flex className="flex-wrap w-full gap-6 m:hidden gap-y-12">
                 {
                   products.map((product, index) => {
-                    return <MemoProductCard key={product.productId} originalPrice={product.originalPrice} discountPrice={product.discountPrice} index={index} size={"phone"} color={"black"} title={product.title} images={product.image} badge={product.type} sellPercentage={product?.sale} />
+                    return <MemoProductCard productId={product.productId} key={product.productId} originalPrice={product.originalPrice} discountPrice={product.discountPrice} index={index} size={"phone"} color={"black"} title={product.title} images={product.image} badge={product.type} sellPercentage={product?.sale} />
                   })
                 }
               </Flex>

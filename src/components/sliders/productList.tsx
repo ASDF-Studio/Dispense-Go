@@ -161,6 +161,7 @@ export const ProductList: FC<Props> = ({
                                     thc={product.thc}
                                     rating={product.rating}
                                     count={product.count}
+                                    productId={product.productId}
                                 />
                             );
                         })}

@@ -146,6 +146,7 @@ export const ProductScroll: FC<Props> = ({
                             sellPercentage={product?.sale}
                             discountPrice={product.discountPrice}
                             originalPrice={product.originalPrice}
+                            productId={product.productId}
                         />
                     );
                 })}

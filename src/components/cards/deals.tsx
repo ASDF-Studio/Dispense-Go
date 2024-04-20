@@ -89,6 +89,7 @@ type ProductCardProps = {
     thc: number;
     rating: number;
     count: number;
+    productId:string
 };
 
 const ProductCard: FC<ProductCardProps> = ({
@@ -106,6 +107,7 @@ const ProductCard: FC<ProductCardProps> = ({
     thc,
     rating,
     count,
+    productId
 }) => {
     const getSize = {
         tablet: "w-[229px]",
@@ -114,11 +116,10 @@ const ProductCard: FC<ProductCardProps> = ({
         small: "w-[257px]",
         big: "w-[358px]",
     };
-
     return (
         // <AnimatedDiv>
         <FlexColumn className={["gap-l", getSize[size], classname].join(" ")}>
-            <Link href={"/product"}>
+            <Link href={`/product/${productId}`}>
                 <ProductImage
                     size={size}
                     URLS={images}
