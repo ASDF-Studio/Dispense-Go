@@ -15,6 +15,8 @@ import { useCart } from "../../contexts/cart";
 import { LoginModal } from "@/modals/login";
 import { LocationModal } from "@/modals/location";
 import { useSearchParams } from "next/navigation";
+import { useAppDispatch } from "../../redux/hook";
+import { toggleCartModal } from "../../redux/cart/action.creators";
 
 type Props = {};
 
@@ -43,11 +45,11 @@ const LocationIndicator = () => {
 };
 
 const ShoppingCart = () => {
-  const { toggleCartModal } = useCart();
+  const dispatch = useAppDispatch()
   return (
     <IconButton
       icon={<CustomIconHandler name="cart-icon" />}
-      onClick={toggleCartModal}
+      onClick={()=>{dispatch(toggleCartModal())}}
     />
   );
 };

@@ -6,6 +6,8 @@ import { FC, useState } from "react"
 import Image from "next/image"
 import { Input } from "@/core/input"
 import { useCart } from "../../../contexts/cart"
+import { useAppDispatch, useAppSelector } from "../../../redux/hook"
+import { setShowDelete, setShowVariants } from "../../../redux/cart/action.creators"
 
 type ItemProps = {
     name: string
@@ -15,7 +17,8 @@ type ItemProps = {
 
 const Item: FC<ItemProps> = ({ name, imageURL, quantity = 0 }) => {
     const [state, setState] = useState(quantity)
-    const { setShowVariants } = useCart()
+    const dispatch = useAppDispatch()
+    
     return <Flex className="gap-4">
         <Flex className={["w-[112px] h-[118px] shrink-0 relative border-[1.222px] border-border-whiteSmoke overflow-hidden rounded-[4px] shadow-cart-item"].join(" ")}>
             <Image src={"https://retailminded.com/wp-content/uploads/2016/03/EN_GreenOlive-1.jpg"} fill alt="image" />
@@ -26,7 +29,7 @@ const Item: FC<ItemProps> = ({ name, imageURL, quantity = 0 }) => {
             </Typography>
             <Flex className="gap-m items-center">
                 <Typography intent={"mons12"} classname="leading-[15.6px] font-medium text-primary-brand">Variation: 100mg</Typography>
-                <IconButton onClick={() => setShowVariants(true)} icon={<IconHandler name="edit" classname="text-[12px] leading-[1.74px] font-light text-primary-brand" />} />
+                <IconButton onClick={() => dispatch(setShowVariants(true))} icon={<IconHandler name="edit" classname="text-[12px] leading-[1.74px] font-light text-primary-brand" />} />
             </Flex>
             <Flex className="gap-2.5">
                 <Typography intent={"mons15"} classname="font-bold leading-[15px] text-text-black-100">$21.25</Typography>
@@ -46,11 +49,12 @@ type DispensaryProps = {
 }
 
 const DispensaryItems: FC<DispensaryProps> = ({ name }) => {
-    const { setShowDelte } = useCart()
+    const dispatch = useAppDispatch()
     const [state, setState] = useState({
         dispenseName: "",
         items: [0, 1]
     })
+
     return <FlexColumn className="gap-4">
         <Flex className="justify-between items-center py-4">
             <Flex className="gap-2">
@@ -59,7 +63,7 @@ const DispensaryItems: FC<DispensaryProps> = ({ name }) => {
                     {name || "Mike's Dispensary"}
                 </Typography>
             </Flex>
-            <Button intent={"text"} text="DELETE" onClick={() => setShowDelte(true)} typographyVariant="grskt12" textClassname="leading-[12px] tracking-[1.74px[ uppercases text-primary-brand shrink-0" />
+            <Button intent={"text"} text="DELETE" onClick={() => dispatch(setShowDelete(true))} typographyVariant="grskt12" textClassname="leading-[12px] tracking-[1.74px[ uppercases text-primary-brand shrink-0" />
         </Flex>
         <Item />
         <Item />
@@ -67,11 +71,11 @@ const DispensaryItems: FC<DispensaryProps> = ({ name }) => {
 }
 
 export const CartItems = ({ handleVariant }) => {
-    const { items } = useCart()
+   const {cartItems:items} = useAppSelector((state)=>state.cart)
 
     return <FlexColumn className="gap-6 overflow-hidden flex-grow">
-        {items.map(() => {
-            return <DispensaryItems />
+        {items.map((item) => {
+            return <DispensaryItems key={item.productId}/>
         })}
     </FlexColumn>
 }

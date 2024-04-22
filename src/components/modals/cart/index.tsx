@@ -11,17 +11,23 @@ import { isEmpty } from "lodash"
 import { CartItems } from "./cart-items";
 import { CircleCheckBox } from "@/core/checkbox";
 import Link from "next/link";
+import { useAppDispatch, useAppSelector } from "../../../redux/hook";
+import { emptyCart, setShowDelete, setShowVariants, toggleCartModal } from "../../../redux/cart/action.creators";
 
 
 type Props = {
     open: boolean;
-    setOpen: Dispatch<SetStateAction<boolean>>;
+    setOpen: (open: boolean)=> void;
 };
 
 export const CartModal: FC<Props> = ({ open = false, setOpen }) => {
-    const { items, isCartEmpty, toggleCartModal, showVariants, setShowVariants, showDelete, setShowDelte, handleEmptyCart } = useCart()
-
+    
     const [state, setState] = useState(0)
+    
+    const dispatch = useAppDispatch()
+    const {cartItems:items , showVariants, showDelete} = useAppSelector((state)=>state.cart)
+
+    const isCartEmpty = items.length === 0
 
     return (
         <BaseModal
@@ -51,7 +57,7 @@ export const CartModal: FC<Props> = ({ open = false, setOpen }) => {
                             <Typography intent={"grskt18"} classname="leading-[18px] tracking-[-0.63px] font-medium text-text-black-100">
                                 Basket ({items.length})
                             </Typography>
-                            <IconButton onClick={toggleCartModal} icon={<Image alt="dispense logo" width={15} height={24} src={"/assets/icons/x-mark.svg"} />} className="text-[24px] font-light text-black" />
+                            <IconButton onClick={()=>{dispatch(toggleCartModal())}} icon={<Image alt="dispense logo" width={15} height={24} src={"/assets/icons/x-mark.svg"} />} className="text-[24px] font-light text-black" />
                         </Flex>
                         <FlexColumn className="h-full">
                             <Divider />
@@ -126,8 +132,8 @@ export const CartModal: FC<Props> = ({ open = false, setOpen }) => {
                                 </Pressable>
                             </FlexColumn>
                             <FlexColumn className="gap-4">
-                                <Button text="confirm" onClick={() => setShowVariants(false)} intent={"filled"} typographyVariant="buttons" />
-                                <Button text="cancel" onClick={() => setShowVariants(false)} intent={"outline"} typographyVariant="buttons" />
+                                <Button text="confirm" onClick={() => dispatch(setShowVariants(false))} intent={"filled"} typographyVariant="buttons" />
+                                <Button text="cancel" onClick={() => dispatch(setShowVariants(false))} intent={"outline"} typographyVariant="buttons" />
                             </FlexColumn>
                         </FlexColumn>
                     </FlexColumn>
@@ -145,10 +151,10 @@ export const CartModal: FC<Props> = ({ open = false, setOpen }) => {
                             </FlexColumn>
                             <FlexColumn className="gap-4">
                                 <Button text="remove" onClick={() => {
-                                    handleEmptyCart()
-                                    setShowDelte(false)
+                                    dispatch(emptyCart())
+                                    dispatch(setShowDelete(false))
                                 }} intent={"filled"} typographyVariant="buttons" textClassname="text-white" />
-                                <Button text="cancel" onClick={() => setShowDelte(false)} intent={"outline"} typographyVariant="buttons" />
+                                <Button text="cancel" onClick={() => dispatch(setShowDelete(false))} intent={"outline"} typographyVariant="buttons" />
                             </FlexColumn>
                         </FlexColumn>
                     </FlexColumn>

@@ -3,8 +3,8 @@ import { CustomLink, Header } from "./header";
 import { Footer } from "./footer";
 import { NewsEvents } from "./news-events";
 import { FAQ } from "@/faq";
-import { CartContextProvider } from "../../contexts/cart";
 import { NavLinks } from "./navbar";
+import CartProvider from "../../app/providers/CartProvider";
 
 type FooterItem = "faq" | "news" | "footer";
 
@@ -25,7 +25,7 @@ export const MainLayout: FC<Props> = ({
 
   return (
     <>
-      <CartContextProvider>
+      <CartProvider>
         <Header withNavigation={withNavigation} withSearchBar={withSearch} />
         {/* <AgeConfirmationModal /> */}
         {withNavigation ? <NavLinks /> : <div className="pt-[65px]" />}
@@ -33,7 +33,7 @@ export const MainLayout: FC<Props> = ({
         {footerItems.includes("faq") && <FAQ />}
         {footerItems.includes("news") && <NewsEvents />}
         {footerItems.includes("footer") && <Footer />}
-      </CartContextProvider>
+      </CartProvider>
     </>
   );
 };

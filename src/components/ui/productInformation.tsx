@@ -5,7 +5,7 @@ import { TypeBadge } from "@/cards/tag";
 import { Button, IconButton, Typography } from "@/core";
 import { Flex, FlexCenter, FlexColumn, Pressable } from "@/layout";
 import { CustomIconHandler, IconHandler } from "../../utils/icon";
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { PriceTag } from "@/cards/price";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -23,6 +23,9 @@ import { useCart } from "../../contexts/cart";
 import { Products } from "../../constants";
 import { AllproductDetails } from "../../static-data/single-product-details";
 import { findSingleProduct } from "../../utils/products";
+import { type CartProduct } from "../../redux/cart/cart.reducer";
+import { useAppDispatch } from "../../redux/hook";
+import { addProductToCart, toggleCartModal as RtoggleCartModal, setShowDelete, setShowVariants, toggleCartModal } from "../../redux/cart/action.creators";
 
 type BatchProps = {
     batchName: string;
@@ -107,13 +110,47 @@ const Variant: FC<VariantsProp> = ({ isSelected = false, desc, onClick }) => {
     );
 };
 
-export const QuantitySelecter = () => {
-    const [quantity, setQuantity] = useState<number | "">(0);
+type ProductQuantity = Omit<CartProduct , "productQuantity">
+type GetProductQuantity = (product: CartProduct) => void
+
+type QuantitySelecterProps = {
+    productQuantity:ProductQuantity,
+    getProductQuantity:GetProductQuantity
+}
+
+export const QuantitySelecter :FC<QuantitySelecterProps> = ({
+    getProductQuantity,
+    productQuantity:{
+        productDiscountPrice,
+        productId,
+        productImage,
+        productName,
+        productPrice
+    }
+    
+}) => {
+    const [product, setProduct]= useState<CartProduct>({
+        productDiscountPrice,
+        productId,
+        productName,
+        productImage,
+        productQuantity:0,
+        productPrice,
+    })
+   getProductQuantity(product)
+
+
     return (
         <Flex className="items-center">
             <IconButton
-                disabled={quantity === 0}
-                onClick={() => setQuantity(quantity !== "" ? quantity - 1 : 0)}
+                disabled={product.productQuantity === 0}
+                onClick={() => setProduct((prev)=>{
+                    return {
+                        ...prev,
+                        productQuantity:prev.productQuantity=== 0 ? 0 : prev.productQuantity-1
+                    }
+                })}
+
                 classname="p-l border border-border-whiteSmoke"
                 icon={
                     <IconHandler
@@ -126,13 +163,25 @@ export const QuantitySelecter = () => {
                 containerClassname="border border-border-whiteSmoke h-[43px] w-full"
                 type="number"
                 className="text-mons-20 text-center w-full"
-                value={quantity}
+                value={product.productQuantity}
                 onChange={(e) =>
-                    setQuantity(Math.abs(Number(e.target.value)) || "")
+                    setProduct((prev)=>{
+                        return {
+                            ...prev,
+                            productQuantity:Math.abs(Number(e.target.value))
+                        }
+                    })
                 }
             />
             <IconButton
-                onClick={() => setQuantity(quantity !== "" ? quantity + 1 : 0)}
+                onClick={()=>{
+                    setProduct((prev)=>{
+                        return {
+                            ...prev,
+                            productQuantity:prev.productQuantity + 1
+                        }
+                    })
+                }}
                 classname="p-l border border-border-whiteSmoke"
                 icon={
                     <IconHandler
@@ -284,10 +333,16 @@ export const ProductInformation:FC<ProductInformationProps> = ({
     productId
 }) => {
   
-    const { toggleCartModal, addToCart } = useCart();
     const [variant, setVariants] = useState<null | number>(null);
     const [state, setState] = useState(false);
     const [state1, setState1] = useState(false);
+    const [product, setProduct]= useState<CartProduct|null>(null)
+
+    const dispatch = useAppDispatch()
+
+    function getProductQuantity(product:CartProduct){
+            setProduct(product)
+    }
 
     const selectedProduct = findSingleProduct(AllproductDetails,productId)
 
@@ -377,17 +432,26 @@ export const ProductInformation:FC<ProductInformationProps> = ({
                                 available
                             </Typography>
                         </Flex>
-                        <QuantitySelecter />
+                        <QuantitySelecter 
+                            getProductQuantity={getProductQuantity}
+                            productQuantity={{
+                                productDiscountPrice:selectedProduct?.productDetails.productDiscountPrice as number,
+                                productId:selectedProduct?.productDetails?.productId as string,
+                                productName:selectedProduct?.productDetails?.productName as string,
+                                productImage:selectedProduct?.productDetails?.image[0] as string,
+                                productPrice:selectedProduct?.productDetails?.productPrice! as number
+                            }}
+                        />
                     </FlexColumn>
                     <Button
                         text="add to cart"
                         intent={"filled"}
                         typographyVariant="grstk15"
                         textClassname="uppercase"
-                        onClick={() => {
-                            addToCart(Products[0]);
-                            toggleCartModal();
-                        }}
+                       onClick={()=>{
+                        dispatch(addProductToCart(product!))
+                        dispatch(toggleCartModal())
+                       }}
                     />
                     <div className="h-[1px] bg-border-whiteSmoke" />
                     <FlexColumn className="gap-2.5">
