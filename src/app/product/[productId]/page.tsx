@@ -8,11 +8,11 @@ import { ProductInformation } from "@/ui/productInformation";
 import { Comments } from "@/ui/comments";
 
 type ParamsProp = {
-    params: { slug: string };
+    params: { productId: string };
 };
 
 export default function Page({ params }: ParamsProp) {
-    const productId = params.slug;
+    const productId = params.productId;
     return (
         <MainLayout>
             <ProductInformation productId={productId} />
