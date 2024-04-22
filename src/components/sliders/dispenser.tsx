@@ -147,6 +147,9 @@ export const ProductScroll: FC<Props> = ({
                             discountPrice={product.discountPrice}
                             originalPrice={product.originalPrice}
                             productId={product.productId}
+                            thc={product.thc}
+                            rating={product.rating}
+                            
                         />
                     );
                 })}

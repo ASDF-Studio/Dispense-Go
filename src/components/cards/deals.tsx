@@ -79,7 +79,6 @@ type ProductCardProps = {
     title?: string;
     sellPercentage?: number;
     badge?: "hybrid" | "indica" | "sativa";
-    oldPrice?: number;
     images?: string[];
     size?: "big" | "small" | "xsmall" | "msmall" | "phone" | "tablet";
     color?: "white" | "black";
