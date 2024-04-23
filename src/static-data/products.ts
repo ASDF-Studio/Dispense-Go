@@ -26,7 +26,7 @@ export const products: Products = [
         thc: 20,
         count: 121,
         image: [
-            "https://shopcannabisnl.com/cdn/shop/files/52907-m_500x.png?v=1698768379",
+            "https://shopcannabisnl.com/cdn/shop/products/52977_m_500x.png?v=1690205435",
         ],
     },
     {
