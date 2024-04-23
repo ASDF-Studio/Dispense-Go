@@ -134,7 +134,7 @@ export const QuantitySelecter :FC<QuantitySelecterProps> = ({
         productId,
         productName,
         productImage,
-        productQuantity:0,
+        productQuantity:1,
         productPrice,
     })
    getProductQuantity(product)
