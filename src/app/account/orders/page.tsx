@@ -13,11 +13,10 @@ import Link from "next/link";
 import { SafeAreaSection } from "@/layout/spacing";
 import { BoxIcon, InfoIcon, StoreIcon } from "../../../svg";
 import { QrModal } from "@/modals/qr-modal";
-import {
-  type Order,
-  orders,
-  type OrderItem,
-} from "../../../static-data/orders";
+
+
+import { type Order ,OrderItem} from "../../../redux/orders/orders.reducer";
+import { useAppSelector } from "../../../redux/hook";
 
 type State = "completed" | "ready" | "failed";
 
@@ -400,6 +399,7 @@ const OrdersCard: FC<OrderCardProps> = ({ order, onShowQR }) => {
 
 export default function MyOrdersPage() {
   const [showQrModal, setShowQrModal] = useState<boolean>(false);
+  const { orders } = useAppSelector((state) => state.orders)
 
   return (
     <MainLayout footerItems={[]}>
