@@ -1,10 +1,13 @@
 import {
     ADD_PRODUCT_TO_CART,
     DECREMENT_CART_PRODUCT,
+    DELETE_PRODUCT_BY_DISPENSARY_ID,
     EMPTY_CART,
     INCREMENT_CART_PRODUCT,
     REMOVE_ALL_CART_PRODUCTS,
     SET_CART_MODAL,
+    SET_CART_PRODUCT_QUANTITY,
+    SET_DISPENSARY_ID_TO_DELETE,
     SET_SHOW_DELETE,
     SET_SHOW_VARIANTS,
     TOGGLE_CART_MODAL,
@@ -18,21 +21,50 @@ export const addProductToCart = (cartProduct: CartProduct) => {
     };
 };
 
-export const incrementCartProduct = () => {
+export const incrementCartProduct = (productId: string) => {
     return {
         type: INCREMENT_CART_PRODUCT,
+        payload: productId,
     };
 };
 
-export const decrementCartProduct = () => {
+export const decrementCartProduct = (productId: string) => {
     return {
         type: DECREMENT_CART_PRODUCT,
+        payload: productId,
+    };
+};
+
+export const setCartProductQuantity = (
+    productId: string,
+    productQuantity: number
+) => {
+    return {
+        type: SET_CART_PRODUCT_QUANTITY,
+        payload: {
+            productId,
+            productQuantity,
+        },
     };
 };
 
 export const removeAllCartProducts = () => {
     return {
         type: REMOVE_ALL_CART_PRODUCTS,
+    };
+};
+
+export const deleteProductsByDispensaryId = (dispensaryId: string) => {
+    return {
+        type: DELETE_PRODUCT_BY_DISPENSARY_ID,
+        payload: dispensaryId,
+    };
+};
+
+export const setDispensaryIdToDelete = (dispensaryId: string) => {
+    return {
+        type: SET_DISPENSARY_ID_TO_DELETE,
+        payload: dispensaryId,
     };
 };
 
@@ -67,6 +99,7 @@ export const emptyCart = () => {
         type: EMPTY_CART,
     };
 };
+
 export type CartAction =
     | ReturnType<typeof addProductToCart>
     | ReturnType<typeof incrementCartProduct>
@@ -76,4 +109,7 @@ export type CartAction =
     | ReturnType<typeof toggleCartModal>
     | ReturnType<typeof setShowVariants>
     | ReturnType<typeof setShowDelete>
-    | ReturnType<typeof emptyCart>;
+    | ReturnType<typeof emptyCart>
+    | ReturnType<typeof setCartProductQuantity>
+    | ReturnType<typeof deleteProductsByDispensaryId>
+    | ReturnType<typeof setDispensaryIdToDelete>;

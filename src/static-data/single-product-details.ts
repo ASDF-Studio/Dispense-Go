@@ -149,8 +149,8 @@ export const AllproductDetails = [
             ],
             productPrice: 21.25,
             productDiscountPrice: 21.25,
-            dispensaryName: "Alan Stone's Dispensary",
-            dispensaryId: "e5ac94c4-c766-515d-a22a-5575101283ee",
+            dispensaryName: "Fred Cobb's Dispensary",
+            dispensaryId: "1bb9ddd6-2037-53b9-a850-83c6fedfe0d1",
             productCategory: "EDIBLES",
             productBatch: "INDICA",
             productComposition: {

@@ -2,10 +2,13 @@ import { type CartAction } from "./action.creators";
 import {
     ADD_PRODUCT_TO_CART,
     DECREMENT_CART_PRODUCT,
+    DELETE_PRODUCT_BY_DISPENSARY_ID,
     EMPTY_CART,
     INCREMENT_CART_PRODUCT,
     REMOVE_ALL_CART_PRODUCTS,
     SET_CART_MODAL,
+    SET_CART_PRODUCT_QUANTITY,
+    SET_DISPENSARY_ID_TO_DELETE,
     SET_SHOW_DELETE,
     SET_SHOW_VARIANTS,
     TOGGLE_CART_MODAL,
@@ -18,17 +21,21 @@ export type CartProduct = {
     productPrice?: number;
     productDiscountPrice: number;
     productQuantity: number;
+    dispensaryId: string;
+    dispensaryName: string;
 };
 type Cart = {
     isCartModalOpen: boolean;
     showVariants: boolean;
     showDelete: boolean;
+    deleteFromDispensaryId: string;
     cartItems: CartProduct[];
 };
 
 const initialState: Cart = {
     showVariants: false,
     showDelete: false,
+    deleteFromDispensaryId: "",
     isCartModalOpen: false,
     cartItems: [],
 };
@@ -45,10 +52,68 @@ export default function cartReducer(state = initialState, action: CartAction) {
                 cartItems: [...state.cartItems, action.payload],
             };
             break;
+
         case INCREMENT_CART_PRODUCT:
+            const incrementedCartItems = state.cartItems.map((cartItem) => {
+                if (cartItem.productId !== action.payload) {
+                    return { ...cartItem };
+                }
+                return {
+                    ...cartItem,
+                    productQuantity: cartItem.productQuantity + 1,
+                };
+            });
+            state = {
+                ...state,
+                cartItems: [...incrementedCartItems],
+            };
             break;
 
         case DECREMENT_CART_PRODUCT:
+            const decrementedCartItems = state.cartItems.map((cartItem) => {
+                if (cartItem.productId !== action.payload) {
+                    return { ...cartItem };
+                }
+                return {
+                    ...cartItem,
+                    productQuantity:
+                        cartItem.productQuantity === 0
+                            ? 0
+                            : cartItem.productQuantity - 1,
+                };
+            });
+            state = {
+                ...state,
+                cartItems: [...decrementedCartItems],
+            };
+            break;
+
+        case SET_CART_PRODUCT_QUANTITY:
+            const updatedCartItems = state.cartItems.map((cartItem) => {
+                if (cartItem.productId !== action.payload.productId) {
+                    return { ...cartItem };
+                }
+                return {
+                    ...cartItem,
+                    productQuantity: Math.abs(
+                        Number(action.payload.productQuantity)
+                    ),
+                };
+            });
+            state = {
+                ...state,
+                cartItems: [...updatedCartItems],
+            };
+            break;
+
+        case DELETE_PRODUCT_BY_DISPENSARY_ID:
+            const filteredCartItems = state.cartItems.filter((cartItem) => {
+                return cartItem.dispensaryId !== action.payload;
+            });
+            state = { ...state, cartItems: [...filteredCartItems] };
+            break;
+        case SET_DISPENSARY_ID_TO_DELETE:
+            state = { ...state, deleteFromDispensaryId: action.payload };
             break;
 
         case REMOVE_ALL_CART_PRODUCTS:

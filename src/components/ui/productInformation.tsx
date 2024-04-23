@@ -125,7 +125,9 @@ export const QuantitySelecter :FC<QuantitySelecterProps> = ({
         productId,
         productImage,
         productName,
-        productPrice
+        productPrice,
+        dispensaryId,
+        dispensaryName
     }
     
 }) => {
@@ -136,6 +138,8 @@ export const QuantitySelecter :FC<QuantitySelecterProps> = ({
         productImage,
         productQuantity:1,
         productPrice,
+        dispensaryId,
+        dispensaryName
     })
    getProductQuantity(product)
 
@@ -435,6 +439,8 @@ export const ProductInformation:FC<ProductInformationProps> = ({
                         <QuantitySelecter 
                             getProductQuantity={getProductQuantity}
                             productQuantity={{
+                                dispensaryId:selectedProduct?.productDetails.dispensaryId as string,
+                                dispensaryName:selectedProduct?.productDetails.dispensaryName as string,
                                 productDiscountPrice:selectedProduct?.productDetails.productDiscountPrice as number,
                                 productId:selectedProduct?.productDetails?.productId as string,
                                 productName:selectedProduct?.productDetails?.productName as string,

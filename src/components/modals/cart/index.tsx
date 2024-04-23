@@ -12,7 +12,7 @@ import { CartItems } from "./cart-items";
 import { CircleCheckBox } from "@/core/checkbox";
 import Link from "next/link";
 import { useAppDispatch, useAppSelector } from "../../../redux/hook";
-import { emptyCart, setShowDelete, setShowVariants, toggleCartModal } from "../../../redux/cart/action.creators";
+import { deleteProductsByDispensaryId, emptyCart, setShowDelete, setShowVariants, toggleCartModal } from "../../../redux/cart/action.creators";
 
 
 type Props = {
@@ -26,6 +26,7 @@ export const CartModal: FC<Props> = ({ open = false, setOpen }) => {
     
     const dispatch = useAppDispatch()
     const {cartItems:items , showVariants, showDelete} = useAppSelector((state)=>state.cart)
+    const { deleteFromDispensaryId }= useAppSelector((state)=>state.cart)
 
     const isCartEmpty = items.length === 0
 
@@ -151,7 +152,7 @@ export const CartModal: FC<Props> = ({ open = false, setOpen }) => {
                             </FlexColumn>
                             <FlexColumn className="gap-4">
                                 <Button text="remove" onClick={() => {
-                                    dispatch(emptyCart())
+                                    dispatch(deleteProductsByDispensaryId(deleteFromDispensaryId))
                                     dispatch(setShowDelete(false))
                                 }} intent={"filled"} typographyVariant="buttons" textClassname="text-white" />
                                 <Button text="cancel" onClick={() => dispatch(setShowDelete(false))} intent={"outline"} typographyVariant="buttons" />
