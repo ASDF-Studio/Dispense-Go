@@ -8,7 +8,8 @@ export const AllproductDetails = [
             ],
             productPrice: 21.25,
             productDiscountPrice: 21.25,
-
+            dispensaryName: "Fred Cobb's Dispensary",
+            dispensaryId: "1bb9ddd6-2037-53b9-a850-83c6fedfe0d1",
             productCategory: "EDIBLES",
             productBatch: "INDICA",
             productComposition: {
@@ -148,7 +149,8 @@ export const AllproductDetails = [
             ],
             productPrice: 21.25,
             productDiscountPrice: 21.25,
-
+            dispensaryName: "Alan Stone's Dispensary",
+            dispensaryId: "e5ac94c4-c766-515d-a22a-5575101283ee",
             productCategory: "EDIBLES",
             productBatch: "INDICA",
             productComposition: {
@@ -289,7 +291,8 @@ export const AllproductDetails = [
             ],
             productPrice: 21.25,
             productDiscountPrice: 21.25,
-
+            dispensaryName: "Chris Little's Dispensary",
+            dispensaryId: "e7ada41f-26c6-590f-bd60-66e398bf3fd1",
             productCategory: "EDIBLES",
             productBatch: "INDICA",
             productComposition: {
@@ -430,7 +433,8 @@ export const AllproductDetails = [
             ],
             productPrice: 21.25,
             productDiscountPrice: 21.25,
-
+            dispensaryName: "Hilda Logan's Dispensary",
+            dispensaryId: "cc734b7e-f1b3-53b7-95d9-65e5cd465a0b",
             productCategory: "EDIBLES",
             productBatch: "INDICA",
             productComposition: {
@@ -571,7 +575,8 @@ export const AllproductDetails = [
             ],
             productPrice: 21.25,
             productDiscountPrice: 21.25,
-
+            dispensaryName: "Oscar Singleton's Dispensary",
+            dispensaryId: "ce90879d-89c7-5039-b951-c7bdfec8a0b7",
             productCategory: "EDIBLES",
             productBatch: "INDICA",
             productComposition: {
@@ -633,6 +638,7 @@ export const AllproductDetails = [
                     reviewerName: "San P.",
                     reviewStars: 5,
                 },
+
                 {
                     reviewId: "f3d8d08c-f60e-5879-9169-8bc83ae6e40d",
                     reviewHeading:
@@ -712,7 +718,8 @@ export const AllproductDetails = [
             ],
             productPrice: 21.25,
             productDiscountPrice: 21.25,
-
+            dispensaryName: "Max Logan's Dispensary",
+            dispensaryId: "06dc90a1-a680-5b77-a280-78ea1b56096d",
             productCategory: "EDIBLES",
             productBatch: "INDICA",
             productComposition: {
@@ -853,7 +860,8 @@ export const AllproductDetails = [
             ],
             productPrice: 21.25,
             productDiscountPrice: 21.25,
-
+            dispensaryName: "Katharine Martin's Dispensary",
+            dispensaryId: "9ca2089f-1354-5638-8bad-e6263ec879e7",
             productCategory: "EDIBLES",
             productBatch: "INDICA",
             productComposition: {
@@ -994,7 +1002,8 @@ export const AllproductDetails = [
             ],
             productPrice: 21.25,
             productDiscountPrice: 21.25,
-
+            dispensaryName: "Gavin Ball's Dispensary",
+            dispensaryId: "3512c974-2f8e-5738-b661-df9369024517",
             productCategory: "EDIBLES",
             productBatch: "INDICA",
             productComposition: {
@@ -1135,7 +1144,8 @@ export const AllproductDetails = [
             ],
             productPrice: 21.25,
             productDiscountPrice: 21.25,
-
+            dispensaryName: "Augusta Richards's Dispensary",
+            dispensaryId: "b409e333-ef45-580b-85fd-3dc58ea4099a",
             productCategory: "EDIBLES",
             productBatch: "INDICA",
             productComposition: {
@@ -1277,7 +1287,8 @@ export const AllproductDetails = [
             ],
             productPrice: 21.25,
             productDiscountPrice: 21.25,
-
+            dispensaryName: "Mike Duncan's Dispensary",
+            dispensaryId: "ed7b1622-837d-5efa-bb51-7549df9cf703",
             productCategory: "EDIBLES",
             productBatch: "INDICA",
             productComposition: {
