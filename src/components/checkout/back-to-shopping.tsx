@@ -1,3 +1,4 @@
+"use client"
 import { Button, IconButton, Typography } from "@/core";
 import { Flex, FlexColumn } from "@/layout";
 import { SafeAreaSection } from "@/layout/spacing";
@@ -10,6 +11,12 @@ import { Input } from "@/core/input";
 import { TrashIcon } from "../../svg";
 import Link from "next/link";
 
+import { useAppDispatch, useAppSelector } from "../../redux/hook";
+import { type CartProduct } from "../../redux/cart/cart.reducer";
+import { decrementCartProduct, incrementCartProduct, removeCartProductById, setCartProductQuantity } from "../../redux/cart/action.creators";
+
+import { calculateCartItemsTotalPrice } from "../../utils/cart";
+
 type CheckoutCartType = {
     id: number;
     name?: string;
@@ -17,7 +24,14 @@ type CheckoutCartType = {
     count?: number;
 };
 
-const CheckoutCartItem = () => {
+type CheckoutCartItemProps={
+    cartItem:CartProduct
+}
+const CheckoutCartItem:FC<CheckoutCartItemProps> = ({
+    cartItem
+}) => {
+    const dispatch = useAppDispatch()
+  
     return (
         <Flex className="gap-4 items-start">
             <Flex
@@ -27,7 +41,7 @@ const CheckoutCartItem = () => {
             >
                 <Image
                     src={
-                        "https://retailminded.com/wp-content/uploads/2016/03/EN_GreenOlive-1.jpg"
+                        cartItem.productImage
                     }
                     fill
                     alt="image"
@@ -39,7 +53,7 @@ const CheckoutCartItem = () => {
                         intent={"mons15"}
                         classname="leading-[21px] font-medium tracking-normal text-text-black-100 line-clamp-2"
                     >
-                        1:1 Strawberry Lemonade [10pk] (100mg CBD/100mg THC)
+                        {cartItem.productName}
                     </Typography>
                     <Flex className="gap-2 items-center">
                         <Flex className="p-1 bg-background-green-20">
@@ -47,7 +61,7 @@ const CheckoutCartItem = () => {
                                 intent={"monsBold10"}
                                 classname="leading-[10px] text-text-green capitalize"
                             >
-                                1x
+                                {cartItem.productQuantity}x
                             </Typography>
                         </Flex>
                         <Typography
@@ -61,7 +75,7 @@ const CheckoutCartItem = () => {
                         intent={"mons15"}
                         classname="text-text-black-100 font-bold leading-[15px]"
                     >
-                        $21.25
+                        ${cartItem.productDiscountPrice}
                     </Typography>
                 </FlexColumn>
                 <Flex className="items-center w-[157px] shrink-0">
@@ -73,27 +87,37 @@ const CheckoutCartItem = () => {
                                 classname="text-[15px] leading-[18px]"
                             />
                         }
+                        onClick={()=>{dispatch(decrementCartProduct(cartItem.productId))}}
                     />
                     <Input
                         containerClassname="border border-border-whiteSmoke h-[32px] w-full"
                         type="number"
-                        value={0}
+                        value={cartItem.productQuantity}
                         className="text-mons-20 text-center w-full"
+                        onChange={(e)=>{dispatch(setCartProductQuantity(cartItem.productId , +e.target.value))}}
                     />
                     <IconButton
                         classname="px-[12px] h-8 py-[5px] border border-l-0 border-border-whiteSmoke"
                         icon={
                             <IconHandler name="plus" classname="text-[15px] leading-[18px]" />
                         }
+                        onClick={()=>{dispatch(incrementCartProduct(cartItem.productId))}}
                     />
                 </Flex>
             </Flex>
-            <IconButton className="shrink-0 xl:pt-2" icon={<TrashIcon />} />
+            <IconButton className="shrink-0 xl:pt-2" icon={<TrashIcon />} onClick={()=>{dispatch(removeCartProductById(cartItem.productId))}}/>
         </Flex>
     );
 };
 
-const CheckoutCartHeader: FC<CheckoutCartType> = ({ id = 0 }) => {
+
+type CheckoutCartHeaderProps={
+    id:number,
+    productsPerDispensary:CartProduct[]
+}
+
+const CheckoutCartHeader: FC<CheckoutCartHeaderProps> = ({ id , productsPerDispensary}) => {
+
     return (
         <Flex className="justify-between px-5 m:px-6">
             <FlexColumn className="gap-2.5">
@@ -110,9 +134,9 @@ const CheckoutCartHeader: FC<CheckoutCartType> = ({ id = 0 }) => {
                     intent={"mons15"}
                     classname="text-text-black-100 leading-[19.5px]"
                 >
-                    Mike’s Dispensary <br />
+                    {productsPerDispensary[0].dispensaryName} <br />
                     <Typography classname="text-text-black-70">
-                        4th Jones Avenue, 0162-12 <br /> Toronto, ON, Canada
+                        {productsPerDispensary[0].dispensaryStreetAddress} <br /> {productsPerDispensary[0].dispensaryAddress}
                     </Typography>
                 </Typography>
             </FlexColumn>
@@ -120,33 +144,63 @@ const CheckoutCartHeader: FC<CheckoutCartType> = ({ id = 0 }) => {
                 classname="capitalize leading-[19.5px] tracking-normal text-text-black-40 font-medium"
                 intent={"mons15"}
             >
-                4 products
+                {productsPerDispensary.length} products
             </Typography>
         </Flex>
     );
 };
+type CheckoutBodyProps={
+    productsPerDispensary:CartProduct[]
+}
+const CheckoutBody:FC<CheckoutBodyProps> = ({productsPerDispensary }) => {
 
-const CheckoutBody = () => {
     return (
         <FlexColumn className="px-5 m:px-6 gap-6">
-            <CheckoutCartItem />
-            <CheckoutCartItem />
-            <CheckoutCartItem />
+            {
+                productsPerDispensary.map((cartItem)=>{
+                    return <CheckoutCartItem key={cartItem.productId} cartItem={cartItem}/>
+                })
+            }
         </FlexColumn>
     );
 };
 
-const CheckoutCart = () => {
+
+type CheckoutCartProps={
+    id:number,
+    dispensaryId:string;
+    cartItems:CartProduct[]
+}
+const CheckoutCart:FC<CheckoutCartProps> = ({ id , dispensaryId ,cartItems}) => {
+
+
+    const productsInDispensary = cartItems.filter((cartItem)=>{
+        return cartItem.dispensaryId === dispensaryId
+    })
+
+
     return (
         <FlexColumn className="w-full border border-background-lightGreen rounded-md gap-6 py-5 m:pt-6 m:pb-0">
-            <CheckoutCartHeader id={0} />
+            <CheckoutCartHeader id={id+1} 
+               productsPerDispensary={productsInDispensary}
+            />
             <Divider color="lightGreen" />
-            <CheckoutBody />
+            <CheckoutBody productsPerDispensary={productsInDispensary}/>
         </FlexColumn>
     );
 };
 
-const OrderRow: FC<{ type?: "bold" | "normal", name: string, price: string }> = ({ type = "normal", name, price }) => {
+type OrderRowProps={ 
+    type?: "bold" | "normal", 
+    dispensaryId:string,
+    cartItems:CartProduct[]
+}
+const OrderRow: FC<OrderRowProps> = ({ type = "normal" ,cartItems , dispensaryId }) => {
+
+    const selectedDispensaryCartItems = cartItems.filter((cartItem)=>{
+        return cartItem.dispensaryId === dispensaryId
+    }) 
+
     return (
         <Flex className="justify-between gap-12">
             <Typography
@@ -156,7 +210,7 @@ const OrderRow: FC<{ type?: "bold" | "normal", name: string, price: string }> = 
                     type === "normal" ? "font-medium" : "font-bold",
                 ].join(" ")}
             >
-                {name || "Mike’s Dispensary"}
+                {selectedDispensaryCartItems[0].dispensaryName}
             </Typography>
             <Typography
                 intent={"mons15"}
@@ -165,13 +219,19 @@ const OrderRow: FC<{ type?: "bold" | "normal", name: string, price: string }> = 
                     type === "normal" ? "font-medium" : "font-bold",
                 ].join(" ")}
             >
-                {price || "$57.50"}
+                {`$${calculateCartItemsTotalPrice(selectedDispensaryCartItems)}`}
             </Typography>
         </Flex>
     );
 };
 
-const OrderSummery = () => {
+
+type OrderSummaryProps={
+    cartItems:CartProduct[],
+    dispensaryIds:string[],
+}
+const OrderSummery:FC<OrderSummaryProps> = ({cartItems,dispensaryIds}) => {
+
     return (
         <FlexColumn className="m:max-w-[300px] shrink-0 xl:max-w-[478px] w-full py-12 px-5  xl:px-6 gap-6 bg-background-lightGreen m:h-[800px]">
             <Typography
@@ -181,16 +241,18 @@ const OrderSummery = () => {
                 Order Summary
             </Typography>
             <FlexColumn className="gap-4">
-                <OrderRow name="Mike’s Dispensary" price="$57.50" />
-                <OrderRow name="Jane Neuewzel & Ma Dispensary - Manhattan Avenue" price="$95.25" />
-                <OrderRow name="Total Subtotal" price="$152.75" type="bold" />
+                {
+                    dispensaryIds.map((dispensaryId)=>{
+                        return <OrderRow key={dispensaryId} dispensaryId={dispensaryId} cartItems={cartItems}/>
+                    })
+                }
                 <Divider color="white" />
                 <Flex className="justify-between">
                     <Typography intent={"mons22"} classname="leading-[28.6px] font-bold text-text-black-70">
                         Est. Total
                     </Typography>
                     <Typography intent={"mons22"} classname="leading-[28.6px] font-bold text-text-black-70">
-                        $113.25
+                        ${calculateCartItemsTotalPrice(cartItems)}
                     </Typography>
                 </Flex>
                 <Typography intent={"mons12"} classname="font-medium leading-[15.6px] tracking-normal text-text-black-70">
@@ -210,6 +272,16 @@ const OrderSummery = () => {
 };
 
 export const CheckoutPageBody = () => {
+    const { cartItems } = useAppSelector((state)=>state.cart)
+
+    const dispensaryIds:string[] = []
+    cartItems.forEach((cartItem)=>{
+         if(!dispensaryIds.includes(cartItem.dispensaryId)){
+            dispensaryIds.push(cartItem.dispensaryId)
+         }
+    })
+
+
     return <SafeAreaSection withSpacing={false}>
         <Flex className={["gap-6 justify-between xl:max-w-screen-2xl xl:mx-auto xl:pl-desktop m:pb-12 flex-col m:flex-row"].join(" ")}>
             <FlexColumn className="px-2.5 m:pl-6 xl:pl-0 m:pr-0 gap-6 m:max-w-[440px] shrink-0 xl:max-w-[896px] w-full pt-5  m:pt-12">
@@ -221,15 +293,19 @@ export const CheckoutPageBody = () => {
                         Checkout
                     </Typography>
                     <Typography intent={"mons15"} classname="text-text-black-40">
-                        7 Total Products | 2 Pickup
+                        {cartItems.length} Total Products | {dispensaryIds.length} Pickup
                     </Typography>
                 </Flex>
-                <Divider type="dashed" classname="px-2.5 m:px-0" />
-                <CheckoutCart />
-                <Divider type="dashed" />
-                <CheckoutCart />
+                {
+                    dispensaryIds.map((dispensaryId,id)=>{
+                        return <>
+                            <Divider type="dashed" classname="px-2.5 m:px-0" />
+                            <CheckoutCart id={id} dispensaryId={dispensaryId} cartItems={cartItems}/>
+                        </>
+                    })
+                }
             </FlexColumn>
-            <OrderSummery />
+            <OrderSummery cartItems={cartItems} dispensaryIds={dispensaryIds}/>
         </Flex>
     </SafeAreaSection>
 }

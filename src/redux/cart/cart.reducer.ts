@@ -6,6 +6,7 @@ import {
     EMPTY_CART,
     INCREMENT_CART_PRODUCT,
     REMOVE_ALL_CART_PRODUCTS,
+    REMOVE_CART_PRODUCT_BY_ID,
     SET_CART_MODAL,
     SET_CART_PRODUCT_QUANTITY,
     SET_DISPENSARY_ID_TO_DELETE,
@@ -18,11 +19,13 @@ export type CartProduct = {
     productId: string;
     productName: string;
     productImage: string;
-    productPrice?: number;
+    productPrice: number;
     productDiscountPrice: number;
     productQuantity: number;
     dispensaryId: string;
     dispensaryName: string;
+    dispensaryAddress: string;
+    dispensaryStreetAddress: string;
 };
 type Cart = {
     isCartModalOpen: boolean;
@@ -112,11 +115,19 @@ export default function cartReducer(state = initialState, action: CartAction) {
             });
             state = { ...state, cartItems: [...filteredCartItems] };
             break;
+
         case SET_DISPENSARY_ID_TO_DELETE:
             state = { ...state, deleteFromDispensaryId: action.payload };
             break;
 
         case REMOVE_ALL_CART_PRODUCTS:
+            break;
+
+        case REMOVE_CART_PRODUCT_BY_ID:
+            const removedCartItems = state.cartItems.filter((cartItem) => {
+                return cartItem.productId !== action.payload;
+            });
+            state = { ...state, cartItems: [...removedCartItems] };
             break;
 
         case SET_CART_MODAL:

@@ -5,6 +5,7 @@ import {
     EMPTY_CART,
     INCREMENT_CART_PRODUCT,
     REMOVE_ALL_CART_PRODUCTS,
+    REMOVE_CART_PRODUCT_BY_ID,
     SET_CART_MODAL,
     SET_CART_PRODUCT_QUANTITY,
     SET_DISPENSARY_ID_TO_DELETE,
@@ -51,6 +52,13 @@ export const setCartProductQuantity = (
 export const removeAllCartProducts = () => {
     return {
         type: REMOVE_ALL_CART_PRODUCTS,
+    };
+};
+
+export const removeCartProductById = (productId: string) => {
+    return {
+        type: REMOVE_CART_PRODUCT_BY_ID,
+        payload: productId,
     };
 };
 
@@ -112,4 +120,5 @@ export type CartAction =
     | ReturnType<typeof emptyCart>
     | ReturnType<typeof setCartProductQuantity>
     | ReturnType<typeof deleteProductsByDispensaryId>
-    | ReturnType<typeof setDispensaryIdToDelete>;
+    | ReturnType<typeof setDispensaryIdToDelete>
+    | ReturnType<typeof removeCartProductById>;

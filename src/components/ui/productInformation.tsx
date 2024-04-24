@@ -127,7 +127,9 @@ export const QuantitySelecter :FC<QuantitySelecterProps> = ({
         productName,
         productPrice,
         dispensaryId,
-        dispensaryName
+        dispensaryName,
+        dispensaryAddress,
+        dispensaryStreetAddress
     }
     
 }) => {
@@ -139,7 +141,9 @@ export const QuantitySelecter :FC<QuantitySelecterProps> = ({
         productQuantity:1,
         productPrice,
         dispensaryId,
-        dispensaryName
+        dispensaryName,
+        dispensaryAddress,
+        dispensaryStreetAddress
     })
    getProductQuantity(product)
 
@@ -445,7 +449,9 @@ export const ProductInformation:FC<ProductInformationProps> = ({
                                 productId:selectedProduct?.productDetails?.productId as string,
                                 productName:selectedProduct?.productDetails?.productName as string,
                                 productImage:selectedProduct?.productDetails?.image[0] as string,
-                                productPrice:selectedProduct?.productDetails?.productPrice! as number
+                                productPrice:selectedProduct?.productDetails?.productPrice! as number,
+                                dispensaryAddress:selectedProduct?.productDetails?.storeAddress as string,
+                                dispensaryStreetAddress:selectedProduct?.productDetails?.storeStreetAddress as string
                             }}
                         />
                     </FlexColumn>
