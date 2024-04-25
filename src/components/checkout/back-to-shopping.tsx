@@ -25,10 +25,10 @@ type CheckoutCartType = {
 };
 
 type CheckoutCartItemProps={
-    cartItem:CartProduct
+    productPerDispensary:CartProduct
 }
 const CheckoutCartItem:FC<CheckoutCartItemProps> = ({
-    cartItem
+    productPerDispensary
 }) => {
     const dispatch = useAppDispatch()
   
@@ -41,7 +41,7 @@ const CheckoutCartItem:FC<CheckoutCartItemProps> = ({
             >
                 <Image
                     src={
-                        cartItem.productImage
+                        productPerDispensary.productImage
                     }
                     fill
                     alt="image"
@@ -53,7 +53,7 @@ const CheckoutCartItem:FC<CheckoutCartItemProps> = ({
                         intent={"mons15"}
                         classname="leading-[21px] font-medium tracking-normal text-text-black-100 line-clamp-2"
                     >
-                        {cartItem.productName}
+                        {productPerDispensary.productName}
                     </Typography>
                     <Flex className="gap-2 items-center">
                         <Flex className="p-1 bg-background-green-20">
@@ -61,21 +61,21 @@ const CheckoutCartItem:FC<CheckoutCartItemProps> = ({
                                 intent={"monsBold10"}
                                 classname="leading-[10px] text-text-green capitalize"
                             >
-                                {cartItem.productQuantity}x
+                                {productPerDispensary.productQuantity}x
                             </Typography>
                         </Flex>
                         <Typography
                             intent={"mons15"}
                             classname="leading-[21px] font-medium tracking-normal text-text-black-100"
                         >
-                            Variation: 100mg
+                            Variation: {productPerDispensary.productVariation}
                         </Typography>
                     </Flex>
                     <Typography
                         intent={"mons15"}
                         classname="text-text-black-100 font-bold leading-[15px]"
                     >
-                        ${cartItem.productDiscountPrice}
+                        ${productPerDispensary.productDiscountPrice}
                     </Typography>
                 </FlexColumn>
                 <Flex className="items-center w-[157px] shrink-0">
@@ -87,25 +87,25 @@ const CheckoutCartItem:FC<CheckoutCartItemProps> = ({
                                 classname="text-[15px] leading-[18px]"
                             />
                         }
-                        onClick={()=>{dispatch(decrementCartProduct(cartItem.productId))}}
+                        onClick={()=>{dispatch(decrementCartProduct(productPerDispensary.productId))}}
                     />
                     <Input
                         containerClassname="border border-border-whiteSmoke h-[32px] w-full"
                         type="number"
-                        value={cartItem.productQuantity}
+                        value={productPerDispensary.productQuantity}
                         className="text-mons-20 text-center w-full"
-                        onChange={(e)=>{dispatch(setCartProductQuantity(cartItem.productId , +e.target.value))}}
+                        onChange={(e)=>{dispatch(setCartProductQuantity(productPerDispensary.productId , +e.target.value))}}
                     />
                     <IconButton
                         classname="px-[12px] h-8 py-[5px] border border-l-0 border-border-whiteSmoke"
                         icon={
                             <IconHandler name="plus" classname="text-[15px] leading-[18px]" />
                         }
-                        onClick={()=>{dispatch(incrementCartProduct(cartItem.productId))}}
+                        onClick={()=>{dispatch(incrementCartProduct(productPerDispensary.productId))}}
                     />
                 </Flex>
             </Flex>
-            <IconButton className="shrink-0 xl:pt-2" icon={<TrashIcon />} onClick={()=>{dispatch(removeCartProductById(cartItem.productId))}}/>
+            <IconButton className="shrink-0 xl:pt-2" icon={<TrashIcon />} onClick={()=>{dispatch(removeCartProductById(productPerDispensary.productId))}}/>
         </Flex>
     );
 };
@@ -158,7 +158,7 @@ const CheckoutBody:FC<CheckoutBodyProps> = ({productsPerDispensary }) => {
         <FlexColumn className="px-5 m:px-6 gap-6">
             {
                 productsPerDispensary.map((cartItem)=>{
-                    return <CheckoutCartItem key={cartItem.productId} cartItem={cartItem}/>
+                    return <CheckoutCartItem key={cartItem.productId} productPerDispensary={cartItem}/>
                 })
             }
         </FlexColumn>
