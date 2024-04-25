@@ -11,7 +11,9 @@ import {
     SET_DISPENSARY_ID_TO_DELETE,
     SET_SHOW_DELETE,
     SET_SHOW_VARIANTS,
+    UPDATE_VARIANTS_LIST,
     TOGGLE_CART_MODAL,
+    UPDATE_VARIANT_BY_PRODUCT_ID,
 } from "./action.types";
 import { type CartProduct } from "./cart.reducer";
 
@@ -108,6 +110,32 @@ export const emptyCart = () => {
     };
 };
 
+export const updateVariantsList = (
+    productId: string,
+    variantsList: string[]
+) => {
+    return {
+        type: UPDATE_VARIANTS_LIST,
+        payload: {
+            productId,
+            variantsList,
+        },
+    };
+};
+
+export const updateVariantByProductId = (
+    productId: string,
+    variant: string
+) => {
+    return {
+        type: UPDATE_VARIANT_BY_PRODUCT_ID,
+        payload: {
+            productId,
+            variant,
+        },
+    };
+};
+
 export type CartAction =
     | ReturnType<typeof addProductToCart>
     | ReturnType<typeof incrementCartProduct>
@@ -121,4 +149,6 @@ export type CartAction =
     | ReturnType<typeof setCartProductQuantity>
     | ReturnType<typeof deleteProductsByDispensaryId>
     | ReturnType<typeof setDispensaryIdToDelete>
-    | ReturnType<typeof removeCartProductById>;
+    | ReturnType<typeof removeCartProductById>
+    | ReturnType<typeof updateVariantsList>
+    | ReturnType<typeof updateVariantByProductId>;

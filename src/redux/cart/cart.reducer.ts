@@ -12,7 +12,9 @@ import {
     SET_DISPENSARY_ID_TO_DELETE,
     SET_SHOW_DELETE,
     SET_SHOW_VARIANTS,
+    UPDATE_VARIANTS_LIST,
     TOGGLE_CART_MODAL,
+    UPDATE_VARIANT_BY_PRODUCT_ID,
 } from "./action.types";
 
 export type CartProduct = {
@@ -22,6 +24,10 @@ export type CartProduct = {
     productPrice: number;
     productDiscountPrice: number;
     productQuantity: number;
+
+    selectedVariant: string;
+    variantsList: string[];
+
     dispensaryId: string;
     dispensaryName: string;
     dispensaryAddress: string;
@@ -29,9 +35,16 @@ export type CartProduct = {
 };
 type Cart = {
     isCartModalOpen: boolean;
-    showVariants: boolean;
+
     showDelete: boolean;
     deleteFromDispensaryId: string;
+
+    showVariants: boolean;
+    variantListUpdate: {
+        productId: string;
+        variationList: string[];
+    };
+
     cartItems: CartProduct[];
 };
 
@@ -40,6 +53,10 @@ const initialState: Cart = {
     showDelete: false,
     deleteFromDispensaryId: "",
     isCartModalOpen: false,
+    variantListUpdate: {
+        productId: "",
+        variationList: [],
+    },
     cartItems: [],
 };
 
@@ -153,7 +170,34 @@ export default function cartReducer(state = initialState, action: CartAction) {
                 showVariants: action.payload,
             };
             break;
+        case UPDATE_VARIANTS_LIST:
+            state = {
+                ...state,
+                cartItems: [...state.cartItems],
+                variantListUpdate: {
+                    productId: action.payload.productId,
+                    variationList: [...action.payload.variantsList],
+                },
+            };
+            break;
 
+        case UPDATE_VARIANT_BY_PRODUCT_ID:
+            const variantChangedList = state.cartItems.map((item) => {
+                if (item.productId !== action.payload.productId) {
+                    return {
+                        ...item,
+                    };
+                }
+                return {
+                    ...item,
+                    selectedVariant: action.payload.variant,
+                };
+            });
+            state = {
+                ...state,
+                cartItems: [...variantChangedList],
+            };
+            break;
         case SET_SHOW_DELETE:
             state = {
                 ...state,

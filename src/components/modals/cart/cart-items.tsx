@@ -7,7 +7,7 @@ import Image from "next/image"
 import { Input } from "@/core/input"
 import { useCart } from "../../../contexts/cart"
 import { useAppDispatch, useAppSelector } from "../../../redux/hook"
-import { decrementCartProduct, incrementCartProduct, setCartProductQuantity, setDispensaryIdToDelete, setShowDelete, setShowVariants } from "../../../redux/cart/action.creators"
+import { decrementCartProduct, incrementCartProduct, setCartProductQuantity, setDispensaryIdToDelete, setShowDelete, setShowVariants, updateVariantsList } from "../../../redux/cart/action.creators"
 import {type CartProduct } from "../../../redux/cart/cart.reducer"
 
 type ItemProps = {
@@ -16,12 +16,15 @@ type ItemProps = {
     productQuantity:number,
     productPrice:number,
     productDiscountPrice:number,
-    productId:string
+    productId:string,
+    selectedVariant: string,
+    varaintsList:string[]
 }
 
-const Item: FC<ItemProps> = ({ name, imageURL,productQuantity,productPrice,productDiscountPrice,productId }) => {
+const Item: FC<ItemProps> = ({ name, imageURL, productQuantity, productPrice, productDiscountPrice, productId, selectedVariant, varaintsList }) => {
     const dispatch = useAppDispatch()
-    
+
+   
     return <Flex className="gap-4">
         <Flex className={["w-[112px] h-[118px] shrink-0 relative border-[1.222px] border-border-whiteSmoke overflow-hidden rounded-[4px] shadow-cart-item"].join(" ")}>
             {/* <Image src={"https://retailminded.com/wp-content/uploads/2016/03/EN_GreenOlive-1.jpg"} fill alt="image" /> */}
@@ -33,8 +36,12 @@ const Item: FC<ItemProps> = ({ name, imageURL,productQuantity,productPrice,produ
                 {name}
             </Typography>
             <Flex className="gap-m items-center">
-                <Typography intent={"mons12"} classname="leading-[15.6px] font-medium text-primary-brand">Variation: 100mg</Typography>
-                <IconButton onClick={() => dispatch(setShowVariants(true))} icon={<IconHandler name="edit" classname="text-[12px] leading-[1.74px] font-light text-primary-brand" />} />
+                <Typography intent={"mons12"} classname="leading-[15.6px] font-medium text-primary-brand">Variation: {selectedVariant}</Typography>
+                <IconButton onClick={() => {
+                            dispatch(updateVariantsList(productId, varaintsList))
+                            dispatch(setShowVariants(true))
+
+                }} icon={<IconHandler name="edit" classname="text-[12px] leading-[1.74px] font-light text-primary-brand" />} />
             </Flex>
             <Flex className="gap-2.5">
                 <Typography intent={"mons15"} classname="font-bold leading-[15px] text-text-black-100">${productDiscountPrice}</Typography>
@@ -98,6 +105,8 @@ const DispensaryItems: FC<DispensaryProps> = ({ dispensaryId ,cartItems}) => {
                         productPrice={cartItem.productPrice as number}
                         productDiscountPrice={cartItem.productDiscountPrice}
                         productId={cartItem.productId}
+                        selectedVariant={cartItem.selectedVariant}
+                        varaintsList={cartItem.variantsList}
                     />
                 }
             })

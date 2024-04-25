@@ -5,7 +5,7 @@ import { TypeBadge } from "@/cards/tag";
 import { Button, IconButton, Typography } from "@/core";
 import { Flex, FlexCenter, FlexColumn, Pressable } from "@/layout";
 import { CustomIconHandler, IconHandler } from "../../utils/icon";
-import { FC, useEffect, useState } from "react";
+import { type Dispatch, FC, useEffect, useState, type SetStateAction } from "react";
 import { PriceTag } from "@/cards/price";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -110,48 +110,22 @@ const Variant: FC<VariantsProp> = ({ isSelected = false, desc, onClick }) => {
     );
 };
 
-type ProductQuantity = Omit<CartProduct , "productQuantity">
-type GetProductQuantity = (product: CartProduct) => void
 
 type QuantitySelecterProps = {
-    productQuantity:ProductQuantity,
-    getProductQuantity:GetProductQuantity
+    setProduct: Dispatch<SetStateAction<Omit<CartProduct, "selectedVariant" | "variantsList">>>;
+    productQuantity: number
 }
 
 export const QuantitySelecter :FC<QuantitySelecterProps> = ({
-    getProductQuantity,
-    productQuantity:{
-        productDiscountPrice,
-        productId,
-        productImage,
-        productName,
-        productPrice,
-        dispensaryId,
-        dispensaryName,
-        dispensaryAddress,
-        dispensaryStreetAddress
-    }
-    
-}) => {
-    const [product, setProduct]= useState<CartProduct>({
-        productDiscountPrice,
-        productId,
-        productName,
-        productImage,
-        productQuantity:1,
-        productPrice,
-        dispensaryId,
-        dispensaryName,
-        dispensaryAddress,
-        dispensaryStreetAddress
-    })
-   getProductQuantity(product)
+    setProduct,
+    productQuantity
 
+}) => {
 
     return (
         <Flex className="items-center">
             <IconButton
-                disabled={product.productQuantity === 0}
+                disabled={productQuantity === 0}
                 onClick={() => setProduct((prev)=>{
                     return {
                         ...prev,
@@ -171,7 +145,7 @@ export const QuantitySelecter :FC<QuantitySelecterProps> = ({
                 containerClassname="border border-border-whiteSmoke h-[43px] w-full"
                 type="number"
                 className="text-mons-20 text-center w-full"
-                value={product.productQuantity}
+                value={productQuantity}
                 onChange={(e) =>
                     setProduct((prev)=>{
                         return {
@@ -341,18 +315,27 @@ export const ProductInformation:FC<ProductInformationProps> = ({
     productId
 }) => {
   
-    const [variant, setVariants] = useState<null | number>(null);
     const [state, setState] = useState(false);
     const [state1, setState1] = useState(false);
-    const [product, setProduct]= useState<CartProduct|null>(null)
-
+    
     const dispatch = useAppDispatch()
-
-    function getProductQuantity(product:CartProduct){
-            setProduct(product)
-    }
-
     const selectedProduct = findSingleProduct(AllproductDetails,productId)
+    
+    const [variant, setVariants] = useState<string>(selectedProduct?.productDetails.variations[0]!);
+
+    const [product, setProduct]= useState<Omit<CartProduct,"selectedVariant"|"variantsList">>({
+        productDiscountPrice:selectedProduct?.productDetails.productDiscountPrice!,
+        productId:selectedProduct?.productDetails.productId!,
+        productName:selectedProduct?.productDetails.productName!,
+        productImage:selectedProduct?.productDetails.image[0]!,
+        productQuantity:1,
+        productPrice:selectedProduct?.productDetails.productPrice!,
+        dispensaryId:selectedProduct?.productDetails.dispensaryId!,
+        dispensaryName:selectedProduct?.productDetails.dispensaryName!,
+        dispensaryAddress:selectedProduct?.productDetails.dispensaryAddress!,
+        dispensaryStreetAddress:selectedProduct?.productDetails.dispensaryStreetAddress!,
+    })
+   
 
     return (
         <SafeAreaSection>
@@ -412,16 +395,17 @@ export const ProductInformation:FC<ProductInformationProps> = ({
                             Variation
                         </Typography>
                         <Flex className="gap-4">
-                            <Variant
-                                desc="100mg"
-                                isSelected={variant === 0}
-                                onClick={() => setVariants(0)}
-                            />
-                            <Variant
-                                desc="100mg"
-                                isSelected={variant === 1}
-                                onClick={() => setVariants(1)}
-                            />
+                            {
+                                selectedProduct?.productDetails.variations.map((variation,id)=>{
+                                    return <Variant 
+                                                desc={variation} 
+                                                key={id} 
+                                                isSelected={variation === variant } 
+                                                onClick={()=>{
+                                                setVariants(variation)
+                                    }}/>
+                                })
+                            }
                         </Flex>
                     </FlexColumn>
                     <FlexColumn className="gap-4">
@@ -440,19 +424,9 @@ export const ProductInformation:FC<ProductInformationProps> = ({
                                 available
                             </Typography>
                         </Flex>
-                        <QuantitySelecter 
-                            getProductQuantity={getProductQuantity}
-                            productQuantity={{
-                                dispensaryId:selectedProduct?.productDetails.dispensaryId as string,
-                                dispensaryName:selectedProduct?.productDetails.dispensaryName as string,
-                                productDiscountPrice:selectedProduct?.productDetails.productDiscountPrice as number,
-                                productId:selectedProduct?.productDetails?.productId as string,
-                                productName:selectedProduct?.productDetails?.productName as string,
-                                productImage:selectedProduct?.productDetails?.image[0] as string,
-                                productPrice:selectedProduct?.productDetails?.productPrice! as number,
-                                dispensaryAddress:selectedProduct?.productDetails?.storeAddress as string,
-                                dispensaryStreetAddress:selectedProduct?.productDetails?.storeStreetAddress as string
-                            }}
+                         <QuantitySelecter 
+                            setProduct={setProduct}
+                            productQuantity={product.productQuantity}
                         />
                     </FlexColumn>
                     <Button
@@ -460,10 +434,12 @@ export const ProductInformation:FC<ProductInformationProps> = ({
                         intent={"filled"}
                         typographyVariant="grstk15"
                         textClassname="uppercase"
-                       onClick={()=>{
-                        dispatch(addProductToCart(product!))
-                        dispatch(toggleCartModal())
-                       }}
+                        onClick={()=>{
+                            dispatch(addProductToCart({...product,
+                                selectedVariant:variant,
+                                variantsList:[...selectedProduct?.productDetails.variations!]}))
+                            dispatch(toggleCartModal())
+                        }}
                     />
                     <div className="h-[1px] bg-border-whiteSmoke" />
                     <FlexColumn className="gap-2.5">
@@ -612,10 +588,10 @@ export const ProductInformation:FC<ProductInformationProps> = ({
                     </FlexColumn>
                     <div className="h-[1px] bg-border-whiteSmoke" />
                     <StoreCard
-                        storeName={selectedProduct?.productDetails.storeName as string}
-                        storeAddress={selectedProduct?.productDetails.storeAddress as string}
-                        storeReviewCount={selectedProduct?.productDetails.storeReviewCount as number}
-                        storeReviewStars={selectedProduct?.productDetails.storeReviewStars as number}
+                        storeName={selectedProduct?.productDetails.dispensaryName!}
+                        storeAddress={selectedProduct?.productDetails.dispensaryAddress!}
+                        storeReviewCount={selectedProduct?.productDetails.dispensaryReviewCount!}
+                        storeReviewStars={selectedProduct?.productDetails.dispensaryReviewStars!}
                     />
                 </FlexColumn>
             </Flex>

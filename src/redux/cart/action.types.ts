@@ -16,5 +16,9 @@ export const SET_DISPENSARY_ID_TO_DELETE =
 export const SET_CART_MODAL = "cart/SET_CART_MODAL" as const;
 export const TOGGLE_CART_MODAL = "cart/TOGGLE_CART_MODAL" as const;
 
-export const SET_SHOW_VARIANTS = "cart/SET_SHOW_VARIANTS" as const;
 export const SET_SHOW_DELETE = "cart/SET_SHOW_DELETE" as const;
+
+export const SET_SHOW_VARIANTS = "cart/SET_SHOW_VARIANTS" as const;
+export const UPDATE_VARIANTS_LIST = "cart/UPDATE_VARIANTS_LIST" as const;
+export const UPDATE_VARIANT_BY_PRODUCT_ID =
+    "cart/UPDATE_VARIANT_BY_PRODUCT_ID" as const;

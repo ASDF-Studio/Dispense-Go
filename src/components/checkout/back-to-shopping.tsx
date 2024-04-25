@@ -68,7 +68,7 @@ const CheckoutCartItem:FC<CheckoutCartItemProps> = ({
                             intent={"mons15"}
                             classname="leading-[21px] font-medium tracking-normal text-text-black-100"
                         >
-                            Variation: {productPerDispensary.productVariation}
+                            Variation: {productPerDispensary.selectedVariant}
                         </Typography>
                     </Flex>
                     <Typography
