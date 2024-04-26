@@ -4,7 +4,7 @@ import { Footer } from "./footer";
 import { NewsEvents } from "./news-events";
 import { FAQ } from "@/faq";
 import { NavLinks } from "./navbar";
-import CartProvider from "../../app/providers/cart-provider";
+import CartProvider from "../../providers/cart-provider";
 
 
 type FooterItem = "faq" | "news" | "footer";

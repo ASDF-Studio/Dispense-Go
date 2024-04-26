@@ -6,7 +6,7 @@ import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import 'react-tooltip/dist/react-tooltip.css'
 import { AgeConfirmationModal } from '@/modals/AgeConfirmation';
-import StoreProvider from './providers/store-provider';
+import StoreProvider from '../providers/store-provider';
 
 
 config.autoAddCss = false;
