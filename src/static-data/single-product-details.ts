@@ -4,7 +4,7 @@ export const AllproductDetails = [
             productId: "e65dbfb9-195f-5785-a01f-81fecfd802c2",
             productName: "Evidence™️ Prison Shortys - Guava",
             image: [
-                "https://shopcannabisnl.com/cdn/shop/files/52907-m_500x.png?v=1698768379",
+                "https://shopcannabisnl.com/cdn/shop/products/52977_m_500x.png?v=1690205435",
             ],
             productPrice: 21.25,
             productDiscountPrice: 21.25,

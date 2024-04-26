@@ -182,7 +182,12 @@ type ProductImageSliderProps={
 
 const ProductImageSlider = ({ imageArray }:ProductImageSliderProps) => {
     const [selectedImage, setSelectedImage] = useState(0);
-
+    
+    /**
+     * The dummy images array is only for testing purpose.
+     * use real images array for 
+     * production
+     */
     const images = imageArray ? imageArray: [
         "https://shopcannabisnl.com/cdn/shop/products/52947_m_500x.png?v=1698944424",
         "https://shopcannabisnl.com/cdn/shop/products/52716_m_500x.png?v=1680787718",
@@ -340,7 +345,7 @@ export const ProductInformation:FC<ProductInformationProps> = ({
     return (
         <SafeAreaSection>
             <Flex className="gap-5 xl:gap-[68px] pt-6 pb-[52px] m:py-[48px] justify-center flex-col m:flex-row">
-                <ProductImageSlider imageArray={selectedProduct?.productDetails.image as string[]} />
+                <ProductImageSlider imageArray={selectedProduct?.productDetails.image! } />
                 <FlexColumn className="gap-6 m:max-w-[351px] xl:max-w-[505px]">
                     <FlexColumn className="gap-5">
                         <Typography
