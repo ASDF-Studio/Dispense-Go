@@ -1,5 +1,5 @@
 "use client";
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { Checkbox, CheckboxClild } from "@/core/checkbox";
 import { Flex, FlexCenter, FlexColumn } from "@/layout";
 import { MainLayout } from "@/layout/main";
@@ -16,7 +16,8 @@ import { QrModal } from "@/modals/qr-modal";
 
 
 import { type Order ,OrderItem} from "../../../redux/orders/orders.reducer";
-import { useAppSelector } from "../../../redux/hook";
+import { useAppDispatch, useAppSelector } from "../../../redux/hook";
+import { getOrdersByUserId } from "../../../redux/orders/thunks/get-orders";
 
 type State = "completed" | "ready" | "failed";
 
@@ -400,6 +401,17 @@ const OrdersCard: FC<OrderCardProps> = ({ order, onShowQR }) => {
 export default function MyOrdersPage() {
   const [showQrModal, setShowQrModal] = useState<boolean>(false);
   const { orders } = useAppSelector((state) => state.orders)
+  const dispatch  = useAppDispatch()
+  /**
+   * 
+   * THIS IS A DUMMY USER ID.
+   * REAL ID
+   * SHOULE BE AVAILABLE 
+   * FROM auth feat.
+   */
+  useEffect(()=>{
+    dispatch(getOrdersByUserId("12321434"))
+  },[dispatch])
 
   return (
     <MainLayout footerItems={[]}>

@@ -1,9 +1,9 @@
 import { orders } from "../../static-data/orders";
 import { type OrdersAction } from "./orders.creators";
 import {
-    GET_ORDERS_BY_ID_FAILURE,
-    GET_ORDERS_BY_ID_REQUEST,
-    GET_ORDERS_BY_ID_SUCCESS,
+    GET_ORDERS_BY_USER_ID_FAILURE,
+    GET_ORDERS_BY_USER_ID_REQUEST,
+    GET_ORDERS_BY_USER_ID_SUCCESS,
 } from "./orders.types";
 
 export type OrderItem = {
@@ -39,7 +39,8 @@ type initialState = {
     errMsg: null | string;
 };
 const initialState: initialState = {
-    orders: orders,
+    // orders: orders,//laoding orders from dummy data
+    orders: [],
     loading: false,
     error: null,
     errMsg: null,
@@ -49,7 +50,7 @@ export default function ordersReducer(
     action: OrdersAction
 ) {
     switch (action.type) {
-        case GET_ORDERS_BY_ID_REQUEST:
+        case GET_ORDERS_BY_USER_ID_REQUEST:
             state = {
                 ...state,
                 orders: [...state.orders],
@@ -59,7 +60,7 @@ export default function ordersReducer(
             };
             break;
 
-        case GET_ORDERS_BY_ID_SUCCESS:
+        case GET_ORDERS_BY_USER_ID_SUCCESS:
             state = {
                 ...state,
                 orders: [...action.payload],
@@ -68,7 +69,7 @@ export default function ordersReducer(
                 errMsg: null,
             };
             break;
-        case GET_ORDERS_BY_ID_FAILURE:
+        case GET_ORDERS_BY_USER_ID_FAILURE:
             state = {
                 ...state,
                 orders: [...state.orders],
