@@ -17,7 +17,7 @@ import { QrModal } from "@/modals/qr-modal";
 
 import { type Order ,OrderItem} from "../../../redux/orders/orders.reducer";
 import { useAppDispatch, useAppSelector } from "../../../redux/hook";
-import { getOrdersByUserId } from "../../../redux/orders/thunks/get-orders";
+import { getOrdersByUserId } from "../../../redux/orders/thunks/orders.thunk";
 
 type State = "completed" | "ready" | "failed";
 
