@@ -142,7 +142,7 @@ const ProductCard: FC<ProductCardProps> = ({
                     </Flex>
                     <Rating textColor={color} rating={productDetails.rating} count={productDetails.count} />
                 </FlexColumn>
-                <AddtoCart classname='hidden m:block' />
+                <AddtoCart classname='hidden m:block' productDetails={productDetails}/>
             </Flex>
         </FlexColumn>
         // </AnimatedDiv>
