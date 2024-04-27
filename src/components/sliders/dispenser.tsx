@@ -142,16 +142,8 @@ export const ProductScroll: FC<Props> = ({
                             index={index}
                             size={index === 0 ? "big" : "small"}
                             color={productColor}
-                            title={product.title}
-                            images={product.image}
                             badge={product.type}
-                            sellPercentage={product?.sale}
-                            discountPrice={product.discountPrice}
-                            originalPrice={product.originalPrice}
-                            productId={product.productId}
-                            thc={product.thc}
-                            rating={product.rating}
-                            
+                            productDetails={product}
                         />
                     );
                 })}
@@ -186,7 +178,7 @@ export const ProductScrollTest: FC<Props> = ({
     };
 
     // classname={["flex gap-9 m:gap-0 flex-col m:flex-row pt-8 m:pt-[44px] xl:pt-[41px] bg-background-lightGreen relative", PaddingXL, colorMapping[variant].background].join(" ")}
-
+    const { products } = useAppSelector((state)=> state.products)
     return (
         <SafeAreaSection withSpacing={false}>
             {/* <DispenseInformation destination={0.05} variant={colorMapping[variant].infoVariant as "primary" | "secondary"} title={text} /> */}
@@ -196,8 +188,18 @@ export const ProductScrollTest: FC<Props> = ({
                     size={state ? "big" : "small"}
                     color={productColor}
                     classname='hidden m:flex'
+                    productDetails={products[0]}
                 />
-                <MemoProductCard
+                {
+                    products.slice(1,9).map((product)=>{
+                        return <MemoProductCard 
+                                    key={product.productId}
+                                    color={productColor}
+                                    productDetails={product}
+                        />
+                    })
+                }
+                {/* OG <MemoProductCard
                     color={productColor}
                     discountPrice={21.5}
                     originalPrice={21}
@@ -236,7 +238,7 @@ export const ProductScrollTest: FC<Props> = ({
                     color={productColor}
                     discountPrice={21.5}
                     originalPrice={21}
-                />
+                /> */}
             </CustomSwiper>
             {/* <Flex className="overflow-x-auto overflow-y-hidden gap-6 m:items-end pb-8 xl:pb-[50px] m:pb-[42px]">
             <MemoProductCard size="big" color={productColor} classname="hidden m:flex" />

@@ -17,6 +17,7 @@ import { FC, useState } from "react";
 import { IconHandler } from "../../../utils/icon";
 import Image from "next/image";
 import { Arrow } from "../../../svg";
+import { useAppSelector } from "../../../redux/hook";
 
 type FilterBoxType = {
     text: string;
@@ -213,6 +214,7 @@ type FilterProducts = {
 };
 
 const FilteredProducts: FC<FilterProducts> = ({ title, viewAll = true, classname = "" }) => {
+    const { products } = useAppSelector((state)=>state.products)
     return (
         <FlexColumn className={["py-5 m:py-6 gap-5 m:gap-6 hidescroll", classname].join(" ")}>
             <Flex className="px-5 m:px-6 justify-between items-center">
@@ -235,13 +237,18 @@ const FilteredProducts: FC<FilterProducts> = ({ title, viewAll = true, classname
                 )}
             </Flex>
             <Flex className='overflow-auto gap-6 pl-5 m:pl-6 overflow-y-hidden'>
+                {
+                    products.slice(0,7).map((product)=>{
+                        return  <MemoProductCard key={product.productId} size='xsmall' productDetails={product}/>
+                    })
+                }
+                {/* OG <MemoProductCard size='xsmall' discountPrice={21.25} originalPrice={21}/>
                 <MemoProductCard size='xsmall' discountPrice={21.25} originalPrice={21}/>
                 <MemoProductCard size='xsmall' discountPrice={21.25} originalPrice={21}/>
                 <MemoProductCard size='xsmall' discountPrice={21.25} originalPrice={21}/>
                 <MemoProductCard size='xsmall' discountPrice={21.25} originalPrice={21}/>
                 <MemoProductCard size='xsmall' discountPrice={21.25} originalPrice={21}/>
-                <MemoProductCard size='xsmall' discountPrice={21.25} originalPrice={21}/>
-                <MemoProductCard size='xsmall' discountPrice={21.25} originalPrice={21}/>
+                <MemoProductCard size='xsmall' discountPrice={21.25} originalPrice={21}/> */}
             </Flex>
             {viewAll && (
                 <Link href={"/individualStore"} className=' m:hidden mx-auto'>

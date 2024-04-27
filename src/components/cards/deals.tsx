@@ -9,6 +9,7 @@ import { AddtoCart } from "./add-cart";
 import { AddToFavourite } from "./add-favourite";
 import { AnimatedDiv } from "@/animations/scroll";
 import Link from "next/link";
+import { type Product } from "../../static-data/products";
 
 type BadgeProps = {
     size: "big" | "small" | "xsmall" | "msmall";
@@ -75,38 +76,22 @@ const ProductImage: FC<BadgeProps> = ({
 };
 
 type ProductCardProps = {
-    price?: number;
-    title?: string;
-    sellPercentage?: number;
+    index:number;
     badge?: "hybrid" | "indica" | "sativa";
-    images?: string[];
     size?: "big" | "small" | "xsmall" | "msmall" | "phone" | "tablet";
     color?: "white" | "black";
     classname?: string;
-    originalPrice: number;
-    discountPrice: number;
-    thc: number;
-    rating: number;
-    count: number;
-    productId:string
-};
+    productDetails:Product;
+} ;
 
 const ProductCard: FC<ProductCardProps> = ({
-    price,
     size = "small",
     color = "black",
     classname,
-    title,
-    images,
     badge,
-    sellPercentage,
     index,
-    originalPrice,
-    discountPrice,
-    thc,
-    rating,
-    count,
-    productId
+    productDetails
+   
 }) => {
     const getSize = {
         tablet: "w-[229px]",
@@ -118,12 +103,12 @@ const ProductCard: FC<ProductCardProps> = ({
     return (
         // <AnimatedDiv>
         <FlexColumn className={["gap-l", getSize[size], classname].join(" ")}>
-            <Link href={`/product/${productId}`}>
+            <Link href={`/product/${productDetails.productId}`}>
                 <ProductImage
                     size={size}
-                    URLS={images}
+                    URLS={productDetails.image}
                     badge={badge}
-                    sellPercentage={sellPercentage}
+                    sellPercentage={productDetails.sale}
                 />
             </Link>
             <Flex className='gap-m justify-between'>
@@ -136,26 +121,26 @@ const ProductCard: FC<ProductCardProps> = ({
                                 color == "white" && "text-white",
                             ].join(" ")}
                         >
-                            {title}
+                            {productDetails.title}
                         </Typography>
                         <AddtoCart classname='m:hidden' />
                     </Flex>
                     <Flex className='gap-2.5 items-center'>
                         <PriceTag
-                            price={discountPrice}
+                            price={productDetails.discountPrice}
                             classname={`${color === "white" && "text-white"}`}
                         />
                         <PriceTag
                             strikeThrough={true}
-                            price={originalPrice}
+                            price={productDetails.originalPrice}
                             classname={color === "white" ? "text-white" : ""}
                         />
                         <Tag
-                            text={`THC ${thc}%`}
+                            text={`THC ${productDetails.thc}%`}
                             type={color === "white" ? 1 : 0}
                         />
                     </Flex>
-                    <Rating textColor={color} rating={rating} count={count} />
+                    <Rating textColor={color} rating={productDetails.rating} count={productDetails.count} />
                 </FlexColumn>
                 <AddtoCart classname='hidden m:block' />
             </Flex>

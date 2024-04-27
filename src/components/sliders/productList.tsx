@@ -10,7 +10,7 @@ import Link from "next/link";
 import { Arrow } from "../../svg";
 import { Products } from "../../constants";
 import { CustomSwiper } from "./swiper";
-import { products } from "../../static-data/products";
+import { useAppSelector } from "../../redux/hook";
 
 type ProductListInfoType = {
     destination?: number;
@@ -123,7 +123,7 @@ export const ProductList: FC<Props> = ({
             infoVariant: "primary",
         },
     };
-
+    const {products} = useAppSelector((state)=>state.products)
     return (
         <div>
             <SafeAreaSection
@@ -152,16 +152,8 @@ export const ProductList: FC<Props> = ({
                                     index={index}
                                     size="xsmall"
                                     color={productColor}
-                                    title={product.title}
-                                    images={product.image}
                                     badge={product.type}
-                                    sellPercentage={product?.sale}
-                                    originalPrice={product.originalPrice}
-                                    discountPrice={product.discountPrice}
-                                    thc={product.thc}
-                                    rating={product.rating}
-                                    count={product.count}
-                                    productId={product.productId}
+                                    productDetails={product} 
                                 />
                             );
                         })}
