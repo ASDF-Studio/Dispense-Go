@@ -10,7 +10,7 @@ import { FC, useState } from "react";
 import { PaddingX, PaddingXL, PaddingXR, Products } from "../../constants";
 import { CustomSwiper } from "./swiper";
 import Link from "next/link";
-import { products } from "../../static-data/products";
+import { useAppSelector } from "../../redux/hook";
 
 type DispenseInfoType = {
     destination?: number;
@@ -110,6 +110,8 @@ export const ProductScroll: FC<Props> = ({
             infoVariant: "primary",
         },
     };
+
+    const { products } = useAppSelector((state)=>state.products)
 
     return (
         <SafeAreaSection

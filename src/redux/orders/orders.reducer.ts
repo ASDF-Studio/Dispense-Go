@@ -39,8 +39,7 @@ type initialState = {
     errMsg: null | string;
 };
 const initialState: initialState = {
-    // orders: orders,//laoding orders from dummy data
-    orders: [],
+    orders: orders, //laoding orders from dummy data
     loading: false,
     error: null,
     errMsg: null,

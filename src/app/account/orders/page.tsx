@@ -400,6 +400,7 @@ const OrdersCard: FC<OrderCardProps> = ({ order, onShowQR }) => {
 
 export default function MyOrdersPage() {
   const [showQrModal, setShowQrModal] = useState<boolean>(false);
+  
   const { orders } = useAppSelector((state) => state.orders)
   const dispatch  = useAppDispatch()
   /**
@@ -409,9 +410,9 @@ export default function MyOrdersPage() {
    * SHOULE BE AVAILABLE 
    * FROM auth feat.
    */
-  useEffect(()=>{
-    dispatch(getOrdersByUserId("12321434"))
-  },[dispatch])
+  // useEffect(()=>{
+  //   dispatch(getOrdersByUserId("12321434"))
+  // },[dispatch])
 
   return (
     <MainLayout footerItems={[]}>
