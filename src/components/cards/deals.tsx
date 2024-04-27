@@ -136,8 +136,7 @@ const ProductCard: FC<ProductCardProps> = ({
                                 color == "white" && "text-white",
                             ].join(" ")}
                         >
-                            {title ||
-                                "1:1 Strawberry Lemonade [10pk] (100mg CBD/100mg THC)"}
+                            {title}
                         </Typography>
                         <AddtoCart classname='m:hidden' />
                     </Flex>

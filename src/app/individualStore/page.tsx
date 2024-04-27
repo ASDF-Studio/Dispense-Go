@@ -16,7 +16,8 @@ import { ProductList } from "@/sliders/productList";
 import { StoreInfoModal } from "@/modals/store-information";
 import { uniqBy } from "lodash";
 import { MemoProductCard } from "@/cards/deals";
-import { products } from "../../static-data/products";
+import { useAppSelector } from "../../redux/hook";
+
 
 type FilterItemType = {
   text: string;
@@ -48,6 +49,8 @@ export default function IndividualStore() {
   const [showShopInfo, setShopInfo] = useState(false)
 
   const [activeFilter, setSelectedFilter] = useState<string[]>([])
+
+  const { products } = useAppSelector((state)=>state.products)
 
   const data: checkboxDetails[] = [
     { label: 'ALL', children: ['INDICA', 'SATIVA', 'HYBRID'] },
