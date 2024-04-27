@@ -15,6 +15,8 @@ export const AllproductDetails = [
             dispensaryStreetAddress: "4th Jones Avenue, 0162-12",
             dispensaryReviewCount: 212,
             dispensaryReviewStars: 4,
+            dispensaryImage:
+                "https://s3.amazonaws.com/www-inside-design/uploads/2020/10/aspect-ratios-blogpost-1x1-1.png",
             productCategory: "EDIBLES",
             productBatch: "INDICA",
             productComposition: { THC: 6, DELTA: 9, CBD: 5 },
@@ -152,6 +154,8 @@ export const AllproductDetails = [
             dispensaryStreetAddress: "4th Jones Avenue, 0162-12",
             dispensaryReviewCount: 212,
             dispensaryReviewStars: 4,
+            dispensaryImage:
+                "https://s3.amazonaws.com/www-inside-design/uploads/2020/10/aspect-ratios-blogpost-1x1-1.png",
             productCategory: "EDIBLES",
             productBatch: "INDICA",
             productComposition: {
@@ -295,6 +299,8 @@ export const AllproductDetails = [
             dispensaryStreetAddress: "4th Jones Avenue, 0162-12",
             dispensaryReviewCount: 212,
             dispensaryReviewStars: 4,
+            dispensaryImage:
+                "https://s3.amazonaws.com/www-inside-design/uploads/2020/10/aspect-ratios-blogpost-1x1-1.png",
             productCategory: "EDIBLES",
             productBatch: "INDICA",
             productComposition: {
@@ -438,6 +444,8 @@ export const AllproductDetails = [
             dispensaryStreetAddress: "4th Jones Avenue, 0162-12",
             dispensaryReviewCount: 212,
             dispensaryReviewStars: 4,
+            dispensaryImage:
+                "https://s3.amazonaws.com/www-inside-design/uploads/2020/10/aspect-ratios-blogpost-1x1-1.png",
             productCategory: "EDIBLES",
             productBatch: "INDICA",
             productComposition: {
@@ -581,6 +589,8 @@ export const AllproductDetails = [
             dispensaryStreetAddress: "4th Jones Avenue, 0162-12",
             dispensaryReviewCount: 212,
             dispensaryReviewStars: 4,
+            dispensaryImage:
+                "https://s3.amazonaws.com/www-inside-design/uploads/2020/10/aspect-ratios-blogpost-1x1-1.png",
             productCategory: "EDIBLES",
             productBatch: "INDICA",
             productComposition: {
@@ -725,6 +735,8 @@ export const AllproductDetails = [
             dispensaryStreetAddress: "4th Jones Avenue, 0162-12",
             dispensaryReviewCount: 212,
             dispensaryReviewStars: 4,
+            dispensaryImage:
+                "https://s3.amazonaws.com/www-inside-design/uploads/2020/10/aspect-ratios-blogpost-1x1-1.png",
             productCategory: "EDIBLES",
             productBatch: "INDICA",
             productComposition: {
@@ -868,6 +880,8 @@ export const AllproductDetails = [
             dispensaryStreetAddress: "4th Jones Avenue, 0162-12",
             dispensaryReviewCount: 212,
             dispensaryReviewStars: 4,
+            dispensaryImage:
+                "https://s3.amazonaws.com/www-inside-design/uploads/2020/10/aspect-ratios-blogpost-1x1-1.png",
             productCategory: "EDIBLES",
             productBatch: "INDICA",
             productComposition: {
@@ -1011,6 +1025,8 @@ export const AllproductDetails = [
             dispensaryStreetAddress: "4th Jones Avenue, 0162-12",
             dispensaryReviewCount: 212,
             dispensaryReviewStars: 4,
+            dispensaryImage:
+                "https://s3.amazonaws.com/www-inside-design/uploads/2020/10/aspect-ratios-blogpost-1x1-1.png",
             productCategory: "EDIBLES",
             productBatch: "INDICA",
             productComposition: {
@@ -1154,6 +1170,8 @@ export const AllproductDetails = [
             dispensaryStreetAddress: "4th Jones Avenue, 0162-12",
             dispensaryReviewCount: 212,
             dispensaryReviewStars: 4,
+            dispensaryImage:
+                "https://s3.amazonaws.com/www-inside-design/uploads/2020/10/aspect-ratios-blogpost-1x1-1.png",
             productCategory: "EDIBLES",
             productBatch: "INDICA",
             productComposition: {
@@ -1298,6 +1316,8 @@ export const AllproductDetails = [
             dispensaryStreetAddress: "4th Jones Avenue, 0162-12",
             dispensaryReviewCount: 212,
             dispensaryReviewStars: 4,
+            dispensaryImage:
+                "https://s3.amazonaws.com/www-inside-design/uploads/2020/10/aspect-ratios-blogpost-1x1-1.png",
             productCategory: "EDIBLES",
             productBatch: "INDICA",
             productComposition: {

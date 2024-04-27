@@ -246,26 +246,27 @@ const ProductImageSlider = ({ imageArray }:ProductImageSliderProps) => {
 };
 
 type StoreCardProps = {
-    storeName: string;
-    storeAddress: string;
-    storeReviewCount: number;
-    storeReviewStars: number;
+    dispensaryName: string;
+    dispensaryAddress: string;
+    dispensaryReviewCount: number;
+    dispensaryReviewStars: number;
+    dispensaryImage:string;
 };
 
 const StoreCard: FC<StoreCardProps> = ({
-    storeAddress,
-    storeName,
-    storeReviewCount,
-    storeReviewStars,
+    dispensaryAddress,
+    dispensaryName,
+    dispensaryReviewCount,
+    dispensaryReviewStars,
+    dispensaryImage
+    
 }) => {
     return (
         <FlexColumn className="py-[27px] px-[22px] rounded-md bg-primary-darkGreen gap-4">
             <Flex className="gap-4">
                 <Flex className="rounded-full w-[100px] h-[100px] relative overflow-hidden border border-white shrink-0">
                     <Image
-                        src={
-                            "https://s3.amazonaws.com/www-inside-design/uploads/2020/10/aspect-ratios-blogpost-1x1-1.png"
-                        }
+                        src={dispensaryImage}
                         fill
                         alt="image"
                     />
@@ -283,17 +284,17 @@ const StoreCard: FC<StoreCardProps> = ({
                         intent={"grskt18"}
                         classname=" tracking-[-0.63px] font-medium text-white"
                     >
-                        {storeName}
+                        {dispensaryName}
                     </Typography>
                     <Typography
                         intent={"mons12"}
                         classname="leading-[15.6px] text-text-white-70"
                     >
-                        {storeAddress}
+                        {dispensaryAddress}
                     </Typography>
                     <Rating
-                        rating={storeReviewStars}
-                        count={storeReviewCount}
+                        rating={dispensaryReviewStars}
+                        count={dispensaryReviewCount}
                         textColor="white"
                         extend
                     />
@@ -324,6 +325,7 @@ export const ProductInformation:FC<ProductInformationProps> = ({
     const [state1, setState1] = useState(false);
     
     const dispatch = useAppDispatch()
+
     const selectedProduct = findSingleProduct(AllproductDetails,productId)
     
     const [variant, setVariants] = useState<string>(selectedProduct?.productDetails.variations[0]!);
@@ -593,10 +595,11 @@ export const ProductInformation:FC<ProductInformationProps> = ({
                     </FlexColumn>
                     <div className="h-[1px] bg-border-whiteSmoke" />
                     <StoreCard
-                        storeName={selectedProduct?.productDetails.dispensaryName!}
-                        storeAddress={selectedProduct?.productDetails.dispensaryAddress!}
-                        storeReviewCount={selectedProduct?.productDetails.dispensaryReviewCount!}
-                        storeReviewStars={selectedProduct?.productDetails.dispensaryReviewStars!}
+                        dispensaryName={selectedProduct?.productDetails.dispensaryName!}
+                        dispensaryAddress={selectedProduct?.productDetails.dispensaryAddress!}
+                        dispensaryReviewCount={selectedProduct?.productDetails.dispensaryReviewCount!}
+                        dispensaryReviewStars={selectedProduct?.productDetails.dispensaryReviewStars!}
+                        dispensaryImage={selectedProduct?.productDetails.dispensaryImage!}
                     />
                 </FlexColumn>
             </Flex>
