@@ -18,7 +18,7 @@ export const AllproductDetails = [
             dispensaryImage:
                 "https://s3.amazonaws.com/www-inside-design/uploads/2020/10/aspect-ratios-blogpost-1x1-1.png",
             productCategory: "EDIBLES",
-            productBatch: "INDICA",
+
             productComposition: { THC: 6, DELTA: 9, CBD: 5 },
             discountPercentage: 15,
             availableQuantity: 4749,
@@ -157,7 +157,7 @@ export const AllproductDetails = [
             dispensaryImage:
                 "https://s3.amazonaws.com/www-inside-design/uploads/2020/10/aspect-ratios-blogpost-1x1-1.png",
             productCategory: "EDIBLES",
-            productBatch: "INDICA",
+
             productComposition: {
                 THC: 6,
                 DELTA: 9,
@@ -302,7 +302,7 @@ export const AllproductDetails = [
             dispensaryImage:
                 "https://s3.amazonaws.com/www-inside-design/uploads/2020/10/aspect-ratios-blogpost-1x1-1.png",
             productCategory: "EDIBLES",
-            productBatch: "INDICA",
+
             productComposition: {
                 THC: 6,
                 DELTA: 9,
@@ -447,7 +447,7 @@ export const AllproductDetails = [
             dispensaryImage:
                 "https://s3.amazonaws.com/www-inside-design/uploads/2020/10/aspect-ratios-blogpost-1x1-1.png",
             productCategory: "EDIBLES",
-            productBatch: "INDICA",
+
             productComposition: {
                 THC: 6,
                 DELTA: 9,
@@ -592,7 +592,7 @@ export const AllproductDetails = [
             dispensaryImage:
                 "https://s3.amazonaws.com/www-inside-design/uploads/2020/10/aspect-ratios-blogpost-1x1-1.png",
             productCategory: "EDIBLES",
-            productBatch: "INDICA",
+
             productComposition: {
                 THC: 6,
                 DELTA: 9,
@@ -738,7 +738,7 @@ export const AllproductDetails = [
             dispensaryImage:
                 "https://s3.amazonaws.com/www-inside-design/uploads/2020/10/aspect-ratios-blogpost-1x1-1.png",
             productCategory: "EDIBLES",
-            productBatch: "INDICA",
+
             productComposition: {
                 THC: 6,
                 DELTA: 9,
@@ -883,7 +883,7 @@ export const AllproductDetails = [
             dispensaryImage:
                 "https://s3.amazonaws.com/www-inside-design/uploads/2020/10/aspect-ratios-blogpost-1x1-1.png",
             productCategory: "EDIBLES",
-            productBatch: "INDICA",
+
             productComposition: {
                 THC: 6,
                 DELTA: 9,
@@ -1028,7 +1028,7 @@ export const AllproductDetails = [
             dispensaryImage:
                 "https://s3.amazonaws.com/www-inside-design/uploads/2020/10/aspect-ratios-blogpost-1x1-1.png",
             productCategory: "EDIBLES",
-            productBatch: "INDICA",
+
             productComposition: {
                 THC: 6,
                 DELTA: 9,
@@ -1173,7 +1173,7 @@ export const AllproductDetails = [
             dispensaryImage:
                 "https://s3.amazonaws.com/www-inside-design/uploads/2020/10/aspect-ratios-blogpost-1x1-1.png",
             productCategory: "EDIBLES",
-            productBatch: "INDICA",
+
             productComposition: {
                 THC: 6,
                 DELTA: 9,
@@ -1319,7 +1319,7 @@ export const AllproductDetails = [
             dispensaryImage:
                 "https://s3.amazonaws.com/www-inside-design/uploads/2020/10/aspect-ratios-blogpost-1x1-1.png",
             productCategory: "EDIBLES",
-            productBatch: "INDICA",
+
             productComposition: {
                 THC: 6,
                 DELTA: 9,
@@ -1448,10 +1448,10 @@ export const AllproductDetails = [
 
 export type AllProductDetails = typeof AllproductDetails;
 export type SingleProductDetails = (typeof AllproductDetails)[0];
-// export const singleProductDetails = {
+
 //     productDetails: {
 //         productCategory: "EDIBLES",
-//         productBatch: "INDICA",
+//
 //         productName: "Evidence™️ Prison Shortys - Guava",
 //         productComposition: {
 //             THC: 6,

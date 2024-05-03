@@ -36,7 +36,7 @@ const Badge: FC<BatchProps> = ({ batchName }) => {
         <Flex className="px-2 py-l border border-border-whiteSmoke items-center gap-1 rounded-md">
             <IconHandler name="clouds-moon" classname="text-background-blue" />
             <Typography
-                classname="leading-[13px] tracking-[0.71px] text-background-blue font-semibold"
+                classname="leading-[13px] tracking-[0.71px] text-background-blue font-semibold uppercase"
                 intent={"mons13"}
             >
                 {batchName}
@@ -362,7 +362,7 @@ export const ProductInformation:FC<ProductInformationProps> = ({
                         <Rating count={121} rating={3.3} textColor="black" />
                     </FlexColumn>
                     <Flex className="gap-3 flex-wrap">
-                        <Badge batchName={selectedProduct?.productDetails.productBatch as string} />
+                        <Badge batchName={selectedProduct?.productDetails.productType as string} />
                         <Tag
                             title="THC"
                             percentage={selectedProduct?.productDetails.productComposition.THC as number}
