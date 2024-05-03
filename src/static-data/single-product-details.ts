@@ -6,6 +6,10 @@ export const AllproductDetails = [
             image: [
                 "https://shopcannabisnl.com/cdn/shop/products/52977_m_500x.png?v=1690205435",
             ],
+            brandName: "Evidence",
+            brandImage:
+                "https://buyevidence.com/wp-content/uploads/2019/11/cropped-website-logo2.jpg",
+
             productPrice: 21.25,
             productDiscountPrice: 21.25,
             variations: ["100mg", "Buy 1 Take 1"],
@@ -30,7 +34,7 @@ export const AllproductDetails = [
             totalCannabinoids: 20,
             batchInfo: "KLT - 685115300",
             harvestDate: "1/6/2023",
-            availableDispensariesCount: 232,
+            brandAvailability: 232,
         },
         customerReviews: {
             overallRating: 3,
@@ -145,6 +149,9 @@ export const AllproductDetails = [
             image: [
                 "https://shopcannabisnl.com/cdn/shop/products/52431_m_500x.png?v=1684325721",
             ],
+            brandName: "Evidence",
+            brandImage:
+                "https://buyevidence.com/wp-content/uploads/2019/11/cropped-website-logo2.jpg",
             productPrice: 21.25,
             productDiscountPrice: 21.25,
             variations: ["200mg", "Buy 1 Take 1"],
@@ -174,7 +181,7 @@ export const AllproductDetails = [
             totalCannabinoids: 20,
             batchInfo: "KLT - 685115300",
             harvestDate: "1/6/2023",
-            availableDispensariesCount: 232,
+            brandAvailability: 232,
         },
         customerReviews: {
             overallRating: 3,
@@ -290,6 +297,9 @@ export const AllproductDetails = [
             image: [
                 "https://shopcannabisnl.com/cdn/shop/products/51930_m_500x.png?v=1698944531",
             ],
+            brandName: "Evidence",
+            brandImage:
+                "https://buyevidence.com/wp-content/uploads/2019/11/cropped-website-logo2.jpg",
             productPrice: 21.25,
             productDiscountPrice: 21.25,
             variations: ["300mg", "Buy 1 Take 1"],
@@ -319,7 +329,7 @@ export const AllproductDetails = [
             totalCannabinoids: 20,
             batchInfo: "KLT - 685115300",
             harvestDate: "1/6/2023",
-            availableDispensariesCount: 232,
+            brandAvailability: 232,
         },
         customerReviews: {
             overallRating: 3,
@@ -435,6 +445,9 @@ export const AllproductDetails = [
             image: [
                 "https://shopcannabisnl.com/cdn/shop/products/52977_m_500x.png?v=1690205435",
             ],
+            brandName: "Evidence",
+            brandImage:
+                "https://buyevidence.com/wp-content/uploads/2019/11/cropped-website-logo2.jpg",
             productPrice: 21.25,
             productDiscountPrice: 21.25,
             variations: ["400mg", "Buy 1 Take 1"],
@@ -464,7 +477,7 @@ export const AllproductDetails = [
             totalCannabinoids: 20,
             batchInfo: "KLT - 685115300",
             harvestDate: "1/6/2023",
-            availableDispensariesCount: 232,
+            brandAvailability: 232,
         },
         customerReviews: {
             overallRating: 3,
@@ -580,6 +593,9 @@ export const AllproductDetails = [
             image: [
                 "https://shopcannabisnl.com/cdn/shop/products/51930_m_500x.png?v=1698944531",
             ],
+            brandName: "Evidence",
+            brandImage:
+                "https://buyevidence.com/wp-content/uploads/2019/11/cropped-website-logo2.jpg",
             productPrice: 21.25,
             productDiscountPrice: 21.25,
             variations: ["500mg", "Buy 1 Take 1"],
@@ -609,7 +625,7 @@ export const AllproductDetails = [
             totalCannabinoids: 20,
             batchInfo: "KLT - 685115300",
             harvestDate: "1/6/2023",
-            availableDispensariesCount: 232,
+            brandAvailability: 232,
         },
         customerReviews: {
             overallRating: 3,
@@ -726,6 +742,9 @@ export const AllproductDetails = [
             image: [
                 "https://shopcannabisnl.com/cdn/shop/products/52977_m_500x.png?v=1690205435",
             ],
+            brandName: "Evidence",
+            brandImage:
+                "https://buyevidence.com/wp-content/uploads/2019/11/cropped-website-logo2.jpg",
             productPrice: 21.25,
             productDiscountPrice: 21.25,
             variations: ["600mg", "Buy 1 Take 1"],
@@ -755,7 +774,7 @@ export const AllproductDetails = [
             totalCannabinoids: 20,
             batchInfo: "KLT - 685115300",
             harvestDate: "1/6/2023",
-            availableDispensariesCount: 232,
+            brandAvailability: 232,
         },
         customerReviews: {
             overallRating: 3,
@@ -871,6 +890,9 @@ export const AllproductDetails = [
             image: [
                 "https://shopcannabisnl.com/cdn/shop/products/51930_m_500x.png?v=1698944531",
             ],
+            brandName: "Evidence",
+            brandImage:
+                "https://buyevidence.com/wp-content/uploads/2019/11/cropped-website-logo2.jpg",
             productPrice: 21.25,
             productDiscountPrice: 21.25,
             variations: ["600mg", "Buy 1 Take 1"],
@@ -900,7 +922,7 @@ export const AllproductDetails = [
             totalCannabinoids: 20,
             batchInfo: "KLT - 685115300",
             harvestDate: "1/6/2023",
-            availableDispensariesCount: 232,
+            brandAvailability: 232,
         },
         customerReviews: {
             overallRating: 3,
@@ -1016,6 +1038,9 @@ export const AllproductDetails = [
             image: [
                 "https://shopcannabisnl.com/cdn/shop/products/52977_m_500x.png?v=1690205435",
             ],
+            brandName: "Evidence",
+            brandImage:
+                "https://buyevidence.com/wp-content/uploads/2019/11/cropped-website-logo2.jpg",
             productPrice: 21.25,
             productDiscountPrice: 21.25,
             variations: ["700mg", "Buy 1 Take 1"],
@@ -1045,7 +1070,7 @@ export const AllproductDetails = [
             totalCannabinoids: 20,
             batchInfo: "KLT - 685115300",
             harvestDate: "1/6/2023",
-            availableDispensariesCount: 232,
+            brandAvailability: 232,
         },
         customerReviews: {
             overallRating: 3,
@@ -1161,6 +1186,9 @@ export const AllproductDetails = [
             image: [
                 "https://shopcannabisnl.com/cdn/shop/products/51930_m_500x.png?v=1698944531",
             ],
+            brandName: "Evidence",
+            brandImage:
+                "https://buyevidence.com/wp-content/uploads/2019/11/cropped-website-logo2.jpg",
             productPrice: 21.25,
             productDiscountPrice: 21.25,
             variations: ["800mg", "Buy 1 Take 1"],
@@ -1190,7 +1218,7 @@ export const AllproductDetails = [
             totalCannabinoids: 20,
             batchInfo: "KLT - 685115300",
             harvestDate: "1/6/2023",
-            availableDispensariesCount: 232,
+            brandAvailability: 232,
         },
         customerReviews: {
             overallRating: 3,
@@ -1307,6 +1335,9 @@ export const AllproductDetails = [
             image: [
                 "https://shopcannabisnl.com/cdn/shop/products/52977_m_500x.png?v=1690205435",
             ],
+            brandName: "Evidence",
+            brandImage:
+                "https://buyevidence.com/wp-content/uploads/2019/11/cropped-website-logo2.jpg",
             productPrice: 21.25,
             productDiscountPrice: 21.25,
             variations: ["900mg", "Buy 1 Take 1"],
@@ -1336,7 +1367,7 @@ export const AllproductDetails = [
             totalCannabinoids: 20,
             batchInfo: "KLT - 685115300",
             harvestDate: "1/6/2023",
-            availableDispensariesCount: 232,
+            brandAvailability: 232,
         },
         customerReviews: {
             overallRating: 3,
@@ -1471,7 +1502,7 @@ export type SingleProductDetails = (typeof AllproductDetails)[0];
 //         totalCannabinoids: 20,
 //         batchInfo: "KLT - 685115300",
 //         harvestDate: "1/6/2023",
-//         availableDispensariesCount: 232,
+//         brandAvailability: 232,
 //         storeName: "Rendal Store - Jones Ave",
 //         dispensaryAddress: "Toronto, ON, Canada",
 //         dispensaryReviewCount: 212,

@@ -557,11 +557,12 @@ export const ProductInformation:FC<ProductInformationProps> = ({
                             <Flex className="gap-l">
                                 <Flex className="rounded-md w-[100px] h-[100px] xl:w-[107px] xl:h-[80px] relative overflow-hidden shadow-brand border-2 border-border-whiteSmoke">
                                     <Image
-                                        src={
-                                            "https://s3.amazonaws.com/www-inside-design/uploads/2020/10/aspect-ratios-blogpost-1x1-1.png"
-                                        }
-                                        fill
-                                        alt="image"
+                                        src={`/static/cropped-website-logo2.jpg`}
+                                        // fill
+                                        width={107}
+                                        height={80}
+                                        className="object-contain"
+                                        alt="brand image"
                                     />
                                 </Flex>
                                 <FlexColumn className="gap-2">
@@ -569,14 +570,14 @@ export const ProductInformation:FC<ProductInformationProps> = ({
                                         intent={"mons15"}
                                         classname="font-semibold leading-[19.5px]"
                                     >
-                                        Evidence
+                                        {selectedProduct?.productDetails.brandName}
                                     </Typography>
                                     <Typography
                                         intent={"mons15"}
                                         classname="leading-[19.5px] font-medium text-text-black-70"
                                     >
                                         {
-                                            selectedProduct?.productDetails.availableDispensariesCount
+                                            selectedProduct?.productDetails.brandAvailability
                                         }{" "}
                                         Retail Dispensaries
                                     </Typography>
