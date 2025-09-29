@@ -324,53 +324,13 @@ npm run prettier         # Format code
 npm run update-deps      # Update dependencies
 ```
 
-## 🚀 Build & Deployment
+## 👥 Team
 
-### Production Build
+**Developed by Airly Studio**
 
-### Deployment Options
-
-#### Vercel (Recommended)
-
-#### Docker Deployment
-
-## 🤝 Contributing
-
-We welcome contributions to Dispense Go! Please follow these guidelines:
-
-### Development Workflow
-
-1. **Fork the repository**
-2. **Create a feature branch**
-   ```bash
-   git checkout -b feature/amazing-feature
-   ```
-3. **Make your changes**
-4. **Run tests**
-   ```bash
-   npm run test
-   npm run type-check
-   npm run lint
-   ```
-5. **Commit your changes**
-   ```bash
-   git commit -m 'Add amazing feature'
-   ```
-6. **Push to the branch**
-   ```bash
-   git push origin feature/amazing-feature
-   ```
-7. **Open a Pull Request**
-
-### Code Standards
-
-- Follow TypeScript best practices
-- Use Prettier for code formatting
-- Write meaningful commit messages
-- Include tests for new features
-- Update documentation as needed
-
-```
+- **[Dorjsuren Enkhbold](https://github.com/dorjsurend)** - *Lead Developer & Architect*
+- **[Taraqul Islam Rony](https://github.com/TIRony)** - *Senior Full Stack Developer*
+- **[Sakil Sazzad Joy](https://github.com/ss-joy)** - *Developer*
 
 ## 🙏 Acknowledgments
 
